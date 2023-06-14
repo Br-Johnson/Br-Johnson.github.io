@@ -1,5 +1,5 @@
 ---
-title: "Digital Eco: AI in the Natural Sciences"
+title: "Decode the Overload"
 listing:
   contents: posts
   sort: "date desc"
