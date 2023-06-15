@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2023-05-30">
 <meta name="description" content="Communicate, assemble and coordinate extant data systems">
 
-<title>Brett Johnson’s Blog - How do we mobilize salmon data?</title>
+<title>Brett Johnson - How do we mobilize salmon data?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -108,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Brett Johnson’s Blog</span>
+    <span class="navbar-title">Brett Johnson</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -142,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">How do we mobilize salmon data?</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+      <h1 class="title">How do we mobilize salmon data?</h1>
                   <div>
         <div class="description">
           Communicate, assemble and coordinate extant data systems
@@ -190,27 +156,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Introduction</h1>
 <p>There exists a mountain of data about salmon, their environment, and abundance yet we struggle to understand why or predict when certain populations of salmon decline. Part of the challenge is that salmon have a complicated life history where they are exposed to multiple environments throughout their lives. Some parts of their lives are easier to observe than others and some environments are more complex than others. The challenge is to figure out what observations have the most predictive power in each life phase, and then put all those data together to glean a complete and predictive history of the conditions encountered by specific salmon stocks.</p>
 <p>However, because salmon cross arbitrary municipal, provincial, and national borders we lack a coordinated approach to aggregating data. Data often are collected using bespoke standards, stored locally, and not shared. Data management is not a trivial task. Therefore, any coordinated approach needs to be lightweight and flexible such that the barrier to adherence is surmountable by individual biologists and fall in line with the basic tenets of FAIR data.</p>
-<p>The truth is we don’t need to develop any new technologies to mobilize salmon data, we need only implement the current technologies that exist, extend them where appropriate, integrate them where necessary, make them easy to use, communicate their existence, and make it clear when they must be used.</p>
-<section id="practical-steps-to-mobilize-salmon-data" class="level2">
-<h2 class="anchored" data-anchor-id="practical-steps-to-mobilize-salmon-data">Practical Steps to Mobilize Salmon Data</h2>
+<p>Indeed, the key to mobilizing salmon data doesn’t lie in creating new technologies. Rather, it rests on effectively harnessing and integrating existing ones, ensuring they are user-friendly, supporting their broad adoption, and raising awareness about their use. It’s essential to remember that adhering to practical principles and modern best-practices that solve immediate problems will propel us further faster than being distracted by the allure of novel technologies or flashy platforms. Success hinges on assisting agencies to meet their data publishing mandates. To achieve this, we must address challenges faced by individual biologists and data managers one at a time, providing solutions rooted in practicality and principles that are underpinned by well-adopted global best-practices, and aligning these with existing national mandates. By sticking to the fundamentals outlined below, the salmon research community will be well-positioned to effectively manage, integrate, and harmonize the vast amount of data being produced to understand, predict and manage changes to salmon ecoystems.</p>
+</section>
+<section id="practical-steps-to-mobilize-salmon-data" class="level1">
+<h1>Practical Steps to Mobilize Salmon Data</h1>
 <ol type="1">
 <li><p><strong>Publish data</strong>: In the pursuit of transparency, academic journals should mandate data publication and citation for manuscripts. Similarly, institutions can require the delivery of published data.</p></li>
-<li><p><strong>Create a Data Management Plan (DMP)</strong>: A robust DMP is crucial for the effective management of data. Fisheries and Oceans Canada already prescribes this requirement (<a href="https://www.dfo-mpo.gc.ca/about-notre-sujet/publications/science/datapolicy-politiquedonnees/index-eng.html#6-5"><strong>https://www.dfo-mpo.gc.ca/about-notre-sujet/publications/science/datapolicy-politiquedonnees/index-eng.html#6-5</strong></a>). The Government of Canada’s Tri-agency Research Data Management Policy and the Canadian Association of Research Libraries Tri-agency supported <a href="https://assistant.portagenetwork.ca/about_us">DMP Assistant tool</a> can aid in the creation of DMPs.</p></li>
+<li><p><strong>Create a Data Management Plan (DMP)</strong>: A robust DMP is crucial for the effective management of data. Fisheries and Oceans Canada already prescribes this requirement (<a href="https://www.dfo-mpo.gc.ca/about-notre-sujet/publications/science/datapolicy-politiquedonnees/index-eng.html#6-5"><strong>https://www.dfo-mpo.gc.ca/about-notre-sujet/publications/science/datapolicy-politiquedonnees/index-eng.html#6-5</strong></a>). The Government of Canada’s Tri-agency Research Data Management Policy and the Canadian Association of Research Libraries support <a href="https://assistant.portagenetwork.ca/about_us">DMP Assistant tool</a> can aid in the creation of DMPs.</p></li>
 <li><p><strong>Publish metadata records</strong>: Metadata records can be published on platforms like Open Canada Data Portal, the Canadian Integrated Ocean Observing System, the Global Biodiversity Information Facility and generalist repositories such as Dryad, Figshare and Zenodo. So long as the metadata catalogue mints Digital Object Identifiers and uses modern technologies that allow metadata to be indexed and harvested, such as <a href="https://doi.org/10.5281/zenodo.7872383">Science on Schema.org</a>, then bespoke collections can be harvested from a wide array of sources and integrated into a bespoke collection.</p></li>
 <li><p><strong>Publish Protocols</strong>: The publication of protocols ensures uniformity in data collection and analysis. Several platforms exist to publish protocols for which a Digital Object Identifier can be used: <a href="https://protocolexchange.researchsquare.com/">Nature Portfolio’s Protocol Exchange</a>, <a href="https://www.protocols.io/plans/academia">protocol.io</a>, or simply using GitHub to host versions of protocols (DOIs can be assigned via the <a href="https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content">Zenodo Integration</a>)</p></li>
-<li><p><strong>Use Persistent Identifiers</strong>: Persistent Identifiers (PIDs) like Digital Object Identifiers (DOIs) for datasets, <a href="https://orcid.org/">Open Research and Contributor ID (ORCIDs)</a> for individuals, and <a href="https://ror.org/">Research Organization Registry RORs</a> for organizations can ensure precise, persistent and identification. Scientific Organizations can join the <a href="https://www.crkn-rcdr.ca/en/datacite-canada-consortium">DataCite Canada Consortium</a> if they wish to mint their own DOIs or rely on free services such as <a href="https://zenodo.org/">zenodo</a>. Moreover, leveraging the nascent <a href="https://doi.org/10.1016/j.patter.2020.100180">PID graph</a> to create custom applications or data visualizations that map bespoke research networks to gain an enhanced understanding of the research landscape.</p></li>
+<li><p><strong>Use Persistent Identifiers</strong>: Persistent Identifiers (PIDs) like Digital Object Identifiers (DOIs) for datasets, <a href="https://orcid.org/">Open Research and Contributor ID (ORCIDs)</a> for individuals, and <a href="https://ror.org/">Research Organization Registry RORs</a> for organizations can ensure precise, persistent and identification. Scientific Organizations can join the <a href="https://www.crkn-rcdr.ca/en/datacite-canada-consortium">DataCite Canada Consortium</a> if they wish to mint their own DOIs or rely on free services such as <a href="https://zenodo.org/">zenodo</a>. Moreover, leveraging the nascent <a href="https://doi.org/10.1016/j.patter.2020.100180">PID graph</a> to create custom applications or data visualizations that map bespoke research networks to gain an enhanced understanding of the research landscape. There is massive infrastructre built to support bibliometrics, data discovery, linking, citation and data re-use using Digital Object Identifiers. This has to be a key component of salmon data mobilization.</p></li>
 <li><p><strong>Adopt domain-specific data and metadata standards</strong>: Implementing domain-specific data and metadata standards, such as Darwin Core for biological data and Climate Forecast Conventions for oceanographic data, ensures uniformity and compatibility across data sets. For primary biodiversity data, the Canadian Journal of Aquatic Fisheries Sciences <em>already</em> strongly advocates for all species distribution records to be deposited in publicly accessible databases like the Global Biodiversity Information Facility (GBIF) nodes (<a href="http://www.gbif.org/"><strong>www.gbif.org</strong></a>), BioFresh (<a href="http://www.freshwaterbiodiversity.eu/"><strong>www.freshwaterbiodiversity.eu</strong></a>) for freshwater data, and the Ocean Biogeographic Information System (OBIS, <a href="http://www.iobis.org/"><strong>http://www.iobis.org/</strong></a>) for marine biodiversity data.</p></li>
 <li><p><strong>Promote and incentivize data publishing</strong>: Encourage the scientific community to publish their data by offering incentives, rewards, and institutional recognition.</p></li>
 <li><p><strong>Promote and Support Reproducible Workflows</strong>: Implement practices that ensure reproducibility of scientific workflows. This can be achieved by versioning data, code, and computational environments, and using workflow management systems that ensure the same computational procedure will yield the same result over time. This fosters trust, enables validation, and promotes the reuse of scientific workflows. Researchers should provide clear and comprehensive documentation of their workflows, including code, data, and tools used, to support reproducibility by others in the scientific community. Institutions should provide training on these emergent skills and best-practices.</p></li>
 <li><p><strong>Reuse data</strong>: Promote the reuse of data, leveraging the vast amount of existing information to streamline new research and reduce duplication of efforts.</p></li>
 <li><p><strong>Cite reused data</strong>: Any reused data should be properly cited using its digital object identifier (DOI). This practice will ensure due acknowledgment to the original data creators and promote transparency ethical data usage, and credit for the data provider. Progressive academic journals are already taking <a href="https://www.nature.com/articles/sdata2018259">this approach</a>.</p></li>
 </ol>
-<p>The process of aggregating and understanding salmon data has historically been fraught with difficulties due to the complicated life history of the species and the geographical and political boundaries that often hamper a coordinated approach. The need of the hour is a simplified, flexible, and coordinated strategy that is easy to implement and adheres to the FAIR principles. The effective mobilization of salmon data does not hinge on the creation of new technologies. Rather, the emphasis should be on the active communuication and implementation of existing technologies, ensuring they are easy to use and their use is mandated. The ten strategic points delineated here present a holistic roadmap towards this objective. With concerted efforts and strategic implementation of these proposed strategies, a comprehensive understanding of salmon population dynamics can become achievable.</p>
-
-
-<!-- -->
-
 </section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>The process of aggregating and understanding salmon data has historically been fraught with difficulties due to the complicated life history of the species and the geographical and political boundaries that often hamper a coordinated approach. The need of the hour is a simplified, flexible, and coordinated strategy that is easy to implement and adheres to the FAIR principles. The effective mobilization of salmon data does not hinge on the creation of new technologies. Rather, the emphasis should be on the active communication, coordination, and implementation of existing technologies, ensuring they are easy to use and their use is mandated. The ten strategic points delineated here present a holistic roadmap towards this objective. With concerted efforts and strategic implementation of these proposed strategies, salmon science may be able to enter the fourth scientific paradigm—data intensive scientific discoveries.</p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -293,57 +260,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -497,57 +413,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> How do we mobilize salmon data?</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> Brett Johnnson</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2023-05-30</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [Salmon, ecology]</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> 'Communicate, assemble and coordinate extant data systems'</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> ''</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">archives:</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - 2023/05</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> false</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>There exists a mountain of data about salmon, their environment, and abundance yet we struggle to understand why or predict when certain populations of salmon decline. Part of the challenge is that salmon have a complicated life history where they are exposed to multiple environments throughout their lives. Some parts of their lives are easier to observe than others and some environments are more complex than others. The challenge is to figure out what observations have the most predictive power in each life phase, and then put all those data together to glean a complete and predictive history of the conditions encountered by specific salmon stocks.</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>However, because salmon cross arbitrary municipal, provincial, and national borders we lack a coordinated approach to aggregating data. Data often are collected using bespoke standards, stored locally, and not shared. Data management is not a trivial task. Therefore, any coordinated approach needs to be lightweight and flexible such that the barrier to adherence is surmountable by individual biologists and fall in line with the basic tenets of FAIR data.</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>The truth is we don't need to develop any new technologies to mobilize salmon data, we need only implement the current technologies that exist, extend them where appropriate, integrate them where necessary, make them easy to use, communicate their existence, and make it clear when they must be used.</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practical Steps to Mobilize Salmon Data</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Publish data**: In the pursuit of transparency, academic journals should mandate data publication and citation for manuscripts. Similarly, institutions can require the delivery of published data.</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Create a Data Management Plan (DMP)**: A robust DMP is crucial for the effective management of data. Fisheries and Oceans Canada already prescribes this requirement ([**https://www.dfo-mpo.gc.ca/about-notre-sujet/publications/science/datapolicy-politiquedonnees/index-eng.html#6-5**](https://www.dfo-mpo.gc.ca/about-notre-sujet/publications/science/datapolicy-politiquedonnees/index-eng.html#6-5)). The Government of Canada's Tri-agency Research Data Management Policy and the Canadian Association of Research Libraries Tri-agency supported <span class="co">[</span><span class="ot">DMP Assistant tool</span><span class="co">](https://assistant.portagenetwork.ca/about_us)</span> can aid in the creation of DMPs.</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Publish metadata records**: Metadata records can be published on platforms like Open Canada Data Portal, the Canadian Integrated Ocean Observing System, the Global Biodiversity Information Facility and generalist repositories such as Dryad, Figshare and Zenodo. So long as the metadata catalogue mints Digital Object Identifiers and uses modern technologies that allow metadata to be indexed and harvested, such as <span class="co">[</span><span class="ot">Science on Schema.org</span><span class="co">](https://doi.org/10.5281/zenodo.7872383)</span>, then bespoke collections can be harvested from a wide array of sources and integrated into a bespoke collection.</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Publish Protocols**: The publication of protocols ensures uniformity in data collection and analysis. Several platforms exist to publish protocols for which a Digital Object Identifier can be used: <span class="co">[</span><span class="ot">Nature Portfolio's Protocol Exchange</span><span class="co">](https://protocolexchange.researchsquare.com/)</span>, <span class="co">[</span><span class="ot">protocol.io</span><span class="co">](https://www.protocols.io/plans/academia)</span>, or simply using GitHub to host versions of protocols (DOIs can be assigned via the <span class="co">[</span><span class="ot">Zenodo Integration</span><span class="co">](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content)</span>)</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>**Use Persistent Identifiers**: Persistent Identifiers (PIDs) like Digital Object Identifiers (DOIs) for datasets, <span class="co">[</span><span class="ot">Open Research and Contributor ID (ORCIDs)</span><span class="co">](https://orcid.org/)</span> for individuals, and <span class="co">[</span><span class="ot">Research Organization Registry RORs</span><span class="co">](https://ror.org/)</span> for organizations can ensure precise, persistent and identification. Scientific Organizations can join the <span class="co">[</span><span class="ot">DataCite Canada Consortium</span><span class="co">](https://www.crkn-rcdr.ca/en/datacite-canada-consortium)</span> if they wish to mint their own DOIs or rely on free services such as <span class="co">[</span><span class="ot">zenodo</span><span class="co">](https://zenodo.org/)</span>. Moreover, leveraging the nascent <span class="co">[</span><span class="ot">PID graph</span><span class="co">](https://doi.org/10.1016/j.patter.2020.100180)</span> to create custom applications or data visualizations that map bespoke research networks to gain an enhanced understanding of the research landscape.</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>**Adopt domain-specific data and metadata standards**: Implementing domain-specific data and metadata standards, such as Darwin Core for biological data and Climate Forecast Conventions for oceanographic data, ensures uniformity and compatibility across data sets. For primary biodiversity data, the Canadian Journal of Aquatic Fisheries Sciences *already* strongly advocates for all species distribution records to be deposited in publicly accessible databases like the Global Biodiversity Information Facility (GBIF) nodes ([**www.gbif.org**](http://www.gbif.org/)), BioFresh ([**www.freshwaterbiodiversity.eu**](http://www.freshwaterbiodiversity.eu/)) for freshwater data, and the Ocean Biogeographic Information System (OBIS, [**http://www.iobis.org/**](http://www.iobis.org/)) for marine biodiversity data.</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span>**Promote and incentivize data publishing**: Encourage the scientific community to publish their data by offering incentives, rewards, and institutional recognition.</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">8.  </span>**Promote and Support Reproducible Workflows**: Implement practices that ensure reproducibility of scientific workflows. This can be achieved by versioning data, code, and computational environments, and using workflow management systems that ensure the same computational procedure will yield the same result over time. This fosters trust, enables validation, and promotes the reuse of scientific workflows. Researchers should provide clear and comprehensive documentation of their workflows, including code, data, and tools used, to support reproducibility by others in the scientific community. Institutions should provide training on these emergent skills and best-practices.</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">9.  </span>**Reuse data**: Promote the reuse of data, leveraging the vast amount of existing information to streamline new research and reduce duplication of efforts.</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">10. </span>**Cite reused data**: Any reused data should be properly cited using its digital object identifier (DOI). This practice will ensure due acknowledgment to the original data creators and promote transparency ethical data usage, and credit for the data provider. Progressive academic journals are already taking <span class="co">[</span><span class="ot">this approach</span><span class="co">](https://www.nature.com/articles/sdata2018259)</span>.</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>The process of aggregating and understanding salmon data has historically been fraught with difficulties due to the complicated life history of the species and the geographical and political boundaries that often hamper a coordinated approach. The need of the hour is a simplified, flexible, and coordinated strategy that is easy to implement and adheres to the FAIR principles. The effective mobilization of salmon data does not hinge on the creation of new technologies. Rather, the emphasis should be on the active communuication and implementation of existing technologies, ensuring they are easy to use and their use is mandated. The ten strategic points delineated here present a holistic roadmap towards this objective. With concerted efforts and strategic implementation of these proposed strategies, a comprehensive understanding of salmon population dynamics can become achievable.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div></div></div></div>
+</script>
 </div> <!-- /content -->
 
 
