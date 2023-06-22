@@ -94,6 +94,7 @@ years_published <- tt_salmon_datasets[["meta"]][["published"]]
 ggplot(years_published, ggplot2::aes(x = id, y = count))+
                    geom_bar(stat = "identity", fill = "steelblue")+
                    labs(x = "Year", y = "Count") +
+                   coord_flip() +
                    theme_minimal() +
                    ggtitle("Growth of salmon datasets published with a DOI")
 ```
