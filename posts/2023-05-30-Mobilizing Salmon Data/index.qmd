@@ -11,6 +11,7 @@ toc: false
 format:
   html:
     code-fold: true
+    code-tools: true
 bibliography: references.bib
 ---
 
@@ -43,6 +44,59 @@ Indeed, the key to mobilizing salmon data doesn't lie in creating new technologi
 9.  **Reuse data**: Promote the reuse of data, leveraging the vast amount of existing information to streamline new research and reduce duplication of efforts.
 
 10. **Cite reused data**: Any reused data should be properly cited using its digital object identifier (DOI). This practice will ensure due acknowledgment to the original data creators and promote transparency ethical data usage, and credit for the data provider. Progressive academic journals are already taking [this approach](https://www.nature.com/articles/sdata2018259).
+
+## Proof of Concept
+
+Let's look through DOIs registered with DataCite that have the word salmon somewhere in the digital objects metadata. To do this I will use DataCite's REST API and the R package `rdatacite` which provides convenient functions for making API calls.
+
+```{r, warning = FALSE, message=FALSE}
+library(rdatacite)
+library(tidyverse)
+library(plotly)
+# Initialize lists to store dataframes and metadata
+all_datasets <- list()
+all_meta <- list()
+
+# Fetch initial page
+tt_salmon_datasets <- dc_dois(query = "salmon")
+
+tt_providers <- tt_salmon_datasets[["meta"]][["providers"]]
+tt_affiliations <- tt_salmon_datasets[["meta"]][["affiliations"]][["title"]]
+
+plotly::ggplotly(ggplot2::ggplot(tt_providers, aes(x = reorder(title, count), y = count)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  coord_flip() +
+  labs(x = "Publisher", y = "Count") +
+  theme_minimal() +
+  ggtitle("Top Ten Publishers of Salmon Datasets")) 
+  
+```
+
+```{r, warning = FALSE, message=FALSE}
+library(tidyverse)
+library(plotly)
+tt_affiliations <- tt_salmon_datasets[["meta"]][["affiliations"]]
+
+ggplot(tt_affiliations, aes(x = reorder(title, count), y = count)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  coord_flip() +
+  labs(x = "Publisher", y = "Count") +
+  theme_minimal() +
+  ggtitle("Top Ten Institutions Providing Salmon Datasets")
+
+```
+
+```{r, warning = FALSE, message=FALSE}
+library(tidyverse)
+library(plotly)
+years_published <- tt_salmon_datasets[["meta"]][["published"]]
+
+ggplot(years_published, ggplot2::aes(x = id, y = count))+
+                   geom_bar(stat = "identity", fill = "steelblue")+
+                   labs(x = "Year", y = "Count") +
+                   theme_minimal() +
+                   ggtitle("Growth of salmon datasets published with a DOI")
+```
 
 # Conclusion
 
