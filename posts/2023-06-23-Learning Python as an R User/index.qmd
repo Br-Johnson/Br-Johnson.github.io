@@ -1,0 +1,63 @@
+---
+title: Learning Python as an R User
+author: Brett Johnson
+date: 2023-06-23
+categories: [How-to,R,Rmarkdown]
+draft: true
+description: 'What are the main differences between Python and R'
+image: ''
+archives:
+  - 2023/06
+toc: false
+
+format:
+  html:
+    code-fold: show
+    code-tools: true
+---
+
+# Introduction
+
+One of the main differences you'll notice right away between Python and R is how difficult it is to install Python and get to the point where you're writing code. Coming from R, it's pretty straightforward and clear you need to install the R language from the [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/), and then [install R Studio](https://posit.co/download/rstudio-desktop/) and you're basically off to the races. With Python, however, there's so many options! First, installing Python can be confusing for the un-initiated. I did manage to get it installed and running in [VS Code using pyenv and poetry](https://medium.com/macoclock/django-setup-in-2022-with-pyenv-poetry-on-macos-b0969830bec8), but I needed a lot of help from a senior engineer to get it to actually work!
+
+All these difficulties led me to using [Python in Google Colaboratory](https://colab.research.google.com/notebooks/intro.ipynb) for now. Using Colab abstracts away all the installation, environment and package management challenges, but with some major trade-offs down the line if you're interested in developing applications or using the same versions of packages and Python for reproducibility purposes.
+
+## General differences between R and Python
+
+Both languages are popular for data analysis but their origin stories have resulted in some broad differences. R was developed by statisticians for statisticians as an evolution of the S programming language developed at Bell Labs by John Chambers and others in 1976. S had a strong focus on creating an interactive environment to make data analysis easier. As a result of this fundamental design decision, most experienced programmers find programming in R weird and confusing. R was released by Ross Lhaka and Robert Gentleman in 1996 as 'free software', as opposed to the commercial roots of S, allowing the growth of language by a vibrant community. R's strengths lay in the availability of numerous packages for statistical analysis as well as the ability to make 'publication ready' graphics.
+
+Version 1 of Python, on the other hand, was released in 1994 around the same time as R. An early focus for Python was using clean syntax, a feature that has made the language easier to read than R. Though the development of [the pipe operator](https://cran.r-project.org/web/packages/loon.ggplot/vignettes/pipes.html) and the [tidyverse](https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html) in R has improved the readability of R substantially. But I digress. Python was built with simplicity in mind including [principles](https://peps.python.org/pep-0020/) such as 'simple is better than complex', 'There should be one--and preferably only one--obvious way to do it', and 'flat is better than nested'. Those are just three principles that really resonate with me as de-facto R user given than there always seems to be a million ways to do the same thing in R and I always get nested lists returned which are a pain to navigate and flatten!
+
+In general I would say that R is used more than Python in academia, especially in the fields of statistics and ecology. Python has a broader user-base, is gaining traction in the ocean and atmospheric sciences and has without a doubt been more heavily used in the fields of Machine Learning and Artificial Intelligence. Python also has a reputation for having better support for web integration and deployment, though R has made strides in this space with the likes of the `shiny` package.
+
+But, this blog post isn't about which language is better or worse, or which you should or shouldn't use. In practice it's getting easier to use both languages within the same project thanks to packages like [`reticulate`](https://rstudio.github.io/reticulate/)`.` Knowing the basics of both languages is nice if you're working in the field of data science and will make you a better programmer, but I would argue it's better to be an expert in one or the other rather than an novice or intermediate in both!
+
+## Technical Differences
+
+Now, I'm going to get into the weeds a bit in terms of some of the technical differences between R and Python. Not knowing any other programming language really, I was actually more surprised by the commonalities of the languages than the differences. I was expecting writing Python to feel very different and scary, but it turns out that quite a few of the programming paradigms in R translate well to Python. So fear Python not my useR friends.
+
+### Sub setting
+
+In R, sub setting can be accomplished many ways: `$`, `subset()`, `[[`, and the `with` functions to access elements of a data frame. It can be a bit confusing to know which one to use or read code that switches between the different methods. To be honest I will just try one until it gets the result I'm looking for.
+
+In Python,
+
+### Assignment
+
+Assignment operators: In R you can use either `=` or `<-` basically interchangibly, though `<-` cannot be used in
+
+### Object-oriented systems
+
+R has R6, S3, S4.
+
+Python is more consistent.
+
+### Scoping rules
+
+### Indexing
+
+R starts counting at 1. Python starts counting at 0. That's hard to get used to.
+
+# Conclusion
+
+R generally has a reputation of being difficult to learn while Python is simpler and more readable. Understanding key differences between programming languages can help you more deeply understand how to use the one you're most comfortable with.
