@@ -111,7 +111,7 @@ relationships <- full_join(objects, subj_related_ids, by = c('obj_dois' = 'relat
 library(networkD3)
 
 objects$type.label <- "IYS Dataset"
-subjects$type.label <- "Referencing Dataset or Paper"
+subjects$type.label <- "Referencing Dataset"
 ids <- c(objects$obj_dois,subjects$subj_dois)
 names <- c(objects$title_vector, subjects$subjtitle_vector)
 type.label <- c(objects$type.label, subjects$type.label)

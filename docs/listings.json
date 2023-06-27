@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2023-06-23-Learning Python as an R User/index.html",
       "/posts/2023-06-22-How Does GBIF Count Citations?/gbif.html",
       "/posts/2023-05-30-Mobilizing Salmon Data/index.html"
     ]

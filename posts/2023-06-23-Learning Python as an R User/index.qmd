@@ -3,9 +3,7 @@ title: Learning Python as an R User
 author: Brett Johnson
 date: 2023-06-23
 categories: [How-to,R,Rmarkdown]
-draft: true
-description: 'What are the main differences between Python and R'
-image: ''
+description: 'Python versus R? Nah Python + R'
 archives:
   - 2023/06
 toc: false
@@ -18,46 +16,155 @@ format:
 
 # Introduction
 
-One of the main differences you'll notice right away between Python and R is how difficult it is to install Python and get to the point where you're writing code. Coming from R, it's pretty straightforward and clear you need to install the R language from the [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/), and then [install R Studio](https://posit.co/download/rstudio-desktop/) and you're basically off to the races. With Python, however, there's so many options! First, installing Python can be confusing for the un-initiated. I did manage to get it installed and running in [VS Code using pyenv and poetry](https://medium.com/macoclock/django-setup-in-2022-with-pyenv-poetry-on-macos-b0969830bec8), but I needed a lot of help from a senior engineer to get it to actually work!
+One of the main differences you'll notice right away between Python and R is how difficult can be to install Python and get to the point where you're writing code. Coming from R, it's pretty straightforward and clear that you need to install the R language from the [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/), and then [install R Studio](https://posit.co/download/rstudio-desktop/) and you're basically off to the races. With Python, however, there's a few different options. I managed to get it installed and running in [VS Code using pyenv and poetry](https://medium.com/macoclock/django-setup-in-2022-with-pyenv-poetry-on-macos-b0969830bec8), but I needed a lot of help from a senior engineer to get it to actually work!
 
-All these difficulties led me to using [Python in Google Colaboratory](https://colab.research.google.com/notebooks/intro.ipynb) for now. Using Colab abstracts away all the installation, environment and package management challenges, but with some major trade-offs down the line if you're interested in developing applications or using the same versions of packages and Python for reproducibility purposes.
+All these difficulties led me to using [Python in Google Colaboratory](https://colab.research.google.com/notebooks/intro.ipynb) for now. Using Colab abstracts away all the installation, environment and package management challenges, but with some trade-offs down the line if you're interested in developing applications or using the same versions of packages and Python for reproducibility purposes. For now, it's great to just get started understanding how the language works without worrying about all the other stuff.
 
 ## General differences between R and Python
 
-Both languages are popular for data analysis but their origin stories have resulted in some broad differences. R was developed by statisticians for statisticians as an evolution of the S programming language developed at Bell Labs by John Chambers and others in 1976. S had a strong focus on creating an interactive environment to make data analysis easier. As a result of this fundamental design decision, most experienced programmers find programming in R weird and confusing. R was released by Ross Lhaka and Robert Gentleman in 1996 as 'free software', as opposed to the commercial roots of S, allowing the growth of language by a vibrant community. R's strengths lay in the availability of numerous packages for statistical analysis as well as the ability to make 'publication ready' graphics.
+Both languages are popular for data analysis but their distinct origin stories have resulted in some broad differences. R was developed by statisticians for statisticians as an evolution of the S programming language developed at Bell Labs by John Chambers and others in 1976. S had a strong focus on creating an interactive environment to make data analysis easier. As a result of this fundamental design decision, most experienced programmers find programming in R weird and confusing. R was released by Ross Lhaka and Robert Gentleman in 1996 as 'free software', as opposed to the commercial version of S, allowing the growth of language by a vibrant community. R's strengths lay in the availability of numerous packages for statistical analysis, the ability to make 'publication ready' graphics, and the inclusive community that can support new programmers.
 
-Version 1 of Python, on the other hand, was released in 1994 around the same time as R. An early focus for Python was using clean syntax, a feature that has made the language easier to read than R. Though the development of [the pipe operator](https://cran.r-project.org/web/packages/loon.ggplot/vignettes/pipes.html) and the [tidyverse](https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html) in R has improved the readability of R substantially. But I digress. Python was built with simplicity in mind including [principles](https://peps.python.org/pep-0020/) such as 'simple is better than complex', 'There should be one--and preferably only one--obvious way to do it', and 'flat is better than nested'. Those are just three principles that really resonate with me as de-facto R user given than there always seems to be a million ways to do the same thing in R and I always get nested lists returned which are a pain to navigate and flatten!
+Version 1 of Python, on the other hand, was released in 1994, a couple years before the first version of R but almost 20 years later than S. An early focus for Python was using clean syntax, a feature that has made the language easier to learn and read compared to R. Although, the development of [the pipe operator](https://cran.r-project.org/web/packages/loon.ggplot/vignettes/pipes.html) and the [tidyverse](https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html) in R has improved the readability substantially. But I digress. Python was built with simplicity in mind including [principles](https://peps.python.org/pep-0020/) such as 'simple is better than complex', 'There should be one--and preferably only one--obvious way to do it', and 'flat is better than nested'. Those are three principles that really resonate with me as an R user given than there always seems to be a million ways to do the same thing in R and I always end up having to work with nested lists which are a pain to navigate and flatten!
 
-In general I would say that R is used more than Python in academia, especially in the fields of statistics and ecology. Python has a broader user-base, is gaining traction in the ocean and atmospheric sciences and has without a doubt been more heavily used in the fields of Machine Learning and Artificial Intelligence. Python also has a reputation for having better support for web integration and deployment, though R has made strides in this space with the likes of the `shiny` package.
+From my perspective, I would say that R is used more than Python in academia, especially in the fields of statistics and ecology. Python has a broader user-base, gaining traction in the ocean and atmospheric sciences and has without a doubt been more heavily used in the fields of machine learning and artificial intelligence. Python also has a reputation for having better support for web integration and deployment, though R has made strides in this space with the likes of the `shiny` package.
 
-But, this blog post isn't about which language is better or worse, or which you should or shouldn't use. In practice it's getting easier to use both languages within the same project thanks to packages like [`reticulate`](https://rstudio.github.io/reticulate/)`.` Knowing the basics of both languages is nice if you're working in the field of data science and will make you a better programmer, but I would argue it's better to be an expert in one or the other rather than an novice or intermediate in both!
+But, this blog post isn't about which language is better or worse, or which you should or shouldn't use. In practice it's getting easier to use both languages within the same project thanks to packages like [`reticulate`](https://rstudio.github.io/reticulate/)`.` Knowing the basics of both languages is nice if you're working in the field of data science and will make you a better programmer, but I would argue it's better to be an expert in one or the other rather than a novice or intermediate in both!
 
 ## Technical Differences
 
-Now, I'm going to get into the weeds a bit in terms of some of the technical differences between R and Python. Not knowing any other programming language really, I was actually more surprised by the commonalities of the languages than the differences. I was expecting writing Python to feel very different and scary, but it turns out that quite a few of the programming paradigms in R translate well to Python. So fear Python not my useR friends.
+Now, I'm going to get into the weeds a bit in terms of some of the technical differences between R and Python. Not really knowing any other programming language (apart from some C++ in high school), I was actually more surprised by the commonalities of the languages than the differences. I was expecting Python to feel very different and scary, but it turns out that quite a few of the programming paradigms in R translate well to Python.
 
-### Sub setting
+So, fear Python not my useR friends.
 
-In R, sub setting can be accomplished many ways: `$`, `subset()`, `[[`, and the `with` functions to access elements of a data frame. It can be a bit confusing to know which one to use or read code that switches between the different methods. To be honest I will just try one until it gets the result I'm looking for.
+### Data Types
 
-In Python,
+In R we have:
 
-### Assignment
+-   `numeric` Includes integer (no decimal values) and double (has decimal values) numbers
 
-Assignment operators: In R you can use either `=` or `<-` basically interchangibly, though `<-` cannot be used in
+-   `logical` TRUE or FALSE
 
-### Object-oriented systems
+-   `character` Strings of letters; always surrounded by quotes
 
-R has R6, S3, S4.
+-   `factor` Categorical variables. Ordered or un-ordered. Stored in memory as integers and names with character values.
 
-Python is more consistent.
+-   `complex` and `raw` also exist in R but are rarely used
 
-### Scoping rules
+In Python we have:
+
+-   `numeric` Very similar to R and includes integers as well as decimal values called a float in Python.
+
+-   `boolean` TRUE or FALSE
+
+-   `string` character strings declared using quotes
+
+-   `noneType` A special type representing absence of a value or a null value
+
+The main difference in R and Python in terms of Data Types is the lack of `factors` in Python and the presence of a `noneType`. However, using the `pandas` package, a categorical data type is introduced in Python.
+
+### Data Structures
+
+In R we have:
+
+-   `vector` Can either be lists made up of different data types or atomic made up of the same data types
+
+-   `matrix` A two dimensional data structure with elements of all the same class.
+
+-   `array` Can store data in any number of dimensions
+
+-   `dataframe` Typical spreadsheet style data table that is a list of atomic vectors which serve as columns. All columns must have the same number of rows and a column can only one contain one data type, though different columns can be different types (numeric, factor, etc).
+
+In Python we have:
+
+-   `lists` Similar to R's vectors. The are ordered collections of items which are mutable (can be changed) and can contain a mix of types (int, float, str, etc.). The can be indexed, concatenated and sliced.
+
+-   `tuples` Similar to lists but are immutable (can't be changed after creation)
+
+-   `sets` Un-ordered collections of items.
+
+-   `dictionaries` Store key and value pairs. Similar to named lists in R where elements can be accessed using names rather than by their position.
+
+-   `dataframes` Python doesn't natively support dataframes but the `pandas` library provides this structure and works similarly to dataframes in R.
+
+-   `arrays` The `numpy` library provides a data structure that works like an array in R. These are often used for mathematical operations when efficiency is required.
 
 ### Indexing
 
-R starts counting at 1. Python starts counting at 0. That's hard to get used to.
+R starts counting at 1. Python starts counting at 0. That's hard to get used to. So for example, to access the item at the start of a list in Python you would write `my_list[0]` whereas in R you would write `my_list[1]`.
+
+### Sub setting
+
+In R, sub setting vectors and dataframes can be accomplished many ways: `$`, `subset()`, `[[`, `[` and the `with` functions to access elements of a data frame. It can be a bit confusing to know which one to use or read code that switches between the different methods.
+
+In Python, the primary method of subsetting is using single square brackets: `[]`. This works on strings, lists, dictionaries and tuples. You can get single elements back by indexing just one position, or get what Python calls a "slice" back by using a range. For example, `my_string[1:3]` returns a slice of the 2nd, 3rd, and 4th elements of `my_string` (remember zero indexing).
+
+### Assignment
+
+In R there are two assignment operators: `=` and `<-` The equal sign is generally used in parameter definitions inside a function call ie `my_func(a = 1)` whereas the `<-` assignment operator can be used in most (if not all) other instances.
+
+In Python there's just the good old equals sign for assignment `=`
+
+### Scoping rules
+
+Scoping refers to the visibility of a variable to other parts of code. Both R and Python use "lexical scoping", but with a few key differences.
+
+In R, the scope of a variable is determined by the environment in which it was created. R will first look into the current environment for that variable and if it's not found it will continue to 'go up a level' to enclosing environments until it either finds the variable of the variable is not found in the global environment and eventually the system environment.
+
+In Python, it's fairly similar but there are a few extra scoping features to be aware of: you can chose to modify a global variable from within a function using the `global` keyword. For example:
+
+```         
+x = 10  # Here x is a global variable
+
+# define a function that modifys the global variable x
+def modify_global():
+    global x  # We declare that we want the global x
+    x = 20  # This will change the global x
+
+print(x)  # Output: 10
+modify_global()
+print(x)  # Output: 20
+```
+
+If you're into writing nested functions, you can also chose which outer environment you would like to change using the `nonlocal` keyword so that you modify the variable in the immediately enclosing environment rather than the local environment or the global environment. For example:
+
+```         
+def outer():
+    x = 10  # Here x is a variable local to the function outer, but non-local to the function inner
+    def inner():
+        nonlocal x  # We declare that we want the nonlocal x
+        x = 20  # This will change the nonlocal x
+
+    print(x)  # Output: 10
+    inner()
+    print(x)  # Output: 20
+
+outer()
+```
+
+In this example, the **`nonlocal`** keyword is used in the nested function **`inner`** to indicate that **`x`** refers to the **`x`** in the immediately enclosing scope, which is the function **`outer`**. Without the **`nonlocal`** keyword, **`x`** would be treated as a local variable within **`inner`**, and the assignment **`x = 20`** would not affect the **`x`** in **`outer`**. This actually seems like a recipe for really confusing code :\|
+
+### Object-oriented Programming (OOP) systems
+
+R's approach to OOP is more complex because it has not one, but five different OOP systems: S3, S4, RC, R6 and now R7.
+
+S3 and S4 are more function-oriented - methods belong to functions, not classes, unlike Python where methods belong to classes. RC is more like typical OOP in this respect in that methods belong to classes, but is rarely used in R. R6 is a package rather than part of base R, is similar to RC and was primarily developed for use with the Shiny package by Posit (R Studio). R7 was released quite recently and aims to consolidate the good parts of the various systems and simplify everyone's lives. TBD if that happens ;)
+
+The various implementations of OOP in R make it confusing. I admit I try to avoid getting to deep into the differences here, but you can end up in a world of confusion when these systems get intertwined.
+
+**Python's OOP:**
+
+Python supports OOP with a simple, easy-to-understand syntax and structure. The key components of Python's OOP are classes, objects, and methods. Critically, there is only one OOP system in Python!
+
+-   **Classes** are like blueprints for creating objects (a particular data structure). They define the properties (also called attributes) that the object should have and the methods (functions) that the object can perform.
+
+-   **Objects** are instances of a class, which can have attributes and methods.
+
+-   **Methods** are functions defined within a class, used to define the behaviours of the objects.
 
 # Conclusion
 
-R generally has a reputation of being difficult to learn while Python is simpler and more readable. Understanding key differences between programming languages can help you more deeply understand how to use the one you're most comfortable with.
+R generally has a reputation of being difficult to learn while Python is simpler and more readable. Both have important applications and huge communities of support. Understanding key differences between programming languages can actually help you more deeply understand how to use the one you're most comfortable with.
+
+I love R, despite all it's idiosyncrasies and the tidyverse ecosystem is hard to beat for data wrangling and nice figures. But, Python has it's advantages in machine learning and artificial intelligence as well as its web deploy-ability.
+
+If you're trying to figure out which language to learn, look at who you want to work with and see what they use! I hope this post has given you a sense of the key differences in the two languages and I would encourage you to learn Python as an R user to understand R better, and to develop your Python literacy to know when to use which language and become a better programmer.
