@@ -2,6 +2,7 @@
 title: How do we mobilize salmon data?
 author: Brett Johnnson
 date: 2023-05-30
+last update: "`r  Sys.Date()`"
 categories: [Salmon, ecology]
 description: 'Communicate, assemble and coordinate extant data systems'
 archives:
@@ -14,6 +15,8 @@ format:
     code-tools: true
 bibliography: references.bib
 ---
+
+Last updated: `r Sys.Date()`
 
 # Introduction
 
