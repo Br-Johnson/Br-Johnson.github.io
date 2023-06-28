@@ -11,6 +11,7 @@ website:
         href: https://github.com/Br-Johnson 
       - icon: twitter
         href: https://twitter.com/_BrettJohnson
+  google-analytics: "G-VBNXHNYDDE"
 format:
   html:
     theme: flatly

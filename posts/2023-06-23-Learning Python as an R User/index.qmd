@@ -2,6 +2,7 @@
 title: Learning Python as an R User
 author: Brett Johnson
 date: 2023-06-23
+image: 'images/r_python.png'
 categories: [R, Python, Data Science]
 description: 'Python versus R? Nah Python + R'
 archives:

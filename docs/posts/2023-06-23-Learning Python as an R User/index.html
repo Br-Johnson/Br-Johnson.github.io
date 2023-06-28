@@ -95,6 +95,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VBNXHNYDDE"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VBNXHNYDDE', { 'anonymize_ip': true});
+</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -598,172 +607,173 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Learning Python as an R User</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> Brett Johnson</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2023-06-23</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [R, Python, Data Science]</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> 'Python versus R? Nah Python + R'</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="an">archives:</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">  - 2023/06</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> false</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>One of the main differences you'll notice right away between Python and R is how difficult can be to install Python and get to the point where you're writing code. Coming from R, it's pretty straightforward and clear that you need to install the R language from the <span class="co">[</span><span class="ot">Comprehensive R Archive Network (CRAN)</span><span class="co">](https://cran.r-project.org/)</span>, and then <span class="co">[</span><span class="ot">install R Studio</span><span class="co">](https://posit.co/download/rstudio-desktop/)</span> and you're basically off to the races. With Python, however, there's a few different options. I managed to get it installed and running in <span class="co">[</span><span class="ot">VS Code using pyenv and poetry</span><span class="co">](https://medium.com/macoclock/django-setup-in-2022-with-pyenv-poetry-on-macos-b0969830bec8)</span>, but I needed a lot of help from a senior engineer to get it to actually work!</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>All these difficulties led me to using <span class="co">[</span><span class="ot">Python in Google Colaboratory</span><span class="co">](https://colab.research.google.com/notebooks/intro.ipynb)</span> for now. Using Colab abstracts away all the installation, environment and package management challenges, but with some trade-offs down the line if you're interested in developing applications or using the same versions of packages and Python for reproducibility purposes. For now, it's great to just get started understanding how the language works without worrying about all the other stuff.</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## General differences between R and Python</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>Both languages are popular for data analysis but their distinct origin stories have resulted in some broad differences. R was developed by statisticians for statisticians as an evolution of the S programming language developed at Bell Labs by John Chambers and others in 1976. S had a strong focus on creating an interactive environment to make data analysis easier. As a result of this fundamental design decision, most experienced programmers find programming in R weird and confusing. R was released by Ross Lhaka and Robert Gentleman in 1996 as 'free software', as opposed to the commercial version of S, allowing the growth of language by a vibrant community. R's strengths lay in the availability of numerous packages for statistical analysis, the ability to make 'publication ready' graphics, and the inclusive community that can support new programmers.</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>Version 1 of Python, on the other hand, was released in 1994, a couple years before the first version of R but almost 20 years later than S. An early focus for Python was using clean syntax, a feature that has made the language easier to learn and read compared to R. Although, the development of <span class="co">[</span><span class="ot">the pipe operator</span><span class="co">](https://cran.r-project.org/web/packages/loon.ggplot/vignettes/pipes.html)</span> and the <span class="co">[</span><span class="ot">tidyverse</span><span class="co">](https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html)</span> in R has improved the readability substantially. But I digress. Python was built with simplicity in mind including <span class="co">[</span><span class="ot">principles</span><span class="co">](https://peps.python.org/pep-0020/)</span> such as 'simple is better than complex', 'There should be one--and preferably only one--obvious way to do it', and 'flat is better than nested'. Those are three principles that really resonate with me as an R user given than there always seems to be a million ways to do the same thing in R and I always end up having to work with nested lists which are a pain to navigate and flatten!</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>From my perspective, I would say that R is used more than Python in academia, especially in the fields of statistics and ecology. Python has a broader user-base, gaining traction in the ocean and atmospheric sciences and has without a doubt been more heavily used in the fields of machine learning and artificial intelligence. Python also has a reputation for having better support for web integration and deployment, though R has made strides in this space with the likes of the <span class="in">`shiny`</span> package.</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>But, this blog post isn't about which language is better or worse, or which you should or shouldn't use. In practice it's getting easier to use both languages within the same project thanks to packages like <span class="co">[</span><span class="ot">`reticulate`</span><span class="co">](https://rstudio.github.io/reticulate/)</span><span class="in">`.`</span> Knowing the basics of both languages is nice if you're working in the field of data science and will make you a better programmer, but I would argue it's better to be an expert in one or the other rather than a novice or intermediate in both!</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## Technical Differences</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>Now, I'm going to get into the weeds a bit in terms of some of the technical differences between R and Python. Not really knowing any other programming language (apart from some C++ in high school), I was actually more surprised by the commonalities of the languages than the differences. I was expecting Python to feel very different and scary, but it turns out that quite a few of the programming paradigms in R translate well to Python.</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>So, fear Python not my useR friends.</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Types</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>In R we have:</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`numeric`</span> Includes integer (no decimal values) and double (has decimal values) numbers</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`logical`</span> TRUE or FALSE</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`character`</span> Strings of letters; always surrounded by quotes</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`factor`</span> Categorical variables. Ordered or un-ordered. Stored in memory as integers and names with character values.</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`complex`</span> and <span class="in">`raw`</span> also exist in R but are rarely used</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>In Python we have:</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`numeric`</span> Very similar to R and includes integers as well as decimal values called a float in Python.</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`boolean`</span> TRUE or FALSE</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`string`</span> character strings declared using quotes</span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`noneType`</span> A special type representing absence of a value or a null value</span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>The main difference in R and Python in terms of Data Types is the lack of <span class="in">`factors`</span> in Python and the presence of a <span class="in">`noneType`</span>. However, using the <span class="in">`pandas`</span> package, a categorical data type is introduced in Python.</span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Structures</span></span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>In R we have:</span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`vector`</span> Can either be lists made up of different data types or atomic made up of the same data types</span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`matrix`</span> A two dimensional data structure with elements of all the same class.</span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`array`</span> Can store data in any number of dimensions</span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`dataframe`</span> Typical spreadsheet style data table that is a list of atomic vectors which serve as columns. All columns must have the same number of rows and a column can only one contain one data type, though different columns can be different types (numeric, factor, etc).</span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>In Python we have:</span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`lists`</span> Similar to R's vectors. The are ordered collections of items which are mutable (can be changed) and can contain a mix of types (int, float, str, etc.). The can be indexed, concatenated and sliced.</span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`tuples`</span> Similar to lists but are immutable (can't be changed after creation)</span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`sets`</span> Un-ordered collections of items.</span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`dictionaries`</span> Store key and value pairs. Similar to named lists in R where elements can be accessed using names rather than by their position.</span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`dataframes`</span> Python doesn't natively support dataframes but the <span class="in">`pandas`</span> library provides this structure and works similarly to dataframes in R.</span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`arrays`</span> The <span class="in">`numpy`</span> library provides a data structure that works like an array in R. These are often used for mathematical operations when efficiency is required.</span>
-<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a><span class="fu">### Indexing</span></span>
-<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>R starts counting at 1. Python starts counting at 0. That's hard to get used to. So for example, to access the item at the start of a list in Python you would write <span class="in">`my_list[0]`</span> whereas in R you would write <span class="in">`my_list[1]`</span>.</span>
-<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sub setting</span></span>
-<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>In R, sub setting vectors and dataframes can be accomplished many ways: <span class="in">`$`</span>, <span class="in">`subset()`</span>, <span class="in">`[[`</span>, <span class="in">`[`</span> and the <span class="in">`with`</span> functions to access elements of a data frame. It can be a bit confusing to know which one to use or read code that switches between the different methods.</span>
-<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>In Python, the primary method of subsetting is using single square brackets: <span class="in">`[]`</span>. This works on strings, lists, dictionaries and tuples. You can get single elements back by indexing just one position, or get what Python calls a "slice" back by using a range. For example, <span class="in">`my_string[1:3]`</span> returns a slice of the 2nd, 3rd, and 4th elements of <span class="in">`my_string`</span> (remember zero indexing).</span>
-<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a><span class="fu">### Assignment</span></span>
-<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>In R there are two assignment operators: <span class="in">`=`</span> and <span class="in">`&lt;-`</span> The equal sign is generally used in parameter definitions inside a function call ie <span class="in">`my_func(a = 1)`</span> whereas the <span class="in">`&lt;-`</span> assignment operator can be used in most (if not all) other instances.</span>
-<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>In Python there's just the good old equals sign for assignment <span class="in">`=`</span></span>
-<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a><span class="fu">### Scoping rules</span></span>
-<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>Scoping refers to the visibility of a variable to other parts of code. Both R and Python use "lexical scoping", but with a few key differences.</span>
-<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>In R, the scope of a variable is determined by the environment in which it was created. R will first look into the current environment for that variable and if it's not found it will continue to 'go up a level' to enclosing environments until it either finds the variable of the variable is not found in the global environment and eventually the system environment.</span>
-<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>In Python, it's fairly similar but there are a few extra scoping features to be aware of: you can chose to modify a global variable from within a function using the <span class="in">`global`</span> keyword. For example:</span>
-<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
-<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a><span class="in">x = 10  # Here x is a global variable</span></span>
-<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a><span class="in"># define a function that modifys the global variable x</span></span>
-<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a><span class="in">def modify_global():</span></span>
-<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a><span class="in">    global x  # We declare that we want the global x</span></span>
-<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a><span class="in">    x = 20  # This will change the global x</span></span>
-<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a><span class="in">print(x)  # Output: 10</span></span>
-<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a><span class="in">modify_global()</span></span>
-<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a><span class="in">print(x)  # Output: 20</span></span>
-<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>If you're into writing nested functions, you can also chose which outer environment you would like to change using the <span class="in">`nonlocal`</span> keyword so that you modify the variable in the immediately enclosing environment rather than the local environment or the global environment. For example:</span>
-<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
-<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a><span class="in">def outer():</span></span>
-<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a><span class="in">    x = 10  # Here x is a variable local to the function outer, but non-local to the function inner</span></span>
-<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a><span class="in">    def inner():</span></span>
-<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a><span class="in">        nonlocal x  # We declare that we want the nonlocal x</span></span>
-<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a><span class="in">        x = 20  # This will change the nonlocal x</span></span>
-<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a><span class="in">    print(x)  # Output: 10</span></span>
-<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a><span class="in">    inner()</span></span>
-<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a><span class="in">    print(x)  # Output: 20</span></span>
-<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a><span class="in">outer()</span></span>
-<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>In this example, the **`nonlocal`** keyword is used in the nested function **`inner`** to indicate that **`x`** refers to the **`x`** in the immediately enclosing scope, which is the function **`outer`**. Without the **`nonlocal`** keyword, **`x`** would be treated as a local variable within **`inner`**, and the assignment **`x = 20`** would not affect the **`x`** in **`outer`**. This actually seems like a recipe for really confusing code :\|</span>
-<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a><span class="fu">### Object-oriented Programming (OOP) systems</span></span>
-<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>R's approach to OOP is more complex because it has not one, but five different OOP systems: S3, S4, RC, R6 and now R7.</span>
-<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a>S3 and S4 are more function-oriented - methods belong to functions, not classes, unlike Python where methods belong to classes. RC is more like typical OOP in this respect in that methods belong to classes, but is rarely used in R. R6 is a package rather than part of base R, is similar to RC and was primarily developed for use with the Shiny package by Posit (R Studio). R7 was released quite recently and aims to consolidate the good parts of the various systems and simplify everyone's lives. TBD if that happens ;)</span>
-<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a>The various implementations of OOP in R make it confusing. I admit I try to avoid getting to deep into the differences here, but you can end up in a world of confusion when these systems get intertwined.</span>
-<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>**Python's OOP:**</span>
-<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a>Python supports OOP with a simple, easy-to-understand syntax and structure. The key components of Python's OOP are classes, objects, and methods. Critically, there is only one OOP system in Python!</span>
-<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Classes** are like blueprints for creating objects (a particular data structure). They define the properties (also called attributes) that the object should have and the methods (functions) that the object can perform.</span>
-<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Objects** are instances of a class, which can have attributes and methods.</span>
-<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Methods** are functions defined within a class, used to define the behaviours of the objects.</span>
-<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
-<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a>R generally has a reputation of being difficult to learn while Python is simpler and more readable. Both have important applications and huge communities of support. Understanding key differences between programming languages can actually help you more deeply understand how to use the one you're most comfortable with.</span>
-<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>I love R, despite all it's idiosyncrasies and the tidyverse ecosystem is hard to beat for data wrangling and nice figures. But, Python has it's advantages in machine learning and artificial intelligence as well as its web deploy-ability.</span>
-<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>If you're trying to figure out which language to learn, look at who you want to work with and see what they use! I hope this post has given you a sense of the key differences in the two languages and I would encourage you to learn Python as an R user to understand R better, and to develop your Python literacy to know when to use which language and become a better programmer.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> 'images/r_python.png'</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [R, Python, Data Science]</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> 'Python versus R? Nah Python + R'</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="an">archives:</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - 2023/06</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> false</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>One of the main differences you'll notice right away between Python and R is how difficult can be to install Python and get to the point where you're writing code. Coming from R, it's pretty straightforward and clear that you need to install the R language from the <span class="co">[</span><span class="ot">Comprehensive R Archive Network (CRAN)</span><span class="co">](https://cran.r-project.org/)</span>, and then <span class="co">[</span><span class="ot">install R Studio</span><span class="co">](https://posit.co/download/rstudio-desktop/)</span> and you're basically off to the races. With Python, however, there's a few different options. I managed to get it installed and running in <span class="co">[</span><span class="ot">VS Code using pyenv and poetry</span><span class="co">](https://medium.com/macoclock/django-setup-in-2022-with-pyenv-poetry-on-macos-b0969830bec8)</span>, but I needed a lot of help from a senior engineer to get it to actually work!</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>All these difficulties led me to using <span class="co">[</span><span class="ot">Python in Google Colaboratory</span><span class="co">](https://colab.research.google.com/notebooks/intro.ipynb)</span> for now. Using Colab abstracts away all the installation, environment and package management challenges, but with some trade-offs down the line if you're interested in developing applications or using the same versions of packages and Python for reproducibility purposes. For now, it's great to just get started understanding how the language works without worrying about all the other stuff.</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## General differences between R and Python</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>Both languages are popular for data analysis but their distinct origin stories have resulted in some broad differences. R was developed by statisticians for statisticians as an evolution of the S programming language developed at Bell Labs by John Chambers and others in 1976. S had a strong focus on creating an interactive environment to make data analysis easier. As a result of this fundamental design decision, most experienced programmers find programming in R weird and confusing. R was released by Ross Lhaka and Robert Gentleman in 1996 as 'free software', as opposed to the commercial version of S, allowing the growth of language by a vibrant community. R's strengths lay in the availability of numerous packages for statistical analysis, the ability to make 'publication ready' graphics, and the inclusive community that can support new programmers.</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>Version 1 of Python, on the other hand, was released in 1994, a couple years before the first version of R but almost 20 years later than S. An early focus for Python was using clean syntax, a feature that has made the language easier to learn and read compared to R. Although, the development of <span class="co">[</span><span class="ot">the pipe operator</span><span class="co">](https://cran.r-project.org/web/packages/loon.ggplot/vignettes/pipes.html)</span> and the <span class="co">[</span><span class="ot">tidyverse</span><span class="co">](https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html)</span> in R has improved the readability substantially. But I digress. Python was built with simplicity in mind including <span class="co">[</span><span class="ot">principles</span><span class="co">](https://peps.python.org/pep-0020/)</span> such as 'simple is better than complex', 'There should be one--and preferably only one--obvious way to do it', and 'flat is better than nested'. Those are three principles that really resonate with me as an R user given than there always seems to be a million ways to do the same thing in R and I always end up having to work with nested lists which are a pain to navigate and flatten!</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>From my perspective, I would say that R is used more than Python in academia, especially in the fields of statistics and ecology. Python has a broader user-base, gaining traction in the ocean and atmospheric sciences and has without a doubt been more heavily used in the fields of machine learning and artificial intelligence. Python also has a reputation for having better support for web integration and deployment, though R has made strides in this space with the likes of the <span class="in">`shiny`</span> package.</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>But, this blog post isn't about which language is better or worse, or which you should or shouldn't use. In practice it's getting easier to use both languages within the same project thanks to packages like <span class="co">[</span><span class="ot">`reticulate`</span><span class="co">](https://rstudio.github.io/reticulate/)</span><span class="in">`.`</span> Knowing the basics of both languages is nice if you're working in the field of data science and will make you a better programmer, but I would argue it's better to be an expert in one or the other rather than a novice or intermediate in both!</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Technical Differences</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>Now, I'm going to get into the weeds a bit in terms of some of the technical differences between R and Python. Not really knowing any other programming language (apart from some C++ in high school), I was actually more surprised by the commonalities of the languages than the differences. I was expecting Python to feel very different and scary, but it turns out that quite a few of the programming paradigms in R translate well to Python.</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>So, fear Python not my useR friends.</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Types</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>In R we have:</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`numeric`</span> Includes integer (no decimal values) and double (has decimal values) numbers</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`logical`</span> TRUE or FALSE</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`character`</span> Strings of letters; always surrounded by quotes</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`factor`</span> Categorical variables. Ordered or un-ordered. Stored in memory as integers and names with character values.</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`complex`</span> and <span class="in">`raw`</span> also exist in R but are rarely used</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>In Python we have:</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`numeric`</span> Very similar to R and includes integers as well as decimal values called a float in Python.</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`boolean`</span> TRUE or FALSE</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`string`</span> character strings declared using quotes</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`noneType`</span> A special type representing absence of a value or a null value</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>The main difference in R and Python in terms of Data Types is the lack of <span class="in">`factors`</span> in Python and the presence of a <span class="in">`noneType`</span>. However, using the <span class="in">`pandas`</span> package, a categorical data type is introduced in Python.</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Structures</span></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>In R we have:</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`vector`</span> Can either be lists made up of different data types or atomic made up of the same data types</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`matrix`</span> A two dimensional data structure with elements of all the same class.</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`array`</span> Can store data in any number of dimensions</span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`dataframe`</span> Typical spreadsheet style data table that is a list of atomic vectors which serve as columns. All columns must have the same number of rows and a column can only one contain one data type, though different columns can be different types (numeric, factor, etc).</span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>In Python we have:</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`lists`</span> Similar to R's vectors. The are ordered collections of items which are mutable (can be changed) and can contain a mix of types (int, float, str, etc.). The can be indexed, concatenated and sliced.</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`tuples`</span> Similar to lists but are immutable (can't be changed after creation)</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`sets`</span> Un-ordered collections of items.</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`dictionaries`</span> Store key and value pairs. Similar to named lists in R where elements can be accessed using names rather than by their position.</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`dataframes`</span> Python doesn't natively support dataframes but the <span class="in">`pandas`</span> library provides this structure and works similarly to dataframes in R.</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`arrays`</span> The <span class="in">`numpy`</span> library provides a data structure that works like an array in R. These are often used for mathematical operations when efficiency is required.</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a><span class="fu">### Indexing</span></span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>R starts counting at 1. Python starts counting at 0. That's hard to get used to. So for example, to access the item at the start of a list in Python you would write <span class="in">`my_list[0]`</span> whereas in R you would write <span class="in">`my_list[1]`</span>.</span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sub setting</span></span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>In R, sub setting vectors and dataframes can be accomplished many ways: <span class="in">`$`</span>, <span class="in">`subset()`</span>, <span class="in">`[[`</span>, <span class="in">`[`</span> and the <span class="in">`with`</span> functions to access elements of a data frame. It can be a bit confusing to know which one to use or read code that switches between the different methods.</span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>In Python, the primary method of subsetting is using single square brackets: <span class="in">`[]`</span>. This works on strings, lists, dictionaries and tuples. You can get single elements back by indexing just one position, or get what Python calls a "slice" back by using a range. For example, <span class="in">`my_string[1:3]`</span> returns a slice of the 2nd, 3rd, and 4th elements of <span class="in">`my_string`</span> (remember zero indexing).</span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a><span class="fu">### Assignment</span></span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>In R there are two assignment operators: <span class="in">`=`</span> and <span class="in">`&lt;-`</span> The equal sign is generally used in parameter definitions inside a function call ie <span class="in">`my_func(a = 1)`</span> whereas the <span class="in">`&lt;-`</span> assignment operator can be used in most (if not all) other instances.</span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>In Python there's just the good old equals sign for assignment <span class="in">`=`</span></span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a><span class="fu">### Scoping rules</span></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>Scoping refers to the visibility of a variable to other parts of code. Both R and Python use "lexical scoping", but with a few key differences.</span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>In R, the scope of a variable is determined by the environment in which it was created. R will first look into the current environment for that variable and if it's not found it will continue to 'go up a level' to enclosing environments until it either finds the variable of the variable is not found in the global environment and eventually the system environment.</span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>In Python, it's fairly similar but there are a few extra scoping features to be aware of: you can chose to modify a global variable from within a function using the <span class="in">`global`</span> keyword. For example:</span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a><span class="in">x = 10  # Here x is a global variable</span></span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a><span class="in"># define a function that modifys the global variable x</span></span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a><span class="in">def modify_global():</span></span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a><span class="in">    global x  # We declare that we want the global x</span></span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a><span class="in">    x = 20  # This will change the global x</span></span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a><span class="in">print(x)  # Output: 10</span></span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a><span class="in">modify_global()</span></span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a><span class="in">print(x)  # Output: 20</span></span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a>If you're into writing nested functions, you can also chose which outer environment you would like to change using the <span class="in">`nonlocal`</span> keyword so that you modify the variable in the immediately enclosing environment rather than the local environment or the global environment. For example:</span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a><span class="in">def outer():</span></span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a><span class="in">    x = 10  # Here x is a variable local to the function outer, but non-local to the function inner</span></span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a><span class="in">    def inner():</span></span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a><span class="in">        nonlocal x  # We declare that we want the nonlocal x</span></span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a><span class="in">        x = 20  # This will change the nonlocal x</span></span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a><span class="in">    print(x)  # Output: 10</span></span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a><span class="in">    inner()</span></span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a><span class="in">    print(x)  # Output: 20</span></span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a><span class="in">outer()</span></span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>In this example, the **`nonlocal`** keyword is used in the nested function **`inner`** to indicate that **`x`** refers to the **`x`** in the immediately enclosing scope, which is the function **`outer`**. Without the **`nonlocal`** keyword, **`x`** would be treated as a local variable within **`inner`**, and the assignment **`x = 20`** would not affect the **`x`** in **`outer`**. This actually seems like a recipe for really confusing code :\|</span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a><span class="fu">### Object-oriented Programming (OOP) systems</span></span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>R's approach to OOP is more complex because it has not one, but five different OOP systems: S3, S4, RC, R6 and now R7.</span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a>S3 and S4 are more function-oriented - methods belong to functions, not classes, unlike Python where methods belong to classes. RC is more like typical OOP in this respect in that methods belong to classes, but is rarely used in R. R6 is a package rather than part of base R, is similar to RC and was primarily developed for use with the Shiny package by Posit (R Studio). R7 was released quite recently and aims to consolidate the good parts of the various systems and simplify everyone's lives. TBD if that happens ;)</span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a>The various implementations of OOP in R make it confusing. I admit I try to avoid getting to deep into the differences here, but you can end up in a world of confusion when these systems get intertwined.</span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>**Python's OOP:**</span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>Python supports OOP with a simple, easy-to-understand syntax and structure. The key components of Python's OOP are classes, objects, and methods. Critically, there is only one OOP system in Python!</span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Classes** are like blueprints for creating objects (a particular data structure). They define the properties (also called attributes) that the object should have and the methods (functions) that the object can perform.</span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Objects** are instances of a class, which can have attributes and methods.</span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Methods** are functions defined within a class, used to define the behaviours of the objects.</span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>R generally has a reputation of being difficult to learn while Python is simpler and more readable. Both have important applications and huge communities of support. Understanding key differences between programming languages can actually help you more deeply understand how to use the one you're most comfortable with.</span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>I love R, despite all it's idiosyncrasies and the tidyverse ecosystem is hard to beat for data wrangling and nice figures. But, Python has it's advantages in machine learning and artificial intelligence as well as its web deploy-ability.</span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a>If you're trying to figure out which language to learn, look at who you want to work with and see what they use! I hope this post has given you a sense of the key differences in the two languages and I would encourage you to learn Python as an R user to understand R better, and to develop your Python literacy to know when to use which language and become a better programmer.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
