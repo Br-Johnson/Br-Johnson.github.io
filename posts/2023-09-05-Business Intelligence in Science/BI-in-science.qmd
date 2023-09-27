@@ -1,0 +1,216 @@
+---
+title: Google's Business Intelligence Certificate Overview
+author: Brett Johnson
+date: 2023-09-05
+categories: [Business Intelligence, Google, Professional Development]
+draft: false
+description: 'Business Intelligence Methods for Scientific Data Mobilization'
+image: 'images/DALL·E 2023-09-26 09.25.50 - Business Intelligence digital art, split lighting, in the style of the matrix.png'
+archives:
+ - 2023/09
+toc: true
+format:
+  html:
+    code-fold: show
+    code-tools: true
+---
+
+# Summary
+
+**Business intelligence** aims to leverage data to generate actionable insights that improve business outcomes by way of increasing organizational data maturity. BI us multifaceted combining data analytics, software development, project management and business analysis to inform strategic, operational, and predictive business decisions.
+
+Skills I acquired from \[Google's Business Intelligence Certificate\](https://www.coursera.org/professional-certificates/google-business-intelligence#courses) include:
+
+-   **Data engineering**: Acquired deeper insights into numerous database types, design schema, and performance optimization. Used Google Cloud Platform and Big Query.
+
+-   **Analytics engineering:** Developed robust ETL data pipelines for real-time analytics using Google DataFlow, SQL, and Python.
+
+-   **Intelligence reporting:** Mastered automated report and dashboard creation, utilizing Tableau, Python's streamlit package, as well as R's shiny.
+
+-   **Intelligence life cycle management:** Learned stakeholder engagement, information needs assessment, and problem-solving through design thinking principles.
+
+The certificate has increased my technical capacity as well as my business acumen and stakeholder management capabilities. It has empowered me with the knowledge and skills to advance my organization's goals with a higher level of professionalism and sophistication, further positioning us to elevate data-driven initiatives.
+
+# Introduction
+
+I recently completed a professional certificate in Business Intelligence (BI). The [three course, three month certificate offered by Google](https://www.coursera.org/professional-certificates/google-business-intelligence#courses "course website") was a solid introduction to the art of BI: *improving data maturity within organizations leading to actionable insights that improve business outcomes.* In this short review I will cover the foundational concepts covered in the course and consider how these approaches could be applied to an organization whose business is science in the pubic interest.
+
+The course spent more time focused on the 'soft skills' of Business Intelligence (BI) than expected: stakeholder engagement, communication, resume and portfolio development, and an overview of the BI industry and specialized roles within. Less time was spent on the 'engineering' aspect of BI related to the technical skills of building databases, data pipelines, and using BI tools than expected. The focus of the certificate was very much a broad introduction to the field aimed to situate successful graduates with the skills for an entry level BI role. While not exactly what I expected, the certificate appropriately introduced the learner to the field, the tools, and use-cases while to enable keen learners to deepen their skills where they found most interest.
+
+As a biologist working as a Scientific Data Specialist over the last few years, I walked away with a new vocabulary, new paradigms to organize my analytic work, and new processes to interact with stakeholders. I found the 'business' side of this certificate the most rewarding in terms of learning new business principles and processes to apply to data analytics and software development work. Working with academics, and as an academic myself, I find there is often a dearth of skills related to project management, business analysis, and effective goal alignment. Applying Business Intelligence methods to the production of science, therefore, could have a catalyzing effect within scientific collaborations.
+
+# What is BI?
+
+**BI is about automating processes and information channels for managers and decision makers. BI professionals increase data maturity within an organization by improving the ability to extract and use data to generate actionable insights.**
+
+BI teams require various roles and skills which can be divided or consolidated among team members.
+
+-   Project Managers: Define the work, gather requirements, defines scope, prepares timeline and leads check ins to ensure things are on track.
+
+-   Data Engineers: Write application programming interfaces to databases so that data can be pulled into other systems, maintain databases. Clean and standardize data in warehouses and deliver it to target database.
+
+-   Governance Specialists: Ensures data has proper access and security controls in place.
+
+-   Data Analysts: Analyze data to address specific historical business question.
+
+-   Business Intelligence Analysts: Crete (near)real-time data dashboards, reports, or data streams for monitoring and intelligence gathering.
+
+# How to BI
+
+A BI strategy requires a 360 degree view of an organization. Understanding business goals, key stakeholder requirements, organizational structure and current challenges is critical. A BI strategy requires more than good data management, it requires the management of people, processes and tools to improve data maturity. Building a 'user-support framework' that supports staff with training, a feed-back system, and tangible benefits is critical for long term success. The need for a user-support framework can not be understated and makes the difference between implementing a one time or short term solution versus a long term sustainable transition to building and maintaining data maturity. So much of an effective BI strategy depends on working with and understanding the stories of people in the organization who produce or consume data.
+
+## BI Stakeholders
+
+It can be helpful to think about the various categories of stakeholders in a BI project to better understand and articulate their needs.
+
+**Project Sponsors** are ultimately responsible and accountable for the project and often establish criteria for success.
+
+**Application Developers** generate data and consume data and are important to work with to ensure useful data streams are identified.
+
+**Systems analysts** design and implement information systems, often back end platforms, and have a big picture in mind for how information needs to move throughout the business.
+
+**Business stakeholders** including executives, customer service facing employees, data science teams made up of analysts and engineers will have different requirements for information
+
+While it is important to meet with key stakeholders individually and even observe teams in action to understand the what, how and why of what they do, holding stakeholder alignment workshops is a great strategy to ensure stakeholder requirements and project requirements are aligned within the business.
+
+## BI Outputs and Processes
+
+Much of BI is about bringing various sources of data together in a way that allows them to be integrated and analyzed. The end goal is often a suite of metrics to understand what is happening in the market, in the business, or in your organization in real time. Distilling down a deluge of information into informative visualizations is the bread and butter of BI. To do that BI professionals often use 'Extract, Transform, Load' data pipelines that feed data into a suite of visualizations such as a dashboard, or reproducible reports.
+
+The type of metrics used will depend on if its one of the three types of dashboards: 1) Strategic; 2) Operational; 3) Analytical.
+
+**Strategic dashboards** usually include Key Performance Indicators (KPIs) and a "North Star" metric. A North Star metric is the most important measure of success, and is important for organizations to define because it can align the business and the employees. Strategic dashboards track the trajectory and progress of the business over the medium to long term.
+
+**Operational dashboards**, on the other hand, offer real time insights for rapid intelligence gathering and decision making. Monitoring various aspects of a business or market which can change rapidly over the course of hours, days, or weeks. Examples might include number of sales, website up time, website traffic or customer complaints.
+
+**Analytical dashboards** offer a deeper dive in various aspects of business data, that might allow a user to tweak some assumptions of underlying models to better predict future scenarios.
+
+### BI Planning Documents
+
+Whatever the dashboard type, going through a standard process for gathering stakeholder requirements is essential. Three documents can ensure a BI project delivers value:
+
+1\) **Stakeholder Requirements Document** is usually one-page and defines a) the business problem; b) key stakeholders names and job titles; c) primary requirements to consider the project a success.
+
+2\) **Project Requirements Document** is longer and outlines why the project needs doing and why the company should invest in it.
+
+-   It defines key dependencies: what data do we currently have versus what new data collections might be needed
+
+-   Identifies major elements of the project, the team and roles within each team
+
+-   Define a minimum viable product that should be built before embarking on more challenging aspects of the project such as new data collection procedures
+
+-   Defines the **expected deliverables** and success using SMART criteria
+
+    -   Identify key metrics with necessary technologies and processes that are already in place
+
+    -   Identify the frequency of delivery of supporting data for key metrics to identify misalignment
+
+-   Prioritizes features based on stakeholder requirements but also based on features with fewest dependencies
+
+-   Documents 'User Journeys', ie. the current user experience and the future ideal experience
+
+-   Includes privacy, access, legal and compliance concerns and requirements. Who needs access?
+
+-   Explicitly states any assumptions
+
+-   Accessibility: defines key considerations for accessibility; optimized for mobile or desktop? Colour blind? Large text?
+
+-   User-support framework: How will users be empowered to contribute data sustainably and learn to use the dashboard?
+
+-   Roll-out plan: Describe scope, priorities, timeline. At what point during the roll out will measurements be made to ensure the features are performing as expected?
+
+-   Key references: Documents, policies, how to guides, links to project tracking interface
+
+**3) Strategy document** offers a collaborative space to align stakeholders about project deliverables.
+
+-   Details of dashboard functionality, metrics, charts
+
+-   Fleshes out limitations or assumptions about data
+
+-   Provides chart and dashboard mock ups
+
+-   Request review and sign-off from key stakeholders to complete the planning phase.
+
+### BI is All About Communication
+
+While it might sound cliche or rote to say communication is key, but many of us fail to understand this and suffer from misunderstandings, wasting time, and not generating the right value as a result. Intelligence is about information, how do we collect information? How do we utilize information? Communication. Communication from the technical foundation of internet protocols, APIs, data pipelines, to the human dimensions required to gather stakeholder requirements, give and receive feedback, and inform others what your newly acquired intelligence actually means. So, it's not a matter of prioritizing communication for effective BI it about realizing that BI *is* communication, not just fancy tools and pretty pictures.
+
+To effectively communicate in BI there are some basic considerations: communicate early and communicate often. Early communication by way of scoping stakeholder requirements, and often by way of formalized check in points. Timing and frequency is critical, but so are the methods. Asking questions is one of the best methods of communication so let's consider how to do that most effectively:
+
+-   Ask effective questions
+
+    -   Ask open-ended questions
+
+    -   Don't ask leading questions
+
+    -   Be curious rather than making a point with a passive agressive question
+
+    -   Dig deeper into confusing or unclear situations by asking clarifying questions
+
+    -   Ask specific questions not vague ones
+
+    -   Ask SMART questions: Specific, measurable, actionable, relevant, time-bound
+
+When presenting information in the form of presentation or meeting, use the who what when where why and how formula.
+
+Keeping track of project milestones and tracking progress towards to milestones in a project change log is a great way to stay on top of key changes that will need to be communicated. Make a plan to communicate changes from the project change log often.
+
+## BI Databases
+
+There's a lot of talk of different database types within the field of business intelligence and analytics. I'll try to clarify some of the more common types that I found useful to understand coming from a background in biology and scientific data where the relational database is the main workhorse. What's the difference between data lakes, data marts, data warehouses, graph databases, and more recently vector databases?
+
+First, let's start with the difference between a database and a data warehouse.
+
+**Database:** Simply put a database is a collection of data stored in a computer system. They can be optimized for many purposes, but a traditional database optimized to minimize duplication, reduce storage requirements, and maintain data integrity through a process of normalization. Normalization in essence is the process of breaking data into multiple tables so that no column has a repeated row of data. Tables are then joined by identifier columns with unique values that match other tables referred to as keys. In this way each table is related some how to others, hence the term relational database. While very efficient and logical, the design of a databases structure (schema) is defined early in the design process and remains rather rigid and difficult to change later which is a significant drawback to the typical relational database. Typical examples of relational databases include PostgreSQL, MySQL, SQLite, MongoDB, and Microsoft Access.
+
+**Data warehouses:** Are a type of database that consolidate data from multiple source systems aimed at ensuring consistency, accuracy, and efficient queries and and analysis. They often rely on denormalized designs such as star or snowflake schema, which facilitate faster query performances because the data are organized around important business facts or metrics and fewer tables may need to be joined. Examples of data warehouses include Google Big Query, Amazon Redshift, and Snowflake.
+
+One of the key differences between a data warehouse and a relational database is that data warehouses are optimized for column-based operations which allows data to be spread across multiple servers and can increase query performance. Databases on the other hand are optimized for row-based operations, meaning that an entire row of a database has to be retrieved and scaling has to be done horizontally by increasing the capacity in a single server.
+
+**Data Lakes** allow you store both structured and unstructured (videos, images etc) data at any scale. Data can be stored raw, ie in it's original format, without having to fit into a schema thereby offering great flexibility. They are flexible and low cost but can make it difficult to access useful information can become chaotic without adequate governance and queries can be very slow due to a lack of structure.
+
+**Data Marts** are subject specific databases that are optimized for specific business users. Unlike data lakes, they are structured and contain only relevant data for specific uses.
+
+**OLTP (**online transaction processing) databases are optimized processing and managing transnational data with an emphasis on fast query processing and maintaining integrity in high contention (multi-access) and high concurrency environments. Often organized in a normalized relational model. MySQL, Oracle and Microsoft SQL Server are all common examples OLTP databases.
+
+**OLAP** (online analytical processing) databases are designed for complex queries and calculations usually for the purpose of real time analytics. Often organized as a de-normalized star or snowflake schema or in columnar databases for faster query performance. Generally concurrency and contention is not an issue because a single team or user are utilizing the databases at a time. SAP BW, IBM Cognos Analytics and Microsoft Analysis Services are popular commercial OLAP databases.
+
+**Graph databases** are a huge topic and likely warrant their own blog post. There's a lot of interest and perhaps hype surrounding graph databases. Briefly rap databases are designed to store data in the form graphs, which is the connection of nodes via edges. Graph databases are schema-less meaning the structure of the graph can be extended naturally as new relationships or nodes are needed. This offers a lot of flexibility compared to traditional relational databases. However, there's a notion of universal applicability that graph databases can solve all relational problems, which is not true. They are often marketed as a panacea for big data complexities but scalability can still be an issue. In reality graph databases are extremely effective for niche applications and problems that are intrinsically based on relationships. However, implementing a graph database and migrating data into it can be challenging and complex.
+
+**Vector Databases have** recently emerged as a critical data storage environment related to artificial intelligence. As the name implies, they store vectors often used to represent geometric objects, such as points, lines, and polygons but vectors can often represent complex entities that have been transformed into high dimensional spaces via machine learning models, such as deep neural networks. They can be useful for Content-based recommendation systems, and finding similar items based on their high dimensional feature vectors. They are also useful for natural language, processing computer vision, and anomaly detection. Lastly, vector databases are critical in storing embeddings required for large language models. They are highly scalable and enable real time applications like chat, bots, or recommendation systems to utilize large language models effectively.
+
+**Feature-oriented databases** represent a nuanced approach to database design and data storage that specifically caters to the management of important features or attributes of data. These features may be determined by subject matter experts, or extracted from text or image data using various feature extraction processes such as natural language processing or computer vision. These features are there in turn used to train machine learning models. Many AI systems depend on this type of database because the features are in a model-ready format.
+
+## Design Thinking and Structured Thinking
+
+You are probably familiar with structured thinking already whether you realize it or not. It's essentially the scientific process that includes stages: problem definition, hypothesis generation, data collection, analysis and solutions. When you encounter complex problems while working on BI projects "Design Thinking" can be a very useful method to innovate solutions that are focused on user needs. Design thinking differs from structured thinking in that it takes a human-centred, iterative, explorative, and flexible approach whereas structured thinking is less collaborative, more linear, and mostly uses deductive reasoning to find the most efficient solutions.
+
+Design thinking shines for:
+
+1\) tackling uncertain and ambiguous problems when the problem-space is not well defined or when dealing with 'wicked problems'; 2) user-centric projects; 3) Innovation; 4) Interdisciplinary challenges; and 5) Rapid prototyping and iteration.
+
+Many problems in environmental science are 'wicked problems' that don't have a clear definition, include many stakeholders with different perspectives, complex inter-dependencies, don't have a clear way to establish a definitive solution and have incomplete, contradictory, or changing requirements. When a purely scientific-engineering approach to solving a problem using structured thinking does not or will not work, design thinking may offer useful solutions.
+
+#### Key Stages of Design Thinking:
+
+1.  **Empathize**: This initial stage involves understanding the emotional experiences and needs of the end-user. Research methods may include interviews, observations, and immersion in the user environment.
+
+2.  **Define**: Based on the empathy stage, the problem is explicitly defined from the user\'s perspective. The goal is to articulate what the user needs, not what the business needs.
+
+3.  **Ideate**: This stage involves generating a wide variety of potential solutions through brainstorming and other ideation techniques. The focus is on volume and diversity of ideas.
+
+4.  **Prototype**: Ideas are turned into low-fidelity prototypes, which could range from sketches to physical models. The aim is to visualize potential solutions and prepare them for testing.
+
+5.  **Test**: The prototype is presented to end-users, and their interactions and feedback are closely observed. This data is then used to refine the solution.
+
+### **When to Apply Structured Thinking**
+
+1.  **Well-Defined Problems**: When you have a specific, concrete problem to solve and the criteria for success are clear.
+
+2.  **Data-Driven Decisions**: When solutions can be evaluated empirically or quantitatively.
+
+3.  **Logical Complexity**: When the problem can be decomposed into smaller problems that require systematic analysis.
+
+4.  **Operational Efficiency**: When the main goal is to improve the efficiency of an existing process or system.
+
+5.  **Risk Mitigation**: When it's critical to make decisions that minimize risk and error.

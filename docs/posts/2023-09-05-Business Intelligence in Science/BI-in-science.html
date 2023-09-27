@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brett Johnson">
+<meta name="dcterms.date" content="2023-09-05">
+<meta name="description" content="Business Intelligence Methods for Scientific Data Mobilization">
+
+<title>Brett Johnson - Google’s Business Intelligence Certificate Overview</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VBNXHNYDDE"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VBNXHNYDDE', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Brett Johnson</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Br-Johnson" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/_BrettJohnson" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <div class="quarto-title-block"><div><h1 class="title">Google’s Business Intelligence Certificate Overview</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+                  <div>
+        <div class="description">
+          Business Intelligence Methods for Scientific Data Mobilization
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Business Intelligence</div>
+                <div class="quarto-category">Google</div>
+                <div class="quarto-category">Professional Development</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Brett Johnson </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 5, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#what-is-bi" id="toc-what-is-bi" class="nav-link" data-scroll-target="#what-is-bi">What is BI?</a></li>
+  <li><a href="#how-to-bi" id="toc-how-to-bi" class="nav-link" data-scroll-target="#how-to-bi">How to BI</a>
+  <ul class="collapse">
+  <li><a href="#bi-stakeholders" id="toc-bi-stakeholders" class="nav-link" data-scroll-target="#bi-stakeholders">BI Stakeholders</a></li>
+  <li><a href="#bi-outputs-and-processes" id="toc-bi-outputs-and-processes" class="nav-link" data-scroll-target="#bi-outputs-and-processes">BI Outputs and Processes</a>
+  <ul class="collapse">
+  <li><a href="#bi-planning-documents" id="toc-bi-planning-documents" class="nav-link" data-scroll-target="#bi-planning-documents">BI Planning Documents</a></li>
+  <li><a href="#bi-is-all-about-communication" id="toc-bi-is-all-about-communication" class="nav-link" data-scroll-target="#bi-is-all-about-communication">BI is All About Communication</a></li>
+  </ul></li>
+  <li><a href="#bi-databases" id="toc-bi-databases" class="nav-link" data-scroll-target="#bi-databases">BI Databases</a></li>
+  <li><a href="#design-thinking-and-structured-thinking" id="toc-design-thinking-and-structured-thinking" class="nav-link" data-scroll-target="#design-thinking-and-structured-thinking">Design Thinking and Structured Thinking</a>
+  <ul class="collapse">
+  <li><a href="#when-to-apply-structured-thinking" id="toc-when-to-apply-structured-thinking" class="nav-link" data-scroll-target="#when-to-apply-structured-thinking"><strong>When to Apply Structured Thinking</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="summary" class="level1">
+<h1>Summary</h1>
+<p><strong>Business intelligence</strong> aims to leverage data to generate actionable insights that improve business outcomes by way of increasing organizational data maturity. BI us multifaceted combining data analytics, software development, project management and business analysis to inform strategic, operational, and predictive business decisions.</p>
+<p>Skills I acquired from [Google’s Business Intelligence Certificate](https://www.coursera.org/professional-certificates/google-business-intelligence#courses) include:</p>
+<ul>
+<li><p><strong>Data engineering</strong>: Acquired deeper insights into numerous database types, design schema, and performance optimization. Used Google Cloud Platform and Big Query.</p></li>
+<li><p><strong>Analytics engineering:</strong> Developed robust ETL data pipelines for real-time analytics using Google DataFlow, SQL, and Python.</p></li>
+<li><p><strong>Intelligence reporting:</strong> Mastered automated report and dashboard creation, utilizing Tableau, Python’s streamlit package, as well as R’s shiny.</p></li>
+<li><p><strong>Intelligence life cycle management:</strong> Learned stakeholder engagement, information needs assessment, and problem-solving through design thinking principles.</p></li>
+</ul>
+<p>The certificate has increased my technical capacity as well as my business acumen and stakeholder management capabilities. It has empowered me with the knowledge and skills to advance my organization’s goals with a higher level of professionalism and sophistication, further positioning us to elevate data-driven initiatives.</p>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>I recently completed a professional certificate in Business Intelligence (BI). The <a href="https://www.coursera.org/professional-certificates/google-business-intelligence#courses" title="course website">three course, three month certificate offered by Google</a> was a solid introduction to the art of BI: <em>improving data maturity within organizations leading to actionable insights that improve business outcomes.</em> In this short review I will cover the foundational concepts covered in the course and consider how these approaches could be applied to an organization whose business is science in the pubic interest.</p>
+<p>The course spent more time focused on the ‘soft skills’ of Business Intelligence (BI) than expected: stakeholder engagement, communication, resume and portfolio development, and an overview of the BI industry and specialized roles within. Less time was spent on the ‘engineering’ aspect of BI related to the technical skills of building databases, data pipelines, and using BI tools than expected. The focus of the certificate was very much a broad introduction to the field aimed to situate successful graduates with the skills for an entry level BI role. While not exactly what I expected, the certificate appropriately introduced the learner to the field, the tools, and use-cases while to enable keen learners to deepen their skills where they found most interest.</p>
+<p>As a biologist working as a Scientific Data Specialist over the last few years, I walked away with a new vocabulary, new paradigms to organize my analytic work, and new processes to interact with stakeholders. I found the ‘business’ side of this certificate the most rewarding in terms of learning new business principles and processes to apply to data analytics and software development work. Working with academics, and as an academic myself, I find there is often a dearth of skills related to project management, business analysis, and effective goal alignment. Applying Business Intelligence methods to the production of science, therefore, could have a catalyzing effect within scientific collaborations.</p>
+</section>
+<section id="what-is-bi" class="level1">
+<h1>What is BI?</h1>
+<p><strong>BI is about automating processes and information channels for managers and decision makers. BI professionals increase data maturity within an organization by improving the ability to extract and use data to generate actionable insights.</strong></p>
+<p>BI teams require various roles and skills which can be divided or consolidated among team members.</p>
+<ul>
+<li><p>Project Managers: Define the work, gather requirements, defines scope, prepares timeline and leads check ins to ensure things are on track.</p></li>
+<li><p>Data Engineers: Write application programming interfaces to databases so that data can be pulled into other systems, maintain databases. Clean and standardize data in warehouses and deliver it to target database.</p></li>
+<li><p>Governance Specialists: Ensures data has proper access and security controls in place.</p></li>
+<li><p>Data Analysts: Analyze data to address specific historical business question.</p></li>
+<li><p>Business Intelligence Analysts: Crete (near)real-time data dashboards, reports, or data streams for monitoring and intelligence gathering.</p></li>
+</ul>
+</section>
+<section id="how-to-bi" class="level1">
+<h1>How to BI</h1>
+<p>A BI strategy requires a 360 degree view of an organization. Understanding business goals, key stakeholder requirements, organizational structure and current challenges is critical. A BI strategy requires more than good data management, it requires the management of people, processes and tools to improve data maturity. Building a ‘user-support framework’ that supports staff with training, a feed-back system, and tangible benefits is critical for long term success. The need for a user-support framework can not be understated and makes the difference between implementing a one time or short term solution versus a long term sustainable transition to building and maintaining data maturity. So much of an effective BI strategy depends on working with and understanding the stories of people in the organization who produce or consume data.</p>
+<section id="bi-stakeholders" class="level2">
+<h2 class="anchored" data-anchor-id="bi-stakeholders">BI Stakeholders</h2>
+<p>It can be helpful to think about the various categories of stakeholders in a BI project to better understand and articulate their needs.</p>
+<p><strong>Project Sponsors</strong> are ultimately responsible and accountable for the project and often establish criteria for success.</p>
+<p><strong>Application Developers</strong> generate data and consume data and are important to work with to ensure useful data streams are identified.</p>
+<p><strong>Systems analysts</strong> design and implement information systems, often back end platforms, and have a big picture in mind for how information needs to move throughout the business.</p>
+<p><strong>Business stakeholders</strong> including executives, customer service facing employees, data science teams made up of analysts and engineers will have different requirements for information</p>
+<p>While it is important to meet with key stakeholders individually and even observe teams in action to understand the what, how and why of what they do, holding stakeholder alignment workshops is a great strategy to ensure stakeholder requirements and project requirements are aligned within the business.</p>
+</section>
+<section id="bi-outputs-and-processes" class="level2">
+<h2 class="anchored" data-anchor-id="bi-outputs-and-processes">BI Outputs and Processes</h2>
+<p>Much of BI is about bringing various sources of data together in a way that allows them to be integrated and analyzed. The end goal is often a suite of metrics to understand what is happening in the market, in the business, or in your organization in real time. Distilling down a deluge of information into informative visualizations is the bread and butter of BI. To do that BI professionals often use ‘Extract, Transform, Load’ data pipelines that feed data into a suite of visualizations such as a dashboard, or reproducible reports.</p>
+<p>The type of metrics used will depend on if its one of the three types of dashboards: 1) Strategic; 2) Operational; 3) Analytical.</p>
+<p><strong>Strategic dashboards</strong> usually include Key Performance Indicators (KPIs) and a “North Star” metric. A North Star metric is the most important measure of success, and is important for organizations to define because it can align the business and the employees. Strategic dashboards track the trajectory and progress of the business over the medium to long term.</p>
+<p><strong>Operational dashboards</strong>, on the other hand, offer real time insights for rapid intelligence gathering and decision making. Monitoring various aspects of a business or market which can change rapidly over the course of hours, days, or weeks. Examples might include number of sales, website up time, website traffic or customer complaints.</p>
+<p><strong>Analytical dashboards</strong> offer a deeper dive in various aspects of business data, that might allow a user to tweak some assumptions of underlying models to better predict future scenarios.</p>
+<section id="bi-planning-documents" class="level3">
+<h3 class="anchored" data-anchor-id="bi-planning-documents">BI Planning Documents</h3>
+<p>Whatever the dashboard type, going through a standard process for gathering stakeholder requirements is essential. Three documents can ensure a BI project delivers value:</p>
+<p>1) <strong>Stakeholder Requirements Document</strong> is usually one-page and defines a) the business problem; b) key stakeholders names and job titles; c) primary requirements to consider the project a success.</p>
+<p>2) <strong>Project Requirements Document</strong> is longer and outlines why the project needs doing and why the company should invest in it.</p>
+<ul>
+<li><p>It defines key dependencies: what data do we currently have versus what new data collections might be needed</p></li>
+<li><p>Identifies major elements of the project, the team and roles within each team</p></li>
+<li><p>Define a minimum viable product that should be built before embarking on more challenging aspects of the project such as new data collection procedures</p></li>
+<li><p>Defines the <strong>expected deliverables</strong> and success using SMART criteria</p>
+<ul>
+<li><p>Identify key metrics with necessary technologies and processes that are already in place</p></li>
+<li><p>Identify the frequency of delivery of supporting data for key metrics to identify misalignment</p></li>
+</ul></li>
+<li><p>Prioritizes features based on stakeholder requirements but also based on features with fewest dependencies</p></li>
+<li><p>Documents ‘User Journeys’, ie. the current user experience and the future ideal experience</p></li>
+<li><p>Includes privacy, access, legal and compliance concerns and requirements. Who needs access?</p></li>
+<li><p>Explicitly states any assumptions</p></li>
+<li><p>Accessibility: defines key considerations for accessibility; optimized for mobile or desktop? Colour blind? Large text?</p></li>
+<li><p>User-support framework: How will users be empowered to contribute data sustainably and learn to use the dashboard?</p></li>
+<li><p>Roll-out plan: Describe scope, priorities, timeline. At what point during the roll out will measurements be made to ensure the features are performing as expected?</p></li>
+<li><p>Key references: Documents, policies, how to guides, links to project tracking interface</p></li>
+</ul>
+<p><strong>3) Strategy document</strong> offers a collaborative space to align stakeholders about project deliverables.</p>
+<ul>
+<li><p>Details of dashboard functionality, metrics, charts</p></li>
+<li><p>Fleshes out limitations or assumptions about data</p></li>
+<li><p>Provides chart and dashboard mock ups</p></li>
+<li><p>Request review and sign-off from key stakeholders to complete the planning phase.</p></li>
+</ul>
+</section>
+<section id="bi-is-all-about-communication" class="level3">
+<h3 class="anchored" data-anchor-id="bi-is-all-about-communication">BI is All About Communication</h3>
+<p>While it might sound cliche or rote to say communication is key, but many of us fail to understand this and suffer from misunderstandings, wasting time, and not generating the right value as a result. Intelligence is about information, how do we collect information? How do we utilize information? Communication. Communication from the technical foundation of internet protocols, APIs, data pipelines, to the human dimensions required to gather stakeholder requirements, give and receive feedback, and inform others what your newly acquired intelligence actually means. So, it’s not a matter of prioritizing communication for effective BI it about realizing that BI <em>is</em> communication, not just fancy tools and pretty pictures.</p>
+<p>To effectively communicate in BI there are some basic considerations: communicate early and communicate often. Early communication by way of scoping stakeholder requirements, and often by way of formalized check in points. Timing and frequency is critical, but so are the methods. Asking questions is one of the best methods of communication so let’s consider how to do that most effectively:</p>
+<ul>
+<li><p>Ask effective questions</p>
+<ul>
+<li><p>Ask open-ended questions</p></li>
+<li><p>Don’t ask leading questions</p></li>
+<li><p>Be curious rather than making a point with a passive agressive question</p></li>
+<li><p>Dig deeper into confusing or unclear situations by asking clarifying questions</p></li>
+<li><p>Ask specific questions not vague ones</p></li>
+<li><p>Ask SMART questions: Specific, measurable, actionable, relevant, time-bound</p></li>
+</ul></li>
+</ul>
+<p>When presenting information in the form of presentation or meeting, use the who what when where why and how formula.</p>
+<p>Keeping track of project milestones and tracking progress towards to milestones in a project change log is a great way to stay on top of key changes that will need to be communicated. Make a plan to communicate changes from the project change log often.</p>
+</section>
+</section>
+<section id="bi-databases" class="level2">
+<h2 class="anchored" data-anchor-id="bi-databases">BI Databases</h2>
+<p>There’s a lot of talk of different database types within the field of business intelligence and analytics. I’ll try to clarify some of the more common types that I found useful to understand coming from a background in biology and scientific data where the relational database is the main workhorse. What’s the difference between data lakes, data marts, data warehouses, graph databases, and more recently vector databases?</p>
+<p>First, let’s start with the difference between a database and a data warehouse.</p>
+<p><strong>Database:</strong> Simply put a database is a collection of data stored in a computer system. They can be optimized for many purposes, but a traditional database optimized to minimize duplication, reduce storage requirements, and maintain data integrity through a process of normalization. Normalization in essence is the process of breaking data into multiple tables so that no column has a repeated row of data. Tables are then joined by identifier columns with unique values that match other tables referred to as keys. In this way each table is related some how to others, hence the term relational database. While very efficient and logical, the design of a databases structure (schema) is defined early in the design process and remains rather rigid and difficult to change later which is a significant drawback to the typical relational database. Typical examples of relational databases include PostgreSQL, MySQL, SQLite, MongoDB, and Microsoft Access.</p>
+<p><strong>Data warehouses:</strong> Are a type of database that consolidate data from multiple source systems aimed at ensuring consistency, accuracy, and efficient queries and and analysis. They often rely on denormalized designs such as star or snowflake schema, which facilitate faster query performances because the data are organized around important business facts or metrics and fewer tables may need to be joined. Examples of data warehouses include Google Big Query, Amazon Redshift, and Snowflake.</p>
+<p>One of the key differences between a data warehouse and a relational database is that data warehouses are optimized for column-based operations which allows data to be spread across multiple servers and can increase query performance. Databases on the other hand are optimized for row-based operations, meaning that an entire row of a database has to be retrieved and scaling has to be done horizontally by increasing the capacity in a single server.</p>
+<p><strong>Data Lakes</strong> allow you store both structured and unstructured (videos, images etc) data at any scale. Data can be stored raw, ie in it’s original format, without having to fit into a schema thereby offering great flexibility. They are flexible and low cost but can make it difficult to access useful information can become chaotic without adequate governance and queries can be very slow due to a lack of structure.</p>
+<p><strong>Data Marts</strong> are subject specific databases that are optimized for specific business users. Unlike data lakes, they are structured and contain only relevant data for specific uses.</p>
+<p><strong>OLTP (</strong>online transaction processing) databases are optimized processing and managing transnational data with an emphasis on fast query processing and maintaining integrity in high contention (multi-access) and high concurrency environments. Often organized in a normalized relational model. MySQL, Oracle and Microsoft SQL Server are all common examples OLTP databases.</p>
+<p><strong>OLAP</strong> (online analytical processing) databases are designed for complex queries and calculations usually for the purpose of real time analytics. Often organized as a de-normalized star or snowflake schema or in columnar databases for faster query performance. Generally concurrency and contention is not an issue because a single team or user are utilizing the databases at a time. SAP BW, IBM Cognos Analytics and Microsoft Analysis Services are popular commercial OLAP databases.</p>
+<p><strong>Graph databases</strong> are a huge topic and likely warrant their own blog post. There’s a lot of interest and perhaps hype surrounding graph databases. Briefly rap databases are designed to store data in the form graphs, which is the connection of nodes via edges. Graph databases are schema-less meaning the structure of the graph can be extended naturally as new relationships or nodes are needed. This offers a lot of flexibility compared to traditional relational databases. However, there’s a notion of universal applicability that graph databases can solve all relational problems, which is not true. They are often marketed as a panacea for big data complexities but scalability can still be an issue. In reality graph databases are extremely effective for niche applications and problems that are intrinsically based on relationships. However, implementing a graph database and migrating data into it can be challenging and complex.</p>
+<p><strong>Vector Databases have</strong> recently emerged as a critical data storage environment related to artificial intelligence. As the name implies, they store vectors often used to represent geometric objects, such as points, lines, and polygons but vectors can often represent complex entities that have been transformed into high dimensional spaces via machine learning models, such as deep neural networks. They can be useful for Content-based recommendation systems, and finding similar items based on their high dimensional feature vectors. They are also useful for natural language, processing computer vision, and anomaly detection. Lastly, vector databases are critical in storing embeddings required for large language models. They are highly scalable and enable real time applications like chat, bots, or recommendation systems to utilize large language models effectively.</p>
+<p><strong>Feature-oriented databases</strong> represent a nuanced approach to database design and data storage that specifically caters to the management of important features or attributes of data. These features may be determined by subject matter experts, or extracted from text or image data using various feature extraction processes such as natural language processing or computer vision. These features are there in turn used to train machine learning models. Many AI systems depend on this type of database because the features are in a model-ready format.</p>
+</section>
+<section id="design-thinking-and-structured-thinking" class="level2">
+<h2 class="anchored" data-anchor-id="design-thinking-and-structured-thinking">Design Thinking and Structured Thinking</h2>
+<p>You are probably familiar with structured thinking already whether you realize it or not. It’s essentially the scientific process that includes stages: problem definition, hypothesis generation, data collection, analysis and solutions. When you encounter complex problems while working on BI projects “Design Thinking” can be a very useful method to innovate solutions that are focused on user needs. Design thinking differs from structured thinking in that it takes a human-centred, iterative, explorative, and flexible approach whereas structured thinking is less collaborative, more linear, and mostly uses deductive reasoning to find the most efficient solutions.</p>
+<p>Design thinking shines for:</p>
+<p>1) tackling uncertain and ambiguous problems when the problem-space is not well defined or when dealing with ‘wicked problems’; 2) user-centric projects; 3) Innovation; 4) Interdisciplinary challenges; and 5) Rapid prototyping and iteration.</p>
+<p>Many problems in environmental science are ‘wicked problems’ that don’t have a clear definition, include many stakeholders with different perspectives, complex inter-dependencies, don’t have a clear way to establish a definitive solution and have incomplete, contradictory, or changing requirements. When a purely scientific-engineering approach to solving a problem using structured thinking does not or will not work, design thinking may offer useful solutions.</p>
+<section id="key-stages-of-design-thinking" class="level4">
+<h4 class="anchored" data-anchor-id="key-stages-of-design-thinking">Key Stages of Design Thinking:</h4>
+<ol type="1">
+<li><p><strong>Empathize</strong>: This initial stage involves understanding the emotional experiences and needs of the end-user. Research methods may include interviews, observations, and immersion in the user environment.</p></li>
+<li><p><strong>Define</strong>: Based on the empathy stage, the problem is explicitly defined from the user's perspective. The goal is to articulate what the user needs, not what the business needs.</p></li>
+<li><p><strong>Ideate</strong>: This stage involves generating a wide variety of potential solutions through brainstorming and other ideation techniques. The focus is on volume and diversity of ideas.</p></li>
+<li><p><strong>Prototype</strong>: Ideas are turned into low-fidelity prototypes, which could range from sketches to physical models. The aim is to visualize potential solutions and prepare them for testing.</p></li>
+<li><p><strong>Test</strong>: The prototype is presented to end-users, and their interactions and feedback are closely observed. This data is then used to refine the solution.</p></li>
+</ol>
+</section>
+<section id="when-to-apply-structured-thinking" class="level3">
+<h3 class="anchored" data-anchor-id="when-to-apply-structured-thinking"><strong>When to Apply Structured Thinking</strong></h3>
+<ol type="1">
+<li><p><strong>Well-Defined Problems</strong>: When you have a specific, concrete problem to solve and the criteria for success are clear.</p></li>
+<li><p><strong>Data-Driven Decisions</strong>: When solutions can be evaluated empirically or quantitatively.</p></li>
+<li><p><strong>Logical Complexity</strong>: When the problem can be decomposed into smaller problems that require systematic analysis.</p></li>
+<li><p><strong>Operational Efficiency</strong>: When the main goal is to improve the efficiency of an existing process or system.</p></li>
+<li><p><strong>Risk Mitigation</strong>: When it’s critical to make decisions that minimize risk and error.</p></li>
+</ol>
+
+
+<!-- -->
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Google's Business Intelligence Certificate Overview</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> Brett Johnson</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2023-09-05</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [Business Intelligence, Google, Professional Development]</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">draft:</span><span class="co"> false</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> 'Business Intelligence Methods for Scientific Data Mobilization'</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> 'images/DALL·E 2023-09-26 09.25.50 - Business Intelligence digital art, split lighting, in the style of the matrix.png'</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="an">archives:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"> - 2023/09</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu"># Summary</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>**Business intelligence** aims to leverage data to generate actionable insights that improve business outcomes by way of increasing organizational data maturity. BI us multifaceted combining data analytics, software development, project management and business analysis to inform strategic, operational, and predictive business decisions.</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>Skills I acquired from <span class="sc">\[</span>Google's Business Intelligence Certificate<span class="sc">\]</span>(https://www.coursera.org/professional-certificates/google-business-intelligence#courses) include:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Data engineering**: Acquired deeper insights into numerous database types, design schema, and performance optimization. Used Google Cloud Platform and Big Query.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Analytics engineering:** Developed robust ETL data pipelines for real-time analytics using Google DataFlow, SQL, and Python.</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Intelligence reporting:** Mastered automated report and dashboard creation, utilizing Tableau, Python's streamlit package, as well as R's shiny.</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Intelligence life cycle management:** Learned stakeholder engagement, information needs assessment, and problem-solving through design thinking principles.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>The certificate has increased my technical capacity as well as my business acumen and stakeholder management capabilities. It has empowered me with the knowledge and skills to advance my organization's goals with a higher level of professionalism and sophistication, further positioning us to elevate data-driven initiatives.</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>I recently completed a professional certificate in Business Intelligence (BI). The <span class="co">[</span><span class="ot">three course, three month certificate offered by Google</span><span class="co">](https://www.coursera.org/professional-certificates/google-business-intelligence#courses "course website")</span> was a solid introduction to the art of BI: *improving data maturity within organizations leading to actionable insights that improve business outcomes.* In this short review I will cover the foundational concepts covered in the course and consider how these approaches could be applied to an organization whose business is science in the pubic interest.</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>The course spent more time focused on the 'soft skills' of Business Intelligence (BI) than expected: stakeholder engagement, communication, resume and portfolio development, and an overview of the BI industry and specialized roles within. Less time was spent on the 'engineering' aspect of BI related to the technical skills of building databases, data pipelines, and using BI tools than expected. The focus of the certificate was very much a broad introduction to the field aimed to situate successful graduates with the skills for an entry level BI role. While not exactly what I expected, the certificate appropriately introduced the learner to the field, the tools, and use-cases while to enable keen learners to deepen their skills where they found most interest.</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>As a biologist working as a Scientific Data Specialist over the last few years, I walked away with a new vocabulary, new paradigms to organize my analytic work, and new processes to interact with stakeholders. I found the 'business' side of this certificate the most rewarding in terms of learning new business principles and processes to apply to data analytics and software development work. Working with academics, and as an academic myself, I find there is often a dearth of skills related to project management, business analysis, and effective goal alignment. Applying Business Intelligence methods to the production of science, therefore, could have a catalyzing effect within scientific collaborations.</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu"># What is BI?</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>**BI is about automating processes and information channels for managers and decision makers. BI professionals increase data maturity within an organization by improving the ability to extract and use data to generate actionable insights.**</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>BI teams require various roles and skills which can be divided or consolidated among team members.</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Project Managers: Define the work, gather requirements, defines scope, prepares timeline and leads check ins to ensure things are on track.</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Data Engineers: Write application programming interfaces to databases so that data can be pulled into other systems, maintain databases. Clean and standardize data in warehouses and deliver it to target database.</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Governance Specialists: Ensures data has proper access and security controls in place.</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Data Analysts: Analyze data to address specific historical business question.</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Business Intelligence Analysts: Crete (near)real-time data dashboards, reports, or data streams for monitoring and intelligence gathering.</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="fu"># How to BI</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>A BI strategy requires a 360 degree view of an organization. Understanding business goals, key stakeholder requirements, organizational structure and current challenges is critical. A BI strategy requires more than good data management, it requires the management of people, processes and tools to improve data maturity. Building a 'user-support framework' that supports staff with training, a feed-back system, and tangible benefits is critical for long term success. The need for a user-support framework can not be understated and makes the difference between implementing a one time or short term solution versus a long term sustainable transition to building and maintaining data maturity. So much of an effective BI strategy depends on working with and understanding the stories of people in the organization who produce or consume data.</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="fu">## BI Stakeholders</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>It can be helpful to think about the various categories of stakeholders in a BI project to better understand and articulate their needs.</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>**Project Sponsors** are ultimately responsible and accountable for the project and often establish criteria for success.</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>**Application Developers** generate data and consume data and are important to work with to ensure useful data streams are identified.</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>**Systems analysts** design and implement information systems, often back end platforms, and have a big picture in mind for how information needs to move throughout the business.</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>**Business stakeholders** including executives, customer service facing employees, data science teams made up of analysts and engineers will have different requirements for information</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>While it is important to meet with key stakeholders individually and even observe teams in action to understand the what, how and why of what they do, holding stakeholder alignment workshops is a great strategy to ensure stakeholder requirements and project requirements are aligned within the business.</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## BI Outputs and Processes</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>Much of BI is about bringing various sources of data together in a way that allows them to be integrated and analyzed. The end goal is often a suite of metrics to understand what is happening in the market, in the business, or in your organization in real time. Distilling down a deluge of information into informative visualizations is the bread and butter of BI. To do that BI professionals often use 'Extract, Transform, Load' data pipelines that feed data into a suite of visualizations such as a dashboard, or reproducible reports.</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>The type of metrics used will depend on if its one of the three types of dashboards: 1) Strategic; 2) Operational; 3) Analytical.</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>**Strategic dashboards** usually include Key Performance Indicators (KPIs) and a "North Star" metric. A North Star metric is the most important measure of success, and is important for organizations to define because it can align the business and the employees. Strategic dashboards track the trajectory and progress of the business over the medium to long term.</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>**Operational dashboards**, on the other hand, offer real time insights for rapid intelligence gathering and decision making. Monitoring various aspects of a business or market which can change rapidly over the course of hours, days, or weeks. Examples might include number of sales, website up time, website traffic or customer complaints.</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>**Analytical dashboards** offer a deeper dive in various aspects of business data, that might allow a user to tweak some assumptions of underlying models to better predict future scenarios.</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="fu">### BI Planning Documents</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>Whatever the dashboard type, going through a standard process for gathering stakeholder requirements is essential. Three documents can ensure a BI project delivers value:</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>1<span class="sc">\)</span> **Stakeholder Requirements Document** is usually one-page and defines a) the business problem; b) key stakeholders names and job titles; c) primary requirements to consider the project a success.</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>2<span class="sc">\)</span> **Project Requirements Document** is longer and outlines why the project needs doing and why the company should invest in it.</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>It defines key dependencies: what data do we currently have versus what new data collections might be needed</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Identifies major elements of the project, the team and roles within each team</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Define a minimum viable product that should be built before embarking on more challenging aspects of the project such as new data collection procedures</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Defines the **expected deliverables** and success using SMART criteria</span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Identify key metrics with necessary technologies and processes that are already in place</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Identify the frequency of delivery of supporting data for key metrics to identify misalignment</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Prioritizes features based on stakeholder requirements but also based on features with fewest dependencies</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Documents 'User Journeys', ie. the current user experience and the future ideal experience</span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Includes privacy, access, legal and compliance concerns and requirements. Who needs access?</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Explicitly states any assumptions</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Accessibility: defines key considerations for accessibility; optimized for mobile or desktop? Colour blind? Large text?</span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>User-support framework: How will users be empowered to contribute data sustainably and learn to use the dashboard?</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Roll-out plan: Describe scope, priorities, timeline. At what point during the roll out will measurements be made to ensure the features are performing as expected?</span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Key references: Documents, policies, how to guides, links to project tracking interface</span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>**3) Strategy document** offers a collaborative space to align stakeholders about project deliverables.</span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Details of dashboard functionality, metrics, charts</span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Fleshes out limitations or assumptions about data</span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Provides chart and dashboard mock ups</span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Request review and sign-off from key stakeholders to complete the planning phase.</span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a><span class="fu">### BI is All About Communication</span></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>While it might sound cliche or rote to say communication is key, but many of us fail to understand this and suffer from misunderstandings, wasting time, and not generating the right value as a result. Intelligence is about information, how do we collect information? How do we utilize information? Communication. Communication from the technical foundation of internet protocols, APIs, data pipelines, to the human dimensions required to gather stakeholder requirements, give and receive feedback, and inform others what your newly acquired intelligence actually means. So, it's not a matter of prioritizing communication for effective BI it about realizing that BI *is* communication, not just fancy tools and pretty pictures.</span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a>To effectively communicate in BI there are some basic considerations: communicate early and communicate often. Early communication by way of scoping stakeholder requirements, and often by way of formalized check in points. Timing and frequency is critical, but so are the methods. Asking questions is one of the best methods of communication so let's consider how to do that most effectively:</span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Ask effective questions</span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Ask open-ended questions</span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Don't ask leading questions</span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Be curious rather than making a point with a passive agressive question</span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Dig deeper into confusing or unclear situations by asking clarifying questions</span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Ask specific questions not vague ones</span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Ask SMART questions: Specific, measurable, actionable, relevant, time-bound</span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>When presenting information in the form of presentation or meeting, use the who what when where why and how formula.</span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>Keeping track of project milestones and tracking progress towards to milestones in a project change log is a great way to stay on top of key changes that will need to be communicated. Make a plan to communicate changes from the project change log often.</span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="fu">## BI Databases</span></span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>There's a lot of talk of different database types within the field of business intelligence and analytics. I'll try to clarify some of the more common types that I found useful to understand coming from a background in biology and scientific data where the relational database is the main workhorse. What's the difference between data lakes, data marts, data warehouses, graph databases, and more recently vector databases?</span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a>First, let's start with the difference between a database and a data warehouse.</span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a>**Database:** Simply put a database is a collection of data stored in a computer system. They can be optimized for many purposes, but a traditional database optimized to minimize duplication, reduce storage requirements, and maintain data integrity through a process of normalization. Normalization in essence is the process of breaking data into multiple tables so that no column has a repeated row of data. Tables are then joined by identifier columns with unique values that match other tables referred to as keys. In this way each table is related some how to others, hence the term relational database. While very efficient and logical, the design of a databases structure (schema) is defined early in the design process and remains rather rigid and difficult to change later which is a significant drawback to the typical relational database. Typical examples of relational databases include PostgreSQL, MySQL, SQLite, MongoDB, and Microsoft Access.</span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a>**Data warehouses:** Are a type of database that consolidate data from multiple source systems aimed at ensuring consistency, accuracy, and efficient queries and and analysis. They often rely on denormalized designs such as star or snowflake schema, which facilitate faster query performances because the data are organized around important business facts or metrics and fewer tables may need to be joined. Examples of data warehouses include Google Big Query, Amazon Redshift, and Snowflake.</span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a>One of the key differences between a data warehouse and a relational database is that data warehouses are optimized for column-based operations which allows data to be spread across multiple servers and can increase query performance. Databases on the other hand are optimized for row-based operations, meaning that an entire row of a database has to be retrieved and scaling has to be done horizontally by increasing the capacity in a single server.</span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a>**Data Lakes** allow you store both structured and unstructured (videos, images etc) data at any scale. Data can be stored raw, ie in it's original format, without having to fit into a schema thereby offering great flexibility. They are flexible and low cost but can make it difficult to access useful information can become chaotic without adequate governance and queries can be very slow due to a lack of structure.</span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>**Data Marts** are subject specific databases that are optimized for specific business users. Unlike data lakes, they are structured and contain only relevant data for specific uses.</span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>**OLTP (**online transaction processing) databases are optimized processing and managing transnational data with an emphasis on fast query processing and maintaining integrity in high contention (multi-access) and high concurrency environments. Often organized in a normalized relational model. MySQL, Oracle and Microsoft SQL Server are all common examples OLTP databases.</span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a>**OLAP** (online analytical processing) databases are designed for complex queries and calculations usually for the purpose of real time analytics. Often organized as a de-normalized star or snowflake schema or in columnar databases for faster query performance. Generally concurrency and contention is not an issue because a single team or user are utilizing the databases at a time. SAP BW, IBM Cognos Analytics and Microsoft Analysis Services are popular commercial OLAP databases.</span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a>**Graph databases** are a huge topic and likely warrant their own blog post. There's a lot of interest and perhaps hype surrounding graph databases. Briefly rap databases are designed to store data in the form graphs, which is the connection of nodes via edges. Graph databases are schema-less meaning the structure of the graph can be extended naturally as new relationships or nodes are needed. This offers a lot of flexibility compared to traditional relational databases. However, there's a notion of universal applicability that graph databases can solve all relational problems, which is not true. They are often marketed as a panacea for big data complexities but scalability can still be an issue. In reality graph databases are extremely effective for niche applications and problems that are intrinsically based on relationships. However, implementing a graph database and migrating data into it can be challenging and complex.</span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a>**Vector Databases have** recently emerged as a critical data storage environment related to artificial intelligence. As the name implies, they store vectors often used to represent geometric objects, such as points, lines, and polygons but vectors can often represent complex entities that have been transformed into high dimensional spaces via machine learning models, such as deep neural networks. They can be useful for Content-based recommendation systems, and finding similar items based on their high dimensional feature vectors. They are also useful for natural language, processing computer vision, and anomaly detection. Lastly, vector databases are critical in storing embeddings required for large language models. They are highly scalable and enable real time applications like chat, bots, or recommendation systems to utilize large language models effectively.</span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a>**Feature-oriented databases** represent a nuanced approach to database design and data storage that specifically caters to the management of important features or attributes of data. These features may be determined by subject matter experts, or extracted from text or image data using various feature extraction processes such as natural language processing or computer vision. These features are there in turn used to train machine learning models. Many AI systems depend on this type of database because the features are in a model-ready format.</span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="fu">## Design Thinking and Structured Thinking</span></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a>You are probably familiar with structured thinking already whether you realize it or not. It's essentially the scientific process that includes stages: problem definition, hypothesis generation, data collection, analysis and solutions. When you encounter complex problems while working on BI projects "Design Thinking" can be a very useful method to innovate solutions that are focused on user needs. Design thinking differs from structured thinking in that it takes a human-centred, iterative, explorative, and flexible approach whereas structured thinking is less collaborative, more linear, and mostly uses deductive reasoning to find the most efficient solutions.</span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a>Design thinking shines for:</span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>1<span class="sc">\)</span> tackling uncertain and ambiguous problems when the problem-space is not well defined or when dealing with 'wicked problems'; 2) user-centric projects; 3) Innovation; 4) Interdisciplinary challenges; and 5) Rapid prototyping and iteration.</span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a>Many problems in environmental science are 'wicked problems' that don't have a clear definition, include many stakeholders with different perspectives, complex inter-dependencies, don't have a clear way to establish a definitive solution and have incomplete, contradictory, or changing requirements. When a purely scientific-engineering approach to solving a problem using structured thinking does not or will not work, design thinking may offer useful solutions.</span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Key Stages of Design Thinking:</span></span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Empathize**: This initial stage involves understanding the emotional experiences and needs of the end-user. Research methods may include interviews, observations, and immersion in the user environment.</span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Define**: Based on the empathy stage, the problem is explicitly defined from the user\'s perspective. The goal is to articulate what the user needs, not what the business needs.</span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Ideate**: This stage involves generating a wide variety of potential solutions through brainstorming and other ideation techniques. The focus is on volume and diversity of ideas.</span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Prototype**: Ideas are turned into low-fidelity prototypes, which could range from sketches to physical models. The aim is to visualize potential solutions and prepare them for testing.</span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>**Test**: The prototype is presented to end-users, and their interactions and feedback are closely observed. This data is then used to refine the solution.</span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a><span class="fu">### **When to Apply Structured Thinking**</span></span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Well-Defined Problems**: When you have a specific, concrete problem to solve and the criteria for success are clear.</span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Data-Driven Decisions**: When solutions can be evaluated empirically or quantitatively.</span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Logical Complexity**: When the problem can be decomposed into smaller problems that require systematic analysis.</span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Operational Efficiency**: When the main goal is to improve the efficiency of an existing process or system.</span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>**Risk Mitigation**: When it's critical to make decisions that minimize risk and error.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+</body></html>
