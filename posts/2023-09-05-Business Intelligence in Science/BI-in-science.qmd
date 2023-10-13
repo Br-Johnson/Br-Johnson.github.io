@@ -143,7 +143,7 @@ To effectively communicate in BI there are some basic considerations: communicat
 
     -   Don't ask leading questions
 
-    -   Be curious rather than making a point with a passive agressive question
+    -   Be curious rather than making a point with a passive aggressive question
 
     -   Dig deeper into confusing or unclear situations by asking clarifying questions
 
@@ -175,7 +175,7 @@ One of the key differences between a data warehouse and a relational database is
 
 **OLAP** (online analytical processing) databases are designed for complex queries and calculations usually for the purpose of real time analytics. Often organized as a de-normalized star or snowflake schema or in columnar databases for faster query performance. Generally concurrency and contention is not an issue because a single team or user are utilizing the databases at a time. SAP BW, IBM Cognos Analytics and Microsoft Analysis Services are popular commercial OLAP databases.
 
-**Graph databases** are a huge topic and likely warrant their own blog post. There's a lot of interest and perhaps hype surrounding graph databases. Briefly rap databases are designed to store data in the form graphs, which is the connection of nodes via edges. Graph databases are schema-less meaning the structure of the graph can be extended naturally as new relationships or nodes are needed. This offers a lot of flexibility compared to traditional relational databases. However, there's a notion of universal applicability that graph databases can solve all relational problems, which is not true. They are often marketed as a panacea for big data complexities but scalability can still be an issue. In reality graph databases are extremely effective for niche applications and problems that are intrinsically based on relationships. However, implementing a graph database and migrating data into it can be challenging and complex.
+**Graph databases** are a huge topic and likely warrant their own blog post. There's a lot of interest and perhaps hype surrounding graph databases. Briefly graph databases are designed to store data in the form graphs, which is the connection of nodes via edges. Graph databases are schema-less meaning the structure of the graph can be extended naturally as new relationships or nodes are needed. This offers a lot of flexibility compared to traditional relational databases. However, there's a notion of universal applicability that graph databases can solve all relational problems, which is not true. They are often marketed as a panacea for big data complexities but scalability can still be an issue. In reality graph databases are extremely effective for niche applications and problems that are intrinsically based on relationships. However, implementing a graph database and migrating data into it can be challenging and complex.
 
 **Vector Databases have** recently emerged as a critical data storage environment related to artificial intelligence. As the name implies, they store vectors often used to represent geometric objects, such as points, lines, and polygons but vectors can often represent complex entities that have been transformed into high dimensional spaces via machine learning models, such as deep neural networks. They can be useful for Content-based recommendation systems, and finding similar items based on their high dimensional feature vectors. They are also useful for natural language, processing computer vision, and anomaly detection. Lastly, vector databases are critical in storing embeddings required for large language models. They are highly scalable and enable real time applications like chat, bots, or recommendation systems to utilize large language models effectively.
 
@@ -195,7 +195,7 @@ Many problems in environmental science are 'wicked problems' that don't have a c
 
 1.  **Empathize**: This initial stage involves understanding the emotional experiences and needs of the end-user. Research methods may include interviews, observations, and immersion in the user environment.
 
-2.  **Define**: Based on the empathy stage, the problem is explicitly defined from the user\'s perspective. The goal is to articulate what the user needs, not what the business needs.
+2.  **Define**: Based on the empathy stage, the problem is explicitly defined from the user's perspective. The goal is to articulate what the user needs, not what the business needs.
 
 3.  **Ideate**: This stage involves generating a wide variety of potential solutions through brainstorming and other ideation techniques. The focus is on volume and diversity of ideas.
 
