@@ -31,13 +31,13 @@ A total of 18,426 datasets that meet the query filter. The filter included: has 
 \
 So the dataset that resulted from this specific query includes data from 18,426 other GBIF datasets which meet the query filter parameters. This new dataset receives a Digital Object Identifier and each of those underlying datasets also has a digital object identifier. GBIF is able to count citations because each of those 18,426 DOIs is referenced in the new dataset's DOI metadata as a 'relatedIdentifier'. So, each time the overarching dataset is cited, the citation count for each of the 18,426 datasets increases by one as well. Pretty cool, huh!?\
 
-I can be surprising how the International Year of the Salmon data are re-used way outside the context of their collection, which is a major advantage of using the GBIF and publishing data using international standards. This also demonstrates the power of standardized data: new datasets can be integrated, downloaded, and identified with a DOI on the fly!
+It can be surprising how the International Year of the Salmon data are re-used way outside the context of their collection, which is a major advantage of using the GBIF and publishing data using international standards. This also demonstrates the power of standardized data: new datasets can be integrated, downloaded, and identified with a DOI on the fly!
 
-If you're interested in finding all 18,427 Digital Object Identfiers and their titles or other metadata here's how you could do that using the [DataCite API](https://support.datacite.org/docs/api) and the [rdatacite R package](https://docs.ropensci.org/rdatacite/index.html) and searching for the DOI of the overarching dataset and extracting the `relatedIdentifiers` field.
+If you're interested in finding all 18,427 Digital Object Identifiers and their titles or other metadata, you too could do that using the [DataCite API](https://support.datacite.org/docs/api) and the [rdatacite R package](https://docs.ropensci.org/rdatacite/index.html) and searching for the DOI of the overarching dataset and extracting the `relatedIdentifiers` field.
 
 ### International Year of the Salmon Datasets
 
-For a more interesting example, let's look at how all the International Year of the Salmon datasets have been cited thus far. To do that we'll take a similar approach but instead of searching for a specific DOI we'll query for International Year of the Salmon in all the datacite DOIs, and extract each datasets `relatedIdentifiers`. We'll then search for those `relatedIdentifiers` to retrieve their titles. Finally, I'll join all that data together and present a network map of how each dataset connected by citations.
+For a more interesting example, let's look at how all the International Year of the Salmon datasets have been cited thus far. To do that we'll take a similar approach but instead of searching for a specific DOI we'll query for International Year of the Salmon in all the datacite DOIs, and extract each datasets `relatedIdentifiers`. We'll then search for those `relatedIdentifiers` to retrieve their titles. Finally, I'll join all that data together and present a network map of how each dataset is connected by citations.
 
 ```{r warning = FALSE, message=FALSE, fig.margin=TRUE, cache=TRUE}
 library(rdatacite)
