@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brett Johnson">
+<meta name="dcterms.date" content="2024-04-09">
+<meta name="description" content="Take your glossary of terms to the next level by creating an ontology from a controlled vocabulary using Python, RDFlib, and Web Protege.">
+
+<title>Brett Johnson - Controlled Vocabularies, Ontologies and Graphs. Oh My!</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VBNXHNYDDE"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VBNXHNYDDE', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Brett Johnson</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Br-Johnson" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/_BrettJohnson" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <div class="quarto-title-block"><div><h1 class="title">Controlled Vocabularies, Ontologies and Graphs. Oh My!</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+                  <div>
+        <div class="description">
+          Take your glossary of terms to the next level by creating an ontology from a controlled vocabulary using Python, RDFlib, and Web Protege.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">How-to</div>
+                <div class="quarto-category">Python</div>
+                <div class="quarto-category">Ontology</div>
+                <div class="quarto-category">Data Science</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Brett Johnson </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 9, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Controlled vocabularies and ontologies are cornerstone elements in the domain of information organization. By establishing a standardized lexicon and defining the relationships between concepts, these frameworks empower sector or society and research domains to achieve greater data consistency, interoperability, and semantic precision.</p>
+<section id="historical-insight-into-controlled-vocabularies-and-ontologies" class="level2">
+<h2 class="anchored" data-anchor-id="historical-insight-into-controlled-vocabularies-and-ontologies">Historical Insight into Controlled Vocabularies and Ontologies</h2>
+<p>The journey of controlled vocabularies and ontologies began in the early days of library science, evolving from simple thesauri and classification systems to sophisticated semantic frameworks. The inception of the semantic web in the late 20th century marked a significant leap, propelling the development of ontologies to enable the web of data to be machine-readable. Standards such as RDF (Resource Description Framework), OWL (Web Ontology Language), and SKOS (Simple Knowledge Organization System) emerged, each contributing to the layered architecture of the semantic web, enabling machines to understand and process the semantics of data.</p>
+<p>By transitioning from a very basic controlled vocabulary in a spreadsheet to a structured ontology using Python and RDFlib, this tutorial underscores a practical application of these concepts. Through this tutorial, you will learn how to get started building an ontology without any prior experience, equipping you with the knowledge to implement these powerful tools in your domain, thereby enhancing the richness and utility of your data.</p>
+<p>We will use the following tools and technologies in this tutorial:</p>
+<ul>
+<li><strong>Python</strong>: A versatile programming language widely used for data processing and manipulation.</li>
+<li><strong>pandas</strong>: A powerful data manipulation library in Python that provides data structures and functions for working with structured data.</li>
+<li><strong>RDFlib</strong>: A Python library for working with RDF (Resource Description Framework) data, which is commonly used for representing ontologies and semantic data.</li>
+<li><strong>googlesheets</strong>: A Google Sheets document that contains a simple controlled vocabulary.</li>
+<li><strong>protégé</strong>: An ontology editor and knowledge management tool that we will use to visualize and explore the created ontology.</li>
+</ul>
+<p>and these standards:</p>
+<ul>
+<li><p><strong>RDF:</strong> The Resource Description Framework is a foundational standard for encoding, exchanging, and reusing structured metadata. Its graph-based structure aligns well with the interconnected nature of semantic data, making it a core pillar of the semantic web.</p></li>
+<li><p><strong>SKOS:</strong> Simple Knowledge Organization System provides a simpler, lightweight standard compared to OWL, ideal for representing controlled vocabularies. Its ease of use and focus on basic semantic relationships make it suitable for beginners and for applications where complex ontology features are unnecessary.</p></li>
+<li><p><strong>OWL:</strong> The Web Ontology Language extends RDF, offering more advanced features for describing properties and classes, such as relations between classes, cardinality, equality, and more. Its selection for this tutorial is due to its expressiveness and widespread adoption in ontology development.</p></li>
+<li><p><strong>turtle</strong>: A human-readable serialization format for RDF data that uses a compact syntax to represent triples.</p></li>
+</ul>
+</section>
+</section>
+<section id="knowledge-graphs-ontologies-and-data.-oh-my" class="level1">
+<h1>Knowledge Graphs, Ontologies, and Data. Oh my!</h1>
+<p><strong>A controlled vocabulary is a list of standardized terms</strong> used to describe concepts, objects, or entities within a specific domain or field. These terms are carefully selected, defined, and organized to ensure consistency and accuracy in communication. By using a controlled vocabulary, you can improve searchability, interoperability, and data quality in various applications, such as libraries, databases, and information systems.</p>
+<p><strong>An ontology is a formal representation of knowledge</strong> in a specific domain, typically structured as a set of concepts, relationships, and axioms. Ontologies provide a shared vocabulary for describing entities and their interrelationships, enabling more precise and semantically rich data modeling. They are widely used in artificial intelligence, data integration, and the semantic web to facilitate data sharing, reasoning, and knowledge discovery. Ontologies set the stage for what kinds of data can be included in the knowledge graph but doesn’t include the data itself.</p>
+<p><strong>A Graph Database stores data as nodes, edges, and properties</strong> to represent data in a graph structure. They are the technology to store, query, and manage graph data. Knowledge graphs often reside in graph databases. It’s the underlying system that allows for the efficient retrieval and linkage of complex data sets.</p>
+<p>**A Knowledge Graph results from the application of an ontology to graph database to organize and link specific instances of data according to the structure of the ontology. It provides a semantic framework for representing complex relationships between entities, enabling advanced data analysis and reasoning and contains specific instances of data that are structured according to the rules and relationships defined in the ontology. It can be thought of as an instantiation of an ontology with real-world data.</p>
+<section id="benefits-of-using-controlled-vocabularies-and-ontologies" class="level2">
+<h2 class="anchored" data-anchor-id="benefits-of-using-controlled-vocabularies-and-ontologies">Benefits of Using Controlled Vocabularies and Ontologies</h2>
+<ul>
+<li><strong>Improved Data Consistency</strong>: By using standardized terms and definitions, you can ensure consistency and coherence across different data sources and applications.</li>
+<li><strong>Enhanced Search and Retrieval</strong>: Controlled vocabularies enable more accurate and efficient search and retrieval of information by providing a common language for indexing and querying.</li>
+<li><strong>Interoperability</strong>: Ontologies promote interoperability by establishing a shared understanding of concepts and relationships, facilitating data integration and exchange between systems.</li>
+<li><strong>Semantic Enrichment</strong>: By capturing the semantics of data through ontologies, you can add context and meaning to information, enabling more sophisticated data analysis and reasoning.</li>
+</ul>
+</section>
+</section>
+<section id="how-to-create-an-ontology-from-a-google-sheet-glossary-of-terms" class="level1">
+<h1>How to Create an Ontology from a Google Sheet Glossary of Terms</h1>
+<p>In this tutorial, we will walk through the process of transforming a glossary of terms, stored in a googlesheet, into an OWL ontology, a standard format for representing ontologies in the semantic web. We will use Python, the <strong><code>pandas</code></strong> library for data manipulation, and the <strong><code>rdflib</code></strong> library for working with RDF data.</p>
+<p>First, I’ll break down a Python script that reads data from a Google Sheet, converts it into a pandas DataFrame, and then uses that data to create an RDF graph.</p>
+<section id="importing-necessary-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="importing-necessary-libraries">Importing Necessary Libraries</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rdflib <span class="im">import</span> Graph, Literal, Namespace, URIRef</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rdflib.namespace <span class="im">import</span> RDF, RDFS, SKOS</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>rdflib</code> is a Python library for working with RDF, a standard model for data interchange on the Web.</p>
+<p>RDF is based on the idea of making statements about resources (in particular web resources) in the form of subject-predicate-object expressions. These expressions are known as triples in RDF terminology. The subject denotes the resource, and the predicate denotes traits or aspects of the resource, and expresses a relationship between the subject and the object. This simple model is used to represent knowledge in a machine-readable way and is the basis for the Semantic Web, linked data, and knowledge graphs.</p>
+<p>Each import from <code>rdflib</code> illustrates a different concept in the RDF data model:</p>
+<ul>
+<li><strong><code>Graph</code></strong>: Represents an RDF graph, the fundamental structure used to store triples in RDF. Each triple consists of a subject, predicate, and object, mirroring the basic entity-attribute-value model in knowledge representation.</li>
+<li><strong><code>Literal</code></strong>: Represents a literal value in RDF, such as a string, number, or date. Literals are used to represent data values rather than resources.</li>
+<li><strong><code>Namespace</code></strong>: In RDF, namespaces are used to provide prefixes for URIs, avoiding collisions between terms from different vocabularies. It’s crucial for ensuring consistency and disambiguation in knowledge representation.</li>
+<li><strong><code>URIRef</code></strong>: Represents a URI reference in RDF, used to identify resources and concepts. URIs are the backbone of the Semantic Web, providing unique identifiers for entities and enabling the creation of linked data.</li>
+<li><strong><code>RDF</code></strong>: The namespace for RDF itself, providing access to core RDF terms like <code>rdf:type</code>. RDF is the backbone of semantic web technologies, allowing for the modeling of knowledge in a machine-readable format.</li>
+<li><strong><code>RDFS</code></strong>: The namespace for RDF Schema, a vocabulary extension of RDF that provides additional terms for defining classes, properties, and relationships. RDFS is used to create simple ontologies and taxonomies.</li>
+<li><strong><code>SKOS</code></strong>: The Simple Knowledge Organization System is a standard for representing controlled vocabularies, taxonomies, and thesauri in RDF. SKOS provides a lightweight, easy-to-use framework for organizing and managing knowledge resources. I include it here because I use the term <code>skos:definition</code> in the ontology to define the terms.</li>
+</ul>
+<p>In short, <code>rdflib</code> includes everything you need to parse, create, and manipulate RDF data, serialize it to different formats, and even perform reasoning tasks on RDF graphs.</p>
+</section>
+<section id="reading-data-from-google-sheets" class="level2">
+<h2 class="anchored" data-anchor-id="reading-data-from-google-sheets">Reading Data from Google Sheets</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://docs.google.com/spreadsheets/d/e/2PACX-1vS7cXXTu71hmQVbt5zvtLJAEqyI4t1zhEzGBGXTH38o-QlBEflNXY1PugOC2iJ4J0BN1Ocp6hODzrW1/pub?gid=0&amp;single=true&amp;output=csv"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"./data/sdm_vocab.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here, the script reads data from a Google Sheet via a URL. You can publish any googlesheet file to be publicly accessible like this by selecting File &gt; Share &gt; Publish to Web in any googlesheet.</p>
+<p><img src="images/clipboard-2710916965.png" class="img-fluid"></p>
+<p>The data is read directly into a pandas DataFrame using the <code>pd.read_csv()</code> function. The DataFrame is then saved to a local CSV file to version control in GitHub.</p>
+</section>
+<section id="defining-namespaces" class="level2">
+<h2 class="anchored" data-anchor-id="defining-namespaces">Defining Namespaces</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>namespaces <span class="op">=</span> {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rdf"</span>: Namespace(<span class="st">"http://www.w3.org/1999/02/22-rdf-syntax-ns#"</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"owl"</span>: Namespace(<span class="st">"http://www.w3.org/2002/07/owl#"</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"xml"</span>: Namespace(<span class="st">"http://www.w3.org/XML/1998/namespace"</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"xsd"</span>: Namespace(<span class="st">"http://www.w3.org/2001/XMLSchema#"</span>),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rdfs"</span>: Namespace(<span class="st">"http://www.w3.org/2000/01/rdf-schema#"</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"skos"</span>: Namespace(<span class="st">"http://www.w3.org/2004/02/skos/core#"</span>),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This section defines the namespaces to be used in the RDF graph. Namespaces in RDF are a mechanism to avoid element name conflicts.</p>
+<p>Namespaces are a key aspect of RDF as they allow for the disambiguation of resources. They are typically URIs and are used as a prefix to the local name of a resource. This allows resources to be uniquely identified even if their local names clash.</p>
+</section>
+<section id="creating-the-rdf-graph" class="level2">
+<h2 class="anchored" data-anchor-id="creating-the-rdf-graph">Creating the RDF Graph</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> Graph()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> prefix, namespace <span class="kw">in</span> namespaces.items():</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    g.bind(prefix, namespace)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>An empty RDF graph <code>g</code> is created using the <code>Graph()</code> function from rdflib. The namespaces defined earlier are then bound to the graph.</p>
+<p>An RDF graph is a set of RDF triples. Each RDF triple consists of a subject, a predicate, and an object. The subject denotes the resource, and the predicate denotes traits or aspects of the resource and expresses a relationship between the subject and the object.</p>
+</section>
+<section id="adding-data-to-the-graph" class="level2">
+<h2 class="anchored" data-anchor-id="adding-data-to-the-graph">Adding Data to the Graph</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _, row <span class="kw">in</span> df.iterrows():</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    class_uri <span class="op">=</span> URIRef(<span class="ss">f"http://example.org/</span><span class="sc">{</span>row[<span class="st">'Name'</span>]<span class="sc">.</span>replace(<span class="st">' '</span>, <span class="st">'_'</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Finally, the script iterates over the rows of the DataFrame. For each row, it creates a URI for a class, replacing spaces in the name with underscores. This URI is then added to the graph.</p>
+<p>A URI, or Uniform Resource Identifier, is a string of characters that unambiguously identifies a particular resource. In the context of RDF, URIs are used to both identify the subject of a statement and to express the relationship between a subject and an object.</p>
+</section>
+<section id="adding-class-to-the-graph" class="level2">
+<h2 class="anchored" data-anchor-id="adding-class-to-the-graph">Adding Class to the Graph</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>g.add((class_uri, RDF.<span class="bu">type</span>, namespaces[<span class="st">"owl"</span>].Class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here, the script adds the class to the graph. The <code>RDF.type</code> property is used to state that the subject is an instance of a class.</p>
+<p>OWL, or Web Ontology Language, is a Semantic Web language designed to represent rich and complex knowledge about things, groups of things, and relations between things. In this case, the script is stating that the class URI is an instance of an OWL class.</p>
+<p>OWL extends RDF and is widely used in ontology development and knowledge representation and improves the expressiveness and reasoning capabilities of RDF.</p>
+</section>
+<section id="adding-class-label" class="level2">
+<h2 class="anchored" data-anchor-id="adding-class-label">Adding Class Label</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>g.add((class_uri, RDFS.label, Literal(row[<span class="st">"Name"</span>])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The script then adds the name of the class as a label. The <code>RDFS.label</code> property is used to provide a human-readable version of a resource’s name.</p>
+<p>RDFS, or RDF Schema, provides a basic type system for RDF models. It is used to define classes, properties, and their interrelationships.</p>
+</section>
+<section id="adding-class-definition" class="level2">
+<h2 class="anchored" data-anchor-id="adding-class-definition">Adding Class Definition</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>g.add((class_uri, SKOS.definition, Literal(row[<span class="st">"Definition"</span>])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The script then adds the definition of the class. The <code>SKOS.definition</code> property is used to provide a definition of the resource.</p>
+<p>SKOS, or Simple Knowledge Organization System, is a W3C recommendation designed for representation of thesauri, classification schemes, taxonomies, subject-heading systems, or any other type of structured controlled vocabulary.</p>
+<p>You might be confused about how this ontology uses RDF, RDFS, SKOS, and OWL. The key point is that these are all parts of the Semantic Web stack, and they can be used together to create rich and expressive ontologies. RDF provides the basic data model, RDFS provides a basic vocabulary for describing classes and properties, SKOS provides a vocabulary for representing controlled vocabularies, and OWL provides a more expressive language for defining classes, properties, and relationships. By combining these different parts of the Semantic Web stack, you can create ontologies that are both powerful and flexible.</p>
+</section>
+<section id="serializing-the-graph" class="level2">
+<h2 class="anchored" data-anchor-id="serializing-the-graph">Serializing the Graph</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>turtle_data <span class="op">=</span> g.serialize(<span class="bu">format</span><span class="op">=</span><span class="st">"turtle"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The script then serializes the graph in Turtle format. Turtle is a syntax and file format for expressing data in the RDF data model in a way that is easier to read and write than RDF/XML.</p>
+</section>
+<section id="writing-the-graph-to-a-file" class="level2">
+<h2 class="anchored" data-anchor-id="writing-the-graph-to-a-file">Writing the Graph to a File</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"./outputs/sdm_vocab.ttl"</span>, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    f.write(turtle_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Finally, the script writes the serialized data to a .ttl file. This allows the RDF data to be stored and shared.</p>
+</section>
+</section>
+<section id="collaboratively-developing-the-ontology-in-web-protégé" class="level1">
+<h1>Collaboratively Developing the Ontology in Web Protégé</h1>
+<p>After creating the ontology, you can import the .ttl file into Web Protégé for further editing, visualization, and collaboration. <a href="https://webprotege.stanford.edu/">Web Protégé</a> is a web-based ontology editor that allows multiple users to work on the same ontology simultaneously. You can import the ontology file created in the previous step into Web Protégé and start exploring and refining the ontology.</p>
+<p><img src="images/clipboard-2487518463.png" class="img-fluid"></p>
+<section id="expanding-the-ontology-with-additional-concepts-and-relationships" class="level2">
+<h2 class="anchored" data-anchor-id="expanding-the-ontology-with-additional-concepts-and-relationships">Expanding the Ontology with Additional Concepts and Relationships</h2>
+<p>Once you have imported the ontology into Web Protégé, you can further expand and refine it by adding additional concepts, relationships, and axioms. You can define new classes, properties, and restrictions to capture more complex domain knowledge and semantics. By iteratively refining the ontology based on feedback and domain expertise, you can create a comprehensive and semantically rich representation of the domain.</p>
+<p><img src="images/clipboard-3302958347.png" class="img-fluid"></p>
+<p>Keep in mind, you can always update the controlled vocabulary in the Google Sheets document, rerun the Python script to generate a new version of the ontology, and import it back into Web Protégé for further refinement. This iterative process allows you to continuously improve and evolve the ontology based on new contributions without having all your collaborators sign up for a web protégé account. However, if you’ve added more complext relationships or axioms, you will need to reflect that in the google sheet and adjust your python script, or if you want to collaborate in real-time, you can invite your collaborators to join the ontology project in Web Protégé.</p>
+</section>
+</section>
+<section id="broad-uses-of-the-salmon-data-mobilization-controlled-vocabularyontology" class="level1">
+<h1>Broad Uses of the “Salmon Data Mobilization” Controlled Vocabulary/Ontology</h1>
+<p>The “Salmon Data Mobilization” controlled vocabulary or ontology serves as a foundational tool to standardize terminology and concepts within the realm of salmon research, ensuring consistency and promoting interoperability across various datasets and studies. Here are three broad uses:</p>
+<ul>
+<li><p><strong>Facilitating Data Sharing:</strong> By establishing a common set of terms and definitions, researchers, policymakers, and conservationists can more easily share and merge data, enhancing collaborative efforts and comparative studies.</p></li>
+<li><p><strong>Enhancing Data Discovery:</strong> The ontology can be used to tag and categorize research outputs and datasets, making it easier for scientists and other stakeholders to discover relevant data and research findings, thereby accelerating knowledge acquisition and application.</p></li>
+<li><p><strong>Improving Data Integration:</strong> In multidisciplinary research, where data from different domains need to be combined (e.g., combining genetic data with environmental data), a common ontology ensures that entities and concepts from diverse datasets are accurately aligned and integrated.</p></li>
+</ul>
+<p>Next, imagine integrating this hatchery ontology with broader salmon ecology and environmental ontologies. This integrated system can represent a comprehensive knowledge base, capturing the interplay between hatchery practices, salmon life cycles, ecological interactions, and environmental factors. Researchers can leverage this integrated ontology to explore complex questions, model scenarios, and develop evidence-based management strategies for salmon conservation and sustainable fisheries.</p>
+</section>
+<section id="detailed-example-integrating-ontologies-for-advanced-applications" class="level1">
+<h1>Detailed Example: Integrating Ontologies for Advanced Applications</h1>
+<p>Consider a more sophisticated ontology focused on “Salmon Hatchery Production.” Instead of merely cataloging terms and definitions as we’ve done so far, this ontology could encapsulate the relationships between different entities (like different stages of salmon life cycle, hatchery conditions, feed types) and their attributes (such as growth rates, survival rates, and genetic markers).</p>
+<p>Building the Hatchery Production Ontology:</p>
+<p><strong>Step 1: Collaboratively Defining Relationships and Attributes</strong></p>
+<ul>
+<li><p><strong>Stakeholder Engagement:</strong> Involve experts from various domains, including hatchery managers, ecologists, and environmental scientists, to gather comprehensive insights into the salmon lifecycle and hatchery operations.</p></li>
+<li><p><strong>Entity Identification:</strong> Define key entities such as “Salmon Life Stages,” “Hatchery Conditions,” “Environmental Factors,” and “Ecological Interactions.”</p></li>
+<li><p><strong>Relationship Mapping:</strong> Establish relationships between entities. For instance, link “Hatchery Conditions” with specific “Salmon Life Stages” and correlate “Environmental Factors” with “Ecological Interactions.”</p></li>
+<li><p><strong>Attribute Specification:</strong> Assign relevant attributes to each entity. For example, “Water Quality” could have attributes like pH level, clarity, and pollutants.</p></li>
+<li><p><strong>Consensus Building:</strong> Through workshops and consultations, achieve consensus on the ontology’s structure and content, ensuring it reflects the collective expertise and data compatibility.</p></li>
+</ul>
+<p><strong>Step 2: Aligning Pre-existing Data with the Ontology</strong></p>
+<ul>
+<li><p><strong>Data Mapping:</strong> Identify how existing datasets correspond to the defined ontology. Determine which data fields align with which entities and attributes.</p></li>
+<li><p><strong>Data Transformation:</strong> Convert and structure the data to fit the ontology model. This may involve renaming fields, restructuring tables, or aggregating data points.</p></li>
+<li><p><strong>Data Import to Graph Database:</strong> Use tools or scripts to import the transformed data into a system that supports the ontology, using a knowledge graph platform such as GraphDB, Neo4j, Amazon Neptune, or Stardog.</p></li>
+<li><p><strong>Verification:</strong> Conduct checks to ensure that the data aligns correctly with the ontology, maintaining integrity and consistency.</p></li>
+</ul>
+<section id="emergent-capabilities-from-ontology-development" class="level2">
+<h2 class="anchored" data-anchor-id="emergent-capabilities-from-ontology-development">Emergent Capabilities from Ontology Development</h2>
+<p>Once the “Salmon Hatchery Production” ontology is established and integrated with other relevant ontologies, it unlocks a range of advanced capabilities for researchers, policymakers, and industry stakeholders:</p>
+<ul>
+<li><strong>Data Integration and Analysis:</strong> By integrating diverse datasets using the ontology for meta analyses, scientists would save a tremendous amount of time avoiding data wrangling tasks and have clearly defined data that’s easy to understand. They could then conduct comprehensive analyses that reveal hidden patterns, correlations, and causal relationships within the salmon production ecosystem at scales not easily accessed before.</li>
+<li><strong>Applications of Artificial Intelligence:</strong> Machine learning algorithms could be trained on the ontology-enhanced datasets to predict optimal hatchery conditions, forecast salmon population dynamics, and identify potential risks or bottlenecks in the production process.</li>
+<li><strong>Enhancing Large Language Models with Knowledge Graph:</strong> Advanced language models like Chat GPT could leverage the ontology to generate expert level insights, recommendations, and reports on salmon hatchery production. Knowledge graphs provide structured knowledge compared to vector embeddings, typically used in Large Language Models, which provide unstructured knowledge. Think of an LLM without a salmon hatchery knowledge graph as a high school student with only Biology 11, and with the knowledge graph as a PhD graduate with a deep understanding of salmon hatchery production.</li>
+<li><strong>Application Development</strong>: Developers could use the ontology to build applications that provide real-time insights into hatchery operations, predict outcomes based on environmental conditions, and optimize production strategies for sustainable salmon populations.</li>
+<li><strong>Semantic Search and Discovery:</strong> Data stewards or providers could annotate datasets stored in data catalogues with ontology terms, to allow users to perform semantic searches that go beyond keyword matching, uncovering relevant information based on the underlying semantics and relationships encoded in the ontology and detected in potentially useful datasets using semantic search algorithms.</li>
+<li><strong>Policy Compliance and Reporting:</strong> Governments and regulatory bodies could use the ontology to standardize reporting requirements, ensuring that data submitted by different entities are consistent, comparable, and compliant with regulations.</li>
+<li><strong>International Collaboration:</strong> A globally shared ontology could facilitate international collaboration on salmon research, conservation, and management, enabling knowledge exchange and harmonizing practices across borders.</li>
+<li><strong>Open Science:</strong> An open-access ontology could promote transparency, reproducibility, and collaboration in salmon research, fostering a culture of open science that accelerates innovation and discovery.</li>
+</ul>
+<p>By developing and integrating advanced ontologies like the “Salmon Hatchery Production” ontology with broader domain ontologies, researchers and stakeholders can unlock new insights, capabilities, and opportunities for addressing complex challenges in salmon conservation, aquaculture, and ecosystem management.</p>
+</section>
+<section id="common-challenges" class="level2">
+<h2 class="anchored" data-anchor-id="common-challenges">Common Challenges</h2>
+<ol type="1">
+<li><p><strong>Complexity Management</strong>: As ontologies grow, they can become complex and difficult to manage. Regular refactoring and modularization can help manage this complexity.</p></li>
+<li><p><strong>Evolving Requirements</strong>: Ontologies may need to evolve as new requirements emerge or the domain knowledge changes. Design your ontology to accommodate changes without significant rework.</p></li>
+<li><p><strong>Interoperability</strong>: Ensuring that your ontology can interoperate with others is crucial but challenging, often requiring alignment or mapping between ontological terms.</p></li>
+<li><p><strong>Performance</strong>: Complex ontologies can impact the performance of data retrieval and reasoning. Optimization strategies may be necessary for large-scale applications.</p></li>
+</ol>
+</section>
+<section id="practical-guidance-for-biologists" class="level2">
+<h2 class="anchored" data-anchor-id="practical-guidance-for-biologists">Practical Guidance for Biologists</h2>
+<ol type="1">
+<li><p><strong>Start Small</strong>: Begin by defining a small, focused ontology that addresses a specific problem or data sharing challenge you frequently encounter.</p></li>
+<li><p><strong>Engage with Peers</strong>: Collaborate with colleagues to validate and refine the ontology, ensuring it’s broadly applicable and valuable.</p></li>
+<li><p><strong>Leverage Tools</strong>: Utilize ontology editing tools and graph databases that offer user-friendly interfaces and tutorials to ease the learning curve.</p></li>
+<li><p><strong>Iterate and Expand</strong>: Gradually expand the ontology and the knowledge graph as more data becomes available and new research questions arise.</p></li>
+</ol>
+</section>
+</section>
+<section id="further-reading-and-resources" class="level1">
+<h1>Further Reading and Resources</h1>
+<ul>
+<li><p><strong>Web Protégé</strong>: A free, open-source ontology editor that allows for collaborative development and is accessible via a web browser. <a href="https://webprotege.stanford.edu/">Web Protégé</a></p></li>
+<li><p><strong>Ontology Design Patterns</strong>: These are templates for solving recurring modeling problems. They can help in designing more robust and interoperable ontologies. <a href="http://ontologydesignpatterns.org/">Ontology Design Patterns</a></p></li>
+<li><p><strong>SKOS Reference</strong>: The W3C’s Simple Knowledge Organization System (SKOS) provides a model for expressing the basic structure and content of concept schemes. <a href="https://www.w3.org/TR/skos-reference/">SKOS Reference</a></p></li>
+<li><p><strong>Protégé Ontology Library</strong>: An extensive collection of ontologies that can serve as examples or as foundations for your own work. <a href="https://protegewiki.stanford.edu/wiki/Protege_Ontology_Library">Protégé Ontology Library</a></p></li>
+<li><p><strong>RDFlib Documentation</strong>: Offers comprehensive information on using RDFlib, including advanced features and use cases. <a href="https://rdflib.readthedocs.io/en/stable/">RDFlib Documentation</a></p></li>
+</ul>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>Ontologies are powerful tools for structuring knowledge, enabling data integration, and fostering collaboration across diverse domains. By developing and integrating ontologies in the field of biology, researchers can unlock new insights, accelerate scientific discovery, and address complex challenges in conservation, ecology, and biotechnology. Whether you’re creating a simple glossary or a sophisticated knowledge graph, ontologies offer a structured approach to organizing and sharing knowledge, paving the way for transformative advancements in biological research and applications.</p>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Controlled Vocabularies, Ontologies and Graphs. Oh My!</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> Brett Johnson</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2024-04-09</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [How-to,Python, Ontology, Data Science]</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="an">draft:</span><span class="co"> false</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> 'Take your glossary of terms to the next level by creating an ontology from a controlled vocabulary using Python, RDFlib, and Web Protege.'</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> 'images/salmon_graph.webp'</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="an">archives:</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - 2024/04</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> false</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>Controlled vocabularies and ontologies are cornerstone elements in the domain of information organization. By establishing a standardized lexicon and defining the relationships between concepts, these frameworks empower sector or society and research domains to achieve greater data consistency, interoperability, and semantic precision.</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Historical Insight into Controlled Vocabularies and Ontologies</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>The journey of controlled vocabularies and ontologies began in the early days of library science, evolving from simple thesauri and classification systems to sophisticated semantic frameworks. The inception of the semantic web in the late 20th century marked a significant leap, propelling the development of ontologies to enable the web of data to be machine-readable. Standards such as RDF (Resource Description Framework), OWL (Web Ontology Language), and SKOS (Simple Knowledge Organization System) emerged, each contributing to the layered architecture of the semantic web, enabling machines to understand and process the semantics of data.</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>By transitioning from a very basic controlled vocabulary in a spreadsheet to a structured ontology using Python and RDFlib, this tutorial underscores a practical application of these concepts. Through this tutorial, you will learn how to get started building an ontology without any prior experience, equipping you with the knowledge to implement these powerful tools in your domain, thereby enhancing the richness and utility of your data.</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>We will use the following tools and technologies in this tutorial:</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Python**: A versatile programming language widely used for data processing and manipulation.</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**pandas**: A powerful data manipulation library in Python that provides data structures and functions for working with structured data.</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**RDFlib**: A Python library for working with RDF (Resource Description Framework) data, which is commonly used for representing ontologies and semantic data.</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**googlesheets**: A Google Sheets document that contains a simple controlled vocabulary.</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**protégé**: An ontology editor and knowledge management tool that we will use to visualize and explore the created ontology.</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>and these standards:</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**RDF:** The Resource Description Framework is a foundational standard for encoding, exchanging, and reusing structured metadata. Its graph-based structure aligns well with the interconnected nature of semantic data, making it a core pillar of the semantic web.</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**SKOS:** Simple Knowledge Organization System provides a simpler, lightweight standard compared to OWL, ideal for representing controlled vocabularies. Its ease of use and focus on basic semantic relationships make it suitable for beginners and for applications where complex ontology features are unnecessary.</span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**OWL:** The Web Ontology Language extends RDF, offering more advanced features for describing properties and classes, such as relations between classes, cardinality, equality, and more. Its selection for this tutorial is due to its expressiveness and widespread adoption in ontology development.</span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**turtle**: A human-readable serialization format for RDF data that uses a compact syntax to represent triples.</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a><span class="fu"># Knowledge Graphs, Ontologies, and Data. Oh my!</span></span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>**A controlled vocabulary is a list of standardized terms** used to describe concepts, objects, or entities within a specific domain or field. These terms are carefully selected, defined, and organized to ensure consistency and accuracy in communication. By using a controlled vocabulary, you can improve searchability, interoperability, and data quality in various applications, such as libraries, databases, and information systems.</span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>**An ontology is a formal representation of knowledge** in a specific domain, typically structured as a set of concepts, relationships, and axioms. Ontologies provide a shared vocabulary for describing entities and their interrelationships, enabling more precise and semantically rich data modeling. They are widely used in artificial intelligence, data integration, and the semantic web to facilitate data sharing, reasoning, and knowledge discovery. Ontologies set the stage for what kinds of data can be included in the knowledge graph but doesn't include the data itself.</span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>**A Graph Database stores data as nodes, edges, and properties** to represent data in a graph structure. They are the technology to store, query, and manage graph data. Knowledge graphs often reside in graph databases. It's the underlying system that allows for the efficient retrieval and linkage of complex data sets.</span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a><span class="sc">\*\*</span>A Knowledge Graph results from the application of an ontology to graph database to organize and link specific instances of data according to the structure of the ontology. It provides a semantic framework for representing complex relationships between entities, enabling advanced data analysis and reasoning and contains specific instances of data that are structured according to the rules and relationships defined in the ontology. It can be thought of as an instantiation of an ontology with real-world data.</span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## Benefits of Using Controlled Vocabularies and Ontologies</span></span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Improved Data Consistency**: By using standardized terms and definitions, you can ensure consistency and coherence across different data sources and applications.</span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Enhanced Search and Retrieval**: Controlled vocabularies enable more accurate and efficient search and retrieval of information by providing a common language for indexing and querying.</span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Interoperability**: Ontologies promote interoperability by establishing a shared understanding of concepts and relationships, facilitating data integration and exchange between systems.</span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Semantic Enrichment**: By capturing the semantics of data through ontologies, you can add context and meaning to information, enabling more sophisticated data analysis and reasoning.</span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a><span class="fu"># How to Create an Ontology from a Google Sheet Glossary of Terms</span></span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a>In this tutorial, we will walk through the process of transforming a glossary of terms, stored in a googlesheet, into an OWL ontology, a standard format for representing ontologies in the semantic web. We will use Python, the **`pandas`** library for data manipulation, and the **`rdflib`** library for working with RDF data.</span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a>First, I'll break down a Python script that reads data from a Google Sheet, converts it into a pandas DataFrame, and then uses that data to create an RDF graph.</span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## Importing Necessary Libraries</span></span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="in">``` python</span></span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rdflib <span class="im">import</span> Graph, Literal, Namespace, URIRef</span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rdflib.namespace <span class="im">import</span> RDF, RDFS, SKOS</span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a><span class="in">`rdflib`</span> is a Python library for working with RDF, a standard model for data interchange on the Web.</span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>RDF is based on the idea of making statements about resources (in particular web resources) in the form of subject-predicate-object expressions. These expressions are known as triples in RDF terminology. The subject denotes the resource, and the predicate denotes traits or aspects of the resource, and expresses a relationship between the subject and the object. This simple model is used to represent knowledge in a machine-readable way and is the basis for the Semantic Web, linked data, and knowledge graphs.</span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a>Each import from <span class="in">`rdflib`</span> illustrates a different concept in the RDF data model:</span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Graph`**: Represents an RDF graph, the fundamental structure used to store triples in RDF. Each triple consists of a subject, predicate, and object, mirroring the basic entity-attribute-value model in knowledge representation.</span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Literal`**: Represents a literal value in RDF, such as a string, number, or date. Literals are used to represent data values rather than resources.</span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Namespace`**: In RDF, namespaces are used to provide prefixes for URIs, avoiding collisions between terms from different vocabularies. It's crucial for ensuring consistency and disambiguation in knowledge representation.</span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`URIRef`**: Represents a URI reference in RDF, used to identify resources and concepts. URIs are the backbone of the Semantic Web, providing unique identifiers for entities and enabling the creation of linked data.</span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`RDF`**: The namespace for RDF itself, providing access to core RDF terms like <span class="in">`rdf:type`</span>. RDF is the backbone of semantic web technologies, allowing for the modeling of knowledge in a machine-readable format.</span>
+<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`RDFS`**: The namespace for RDF Schema, a vocabulary extension of RDF that provides additional terms for defining classes, properties, and relationships. RDFS is used to create simple ontologies and taxonomies.</span>
+<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`SKOS`**: The Simple Knowledge Organization System is a standard for representing controlled vocabularies, taxonomies, and thesauri in RDF. SKOS provides a lightweight, easy-to-use framework for organizing and managing knowledge resources. I include it here because I use the term <span class="in">`skos:definition`</span> in the ontology to define the terms.</span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a>In short, <span class="in">`rdflib`</span> includes everything you need to parse, create, and manipulate RDF data, serialize it to different formats, and even perform reasoning tasks on RDF graphs.</span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reading Data from Google Sheets</span></span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a><span class="in">``` python</span></span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://docs.google.com/spreadsheets/d/e/2PACX-1vS7cXXTu71hmQVbt5zvtLJAEqyI4t1zhEzGBGXTH38o-QlBEflNXY1PugOC2iJ4J0BN1Ocp6hODzrW1/pub?gid=0&amp;single=true&amp;output=csv"</span></span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"./data/sdm_vocab.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a>Here, the script reads data from a Google Sheet via a URL. You can publish any googlesheet file to be publicly accessible like this by selecting File <span class="sc">\&gt;</span> Share <span class="sc">\&gt;</span> Publish to Web in any googlesheet.</span>
+<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-2710916965.png)</span></span>
+<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a>The data is read directly into a pandas DataFrame using the <span class="in">`pd.read_csv()`</span> function. The DataFrame is then saved to a local CSV file to version control in GitHub.</span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a><span class="fu">## Defining Namespaces</span></span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a><span class="in">``` python</span></span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a>namespaces <span class="op">=</span> {</span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rdf"</span>: Namespace(<span class="st">"http://www.w3.org/1999/02/22-rdf-syntax-ns#"</span>),</span>
+<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a>    <span class="st">"owl"</span>: Namespace(<span class="st">"http://www.w3.org/2002/07/owl#"</span>),</span>
+<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a>    <span class="st">"xml"</span>: Namespace(<span class="st">"http://www.w3.org/XML/1998/namespace"</span>),</span>
+<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a>    <span class="st">"xsd"</span>: Namespace(<span class="st">"http://www.w3.org/2001/XMLSchema#"</span>),</span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rdfs"</span>: Namespace(<span class="st">"http://www.w3.org/2000/01/rdf-schema#"</span>),</span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a>    <span class="st">"skos"</span>: Namespace(<span class="st">"http://www.w3.org/2004/02/skos/core#"</span>),</span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a>This section defines the namespaces to be used in the RDF graph. Namespaces in RDF are a mechanism to avoid element name conflicts.</span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>Namespaces are a key aspect of RDF as they allow for the disambiguation of resources. They are typically URIs and are used as a prefix to the local name of a resource. This allows resources to be uniquely identified even if their local names clash.</span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating the RDF Graph</span></span>
+<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a><span class="in">``` python</span></span>
+<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> Graph()</span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> prefix, namespace <span class="kw">in</span> namespaces.items():</span>
+<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a>    g.bind(prefix, namespace)</span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a>An empty RDF graph <span class="in">`g`</span> is created using the <span class="in">`Graph()`</span> function from rdflib. The namespaces defined earlier are then bound to the graph.</span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a>An RDF graph is a set of RDF triples. Each RDF triple consists of a subject, a predicate, and an object. The subject denotes the resource, and the predicate denotes traits or aspects of the resource and expresses a relationship between the subject and the object.</span>
+<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a><span class="fu">## Adding Data to the Graph</span></span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a><span class="in">``` python</span></span>
+<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _, row <span class="kw">in</span> df.iterrows():</span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a>    class_uri <span class="op">=</span> URIRef(<span class="ss">f"http://example.org/</span><span class="sc">{</span>row[<span class="st">'Name'</span>]<span class="sc">.</span>replace(<span class="st">' '</span>, <span class="st">'_'</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a>Finally, the script iterates over the rows of the DataFrame. For each row, it creates a URI for a class, replacing spaces in the name with underscores. This URI is then added to the graph.</span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a>A URI, or Uniform Resource Identifier, is a string of characters that unambiguously identifies a particular resource. In the context of RDF, URIs are used to both identify the subject of a statement and to express the relationship between a subject and an object.</span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a><span class="fu">## Adding Class to the Graph</span></span>
+<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a><span class="in">``` python</span></span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a>g.add((class_uri, RDF.<span class="bu">type</span>, namespaces[<span class="st">"owl"</span>].Class))</span>
+<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a>Here, the script adds the class to the graph. The <span class="in">`RDF.type`</span> property is used to state that the subject is an instance of a class.</span>
+<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a>OWL, or Web Ontology Language, is a Semantic Web language designed to represent rich and complex knowledge about things, groups of things, and relations between things. In this case, the script is stating that the class URI is an instance of an OWL class.</span>
+<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a>OWL extends RDF and is widely used in ontology development and knowledge representation and improves the expressiveness and reasoning capabilities of RDF.</span>
+<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a><span class="fu">## Adding Class Label</span></span>
+<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a><span class="in">``` python</span></span>
+<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a>g.add((class_uri, RDFS.label, Literal(row[<span class="st">"Name"</span>])))</span>
+<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a>The script then adds the name of the class as a label. The <span class="in">`RDFS.label`</span> property is used to provide a human-readable version of a resource's name.</span>
+<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a>RDFS, or RDF Schema, provides a basic type system for RDF models. It is used to define classes, properties, and their interrelationships.</span>
+<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a><span class="fu">## Adding Class Definition</span></span>
+<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a><span class="in">``` python</span></span>
+<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a>g.add((class_uri, SKOS.definition, Literal(row[<span class="st">"Definition"</span>])))</span>
+<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a>The script then adds the definition of the class. The <span class="in">`SKOS.definition`</span> property is used to provide a definition of the resource.</span>
+<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a>SKOS, or Simple Knowledge Organization System, is a W3C recommendation designed for representation of thesauri, classification schemes, taxonomies, subject-heading systems, or any other type of structured controlled vocabulary.</span>
+<span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a>You might be confused about how this ontology uses RDF, RDFS, SKOS, and OWL. The key point is that these are all parts of the Semantic Web stack, and they can be used together to create rich and expressive ontologies. RDF provides the basic data model, RDFS provides a basic vocabulary for describing classes and properties, SKOS provides a vocabulary for representing controlled vocabularies, and OWL provides a more expressive language for defining classes, properties, and relationships. By combining these different parts of the Semantic Web stack, you can create ontologies that are both powerful and flexible.</span>
+<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a><span class="fu">## Serializing the Graph</span></span>
+<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a><span class="in">``` python</span></span>
+<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a>turtle_data <span class="op">=</span> g.serialize(<span class="bu">format</span><span class="op">=</span><span class="st">"turtle"</span>)</span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>The script then serializes the graph in Turtle format. Turtle is a syntax and file format for expressing data in the RDF data model in a way that is easier to read and write than RDF/XML.</span>
+<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a><span class="fu">## Writing the Graph to a File</span></span>
+<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a><span class="in">``` python</span></span>
+<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"./outputs/sdm_vocab.ttl"</span>, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
+<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a>    f.write(turtle_data)</span>
+<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a>Finally, the script writes the serialized data to a .ttl file. This allows the RDF data to be stored and shared.</span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a><span class="fu"># Collaboratively Developing the Ontology in Web Protégé</span></span>
+<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a>After creating the ontology, you can import the .ttl file into Web Protégé for further editing, visualization, and collaboration. <span class="co">[</span><span class="ot">Web Protégé</span><span class="co">](https://webprotege.stanford.edu/)</span> is a web-based ontology editor that allows multiple users to work on the same ontology simultaneously. You can import the ontology file created in the previous step into Web Protégé and start exploring and refining the ontology.</span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-2487518463.png)</span></span>
+<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a><span class="fu">## Expanding the Ontology with Additional Concepts and Relationships</span></span>
+<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-207"><a href="#cb11-207" aria-hidden="true" tabindex="-1"></a>Once you have imported the ontology into Web Protégé, you can further expand and refine it by adding additional concepts, relationships, and axioms. You can define new classes, properties, and restrictions to capture more complex domain knowledge and semantics. By iteratively refining the ontology based on feedback and domain expertise, you can create a comprehensive and semantically rich representation of the domain.</span>
+<span id="cb11-208"><a href="#cb11-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-3302958347.png)</span></span>
+<span id="cb11-210"><a href="#cb11-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-211"><a href="#cb11-211" aria-hidden="true" tabindex="-1"></a>Keep in mind, you can always update the controlled vocabulary in the Google Sheets document, rerun the Python script to generate a new version of the ontology, and import it back into Web Protégé for further refinement. This iterative process allows you to continuously improve and evolve the ontology based on new contributions without having all your collaborators sign up for a web protégé account. However, if you've added more complext relationships or axioms, you will need to reflect that in the google sheet and adjust your python script, or if you want to collaborate in real-time, you can invite your collaborators to join the ontology project in Web Protégé.</span>
+<span id="cb11-212"><a href="#cb11-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-213"><a href="#cb11-213" aria-hidden="true" tabindex="-1"></a><span class="fu"># Broad Uses of the "Salmon Data Mobilization" Controlled Vocabulary/Ontology</span></span>
+<span id="cb11-214"><a href="#cb11-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-215"><a href="#cb11-215" aria-hidden="true" tabindex="-1"></a>The "Salmon Data Mobilization" controlled vocabulary or ontology serves as a foundational tool to standardize terminology and concepts within the realm of salmon research, ensuring consistency and promoting interoperability across various datasets and studies. Here are three broad uses:</span>
+<span id="cb11-216"><a href="#cb11-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-217"><a href="#cb11-217" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Facilitating Data Sharing:** By establishing a common set of terms and definitions, researchers, policymakers, and conservationists can more easily share and merge data, enhancing collaborative efforts and comparative studies.</span>
+<span id="cb11-218"><a href="#cb11-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-219"><a href="#cb11-219" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Enhancing Data Discovery:** The ontology can be used to tag and categorize research outputs and datasets, making it easier for scientists and other stakeholders to discover relevant data and research findings, thereby accelerating knowledge acquisition and application.</span>
+<span id="cb11-220"><a href="#cb11-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-221"><a href="#cb11-221" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Improving Data Integration:** In multidisciplinary research, where data from different domains need to be combined (e.g., combining genetic data with environmental data), a common ontology ensures that entities and concepts from diverse datasets are accurately aligned and integrated.</span>
+<span id="cb11-222"><a href="#cb11-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-223"><a href="#cb11-223" aria-hidden="true" tabindex="-1"></a>Next, imagine integrating this hatchery ontology with broader salmon ecology and environmental ontologies. This integrated system can represent a comprehensive knowledge base, capturing the interplay between hatchery practices, salmon life cycles, ecological interactions, and environmental factors. Researchers can leverage this integrated ontology to explore complex questions, model scenarios, and develop evidence-based management strategies for salmon conservation and sustainable fisheries.</span>
+<span id="cb11-224"><a href="#cb11-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-225"><a href="#cb11-225" aria-hidden="true" tabindex="-1"></a><span class="fu"># Detailed Example: Integrating Ontologies for Advanced Applications</span></span>
+<span id="cb11-226"><a href="#cb11-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-227"><a href="#cb11-227" aria-hidden="true" tabindex="-1"></a>Consider a more sophisticated ontology focused on "Salmon Hatchery Production." Instead of merely cataloging terms and definitions as we've done so far, this ontology could encapsulate the relationships between different entities (like different stages of salmon life cycle, hatchery conditions, feed types) and their attributes (such as growth rates, survival rates, and genetic markers).</span>
+<span id="cb11-228"><a href="#cb11-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-229"><a href="#cb11-229" aria-hidden="true" tabindex="-1"></a>Building the Hatchery Production Ontology:</span>
+<span id="cb11-230"><a href="#cb11-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-231"><a href="#cb11-231" aria-hidden="true" tabindex="-1"></a>**Step 1: Collaboratively Defining Relationships and Attributes**</span>
+<span id="cb11-232"><a href="#cb11-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-233"><a href="#cb11-233" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Stakeholder Engagement:** Involve experts from various domains, including hatchery managers, ecologists, and environmental scientists, to gather comprehensive insights into the salmon lifecycle and hatchery operations.</span>
+<span id="cb11-234"><a href="#cb11-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-235"><a href="#cb11-235" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Entity Identification:** Define key entities such as "Salmon Life Stages," "Hatchery Conditions," "Environmental Factors," and "Ecological Interactions."</span>
+<span id="cb11-236"><a href="#cb11-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-237"><a href="#cb11-237" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Relationship Mapping:** Establish relationships between entities. For instance, link "Hatchery Conditions" with specific "Salmon Life Stages" and correlate "Environmental Factors" with "Ecological Interactions."</span>
+<span id="cb11-238"><a href="#cb11-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-239"><a href="#cb11-239" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Attribute Specification:** Assign relevant attributes to each entity. For example, "Water Quality" could have attributes like pH level, clarity, and pollutants.</span>
+<span id="cb11-240"><a href="#cb11-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-241"><a href="#cb11-241" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Consensus Building:** Through workshops and consultations, achieve consensus on the ontology's structure and content, ensuring it reflects the collective expertise and data compatibility.</span>
+<span id="cb11-242"><a href="#cb11-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-243"><a href="#cb11-243" aria-hidden="true" tabindex="-1"></a>**Step 2: Aligning Pre-existing Data with the Ontology**</span>
+<span id="cb11-244"><a href="#cb11-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-245"><a href="#cb11-245" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Data Mapping:** Identify how existing datasets correspond to the defined ontology. Determine which data fields align with which entities and attributes.</span>
+<span id="cb11-246"><a href="#cb11-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-247"><a href="#cb11-247" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Data Transformation:** Convert and structure the data to fit the ontology model. This may involve renaming fields, restructuring tables, or aggregating data points.</span>
+<span id="cb11-248"><a href="#cb11-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-249"><a href="#cb11-249" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Data Import to Graph Database:** Use tools or scripts to import the transformed data into a system that supports the ontology, using a knowledge graph platform such as GraphDB, Neo4j, Amazon Neptune, or Stardog.</span>
+<span id="cb11-250"><a href="#cb11-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-251"><a href="#cb11-251" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Verification:** Conduct checks to ensure that the data aligns correctly with the ontology, maintaining integrity and consistency.</span>
+<span id="cb11-252"><a href="#cb11-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-253"><a href="#cb11-253" aria-hidden="true" tabindex="-1"></a><span class="fu">## Emergent Capabilities from Ontology Development</span></span>
+<span id="cb11-254"><a href="#cb11-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-255"><a href="#cb11-255" aria-hidden="true" tabindex="-1"></a>Once the "Salmon Hatchery Production" ontology is established and integrated with other relevant ontologies, it unlocks a range of advanced capabilities for researchers, policymakers, and industry stakeholders:</span>
+<span id="cb11-256"><a href="#cb11-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-257"><a href="#cb11-257" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Data Integration and Analysis:** By integrating diverse datasets using the ontology for meta analyses, scientists would save a tremendous amount of time avoiding data wrangling tasks and have clearly defined data that's easy to understand. They could then conduct comprehensive analyses that reveal hidden patterns, correlations, and causal relationships within the salmon production ecosystem at scales not easily accessed before.</span>
+<span id="cb11-258"><a href="#cb11-258" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Applications of Artificial Intelligence:** Machine learning algorithms could be trained on the ontology-enhanced datasets to predict optimal hatchery conditions, forecast salmon population dynamics, and identify potential risks or bottlenecks in the production process.</span>
+<span id="cb11-259"><a href="#cb11-259" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Enhancing Large Language Models with Knowledge Graph:** Advanced language models like Chat GPT could leverage the ontology to generate expert level insights, recommendations, and reports on salmon hatchery production. Knowledge graphs provide structured knowledge compared to vector embeddings, typically used in Large Language Models, which provide unstructured knowledge. Think of an LLM without a salmon hatchery knowledge graph as a high school student with only Biology 11, and with the knowledge graph as a PhD graduate with a deep understanding of salmon hatchery production.</span>
+<span id="cb11-260"><a href="#cb11-260" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Application Development**: Developers could use the ontology to build applications that provide real-time insights into hatchery operations, predict outcomes based on environmental conditions, and optimize production strategies for sustainable salmon populations.</span>
+<span id="cb11-261"><a href="#cb11-261" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Semantic Search and Discovery:** Data stewards or providers could annotate datasets stored in data catalogues with ontology terms, to allow users to perform semantic searches that go beyond keyword matching, uncovering relevant information based on the underlying semantics and relationships encoded in the ontology and detected in potentially useful datasets using semantic search algorithms.</span>
+<span id="cb11-262"><a href="#cb11-262" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Policy Compliance and Reporting:** Governments and regulatory bodies could use the ontology to standardize reporting requirements, ensuring that data submitted by different entities are consistent, comparable, and compliant with regulations.</span>
+<span id="cb11-263"><a href="#cb11-263" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**International Collaboration:** A globally shared ontology could facilitate international collaboration on salmon research, conservation, and management, enabling knowledge exchange and harmonizing practices across borders.</span>
+<span id="cb11-264"><a href="#cb11-264" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Open Science:** An open-access ontology could promote transparency, reproducibility, and collaboration in salmon research, fostering a culture of open science that accelerates innovation and discovery.</span>
+<span id="cb11-265"><a href="#cb11-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-266"><a href="#cb11-266" aria-hidden="true" tabindex="-1"></a>By developing and integrating advanced ontologies like the "Salmon Hatchery Production" ontology with broader domain ontologies, researchers and stakeholders can unlock new insights, capabilities, and opportunities for addressing complex challenges in salmon conservation, aquaculture, and ecosystem management.</span>
+<span id="cb11-267"><a href="#cb11-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-268"><a href="#cb11-268" aria-hidden="true" tabindex="-1"></a><span class="fu">## Common Challenges</span></span>
+<span id="cb11-269"><a href="#cb11-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-270"><a href="#cb11-270" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Complexity Management**: As ontologies grow, they can become complex and difficult to manage. Regular refactoring and modularization can help manage this complexity.</span>
+<span id="cb11-271"><a href="#cb11-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-272"><a href="#cb11-272" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Evolving Requirements**: Ontologies may need to evolve as new requirements emerge or the domain knowledge changes. Design your ontology to accommodate changes without significant rework.</span>
+<span id="cb11-273"><a href="#cb11-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-274"><a href="#cb11-274" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Interoperability**: Ensuring that your ontology can interoperate with others is crucial but challenging, often requiring alignment or mapping between ontological terms.</span>
+<span id="cb11-275"><a href="#cb11-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-276"><a href="#cb11-276" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Performance**: Complex ontologies can impact the performance of data retrieval and reasoning. Optimization strategies may be necessary for large-scale applications.</span>
+<span id="cb11-277"><a href="#cb11-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-278"><a href="#cb11-278" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practical Guidance for Biologists</span></span>
+<span id="cb11-279"><a href="#cb11-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-280"><a href="#cb11-280" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Start Small**: Begin by defining a small, focused ontology that addresses a specific problem or data sharing challenge you frequently encounter.</span>
+<span id="cb11-281"><a href="#cb11-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-282"><a href="#cb11-282" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Engage with Peers**: Collaborate with colleagues to validate and refine the ontology, ensuring it's broadly applicable and valuable.</span>
+<span id="cb11-283"><a href="#cb11-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-284"><a href="#cb11-284" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Leverage Tools**: Utilize ontology editing tools and graph databases that offer user-friendly interfaces and tutorials to ease the learning curve.</span>
+<span id="cb11-285"><a href="#cb11-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-286"><a href="#cb11-286" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Iterate and Expand**: Gradually expand the ontology and the knowledge graph as more data becomes available and new research questions arise.</span>
+<span id="cb11-287"><a href="#cb11-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-288"><a href="#cb11-288" aria-hidden="true" tabindex="-1"></a><span class="fu"># Further Reading and Resources</span></span>
+<span id="cb11-289"><a href="#cb11-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-290"><a href="#cb11-290" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Web Protégé**: A free, open-source ontology editor that allows for collaborative development and is accessible via a web browser. <span class="co">[</span><span class="ot">Web Protégé</span><span class="co">](https://webprotege.stanford.edu/)</span></span>
+<span id="cb11-291"><a href="#cb11-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-292"><a href="#cb11-292" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Ontology Design Patterns**: These are templates for solving recurring modeling problems. They can help in designing more robust and interoperable ontologies. <span class="co">[</span><span class="ot">Ontology Design Patterns</span><span class="co">](http://ontologydesignpatterns.org/)</span></span>
+<span id="cb11-293"><a href="#cb11-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-294"><a href="#cb11-294" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**SKOS Reference**: The W3C's Simple Knowledge Organization System (SKOS) provides a model for expressing the basic structure and content of concept schemes. <span class="co">[</span><span class="ot">SKOS Reference</span><span class="co">](https://www.w3.org/TR/skos-reference/)</span></span>
+<span id="cb11-295"><a href="#cb11-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-296"><a href="#cb11-296" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Protégé Ontology Library**: An extensive collection of ontologies that can serve as examples or as foundations for your own work. <span class="co">[</span><span class="ot">Protégé Ontology Library</span><span class="co">](https://protegewiki.stanford.edu/wiki/Protege_Ontology_Library)</span></span>
+<span id="cb11-297"><a href="#cb11-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-298"><a href="#cb11-298" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**RDFlib Documentation**: Offers comprehensive information on using RDFlib, including advanced features and use cases. <span class="co">[</span><span class="ot">RDFlib Documentation</span><span class="co">](https://rdflib.readthedocs.io/en/stable/)</span></span>
+<span id="cb11-299"><a href="#cb11-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-300"><a href="#cb11-300" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
+<span id="cb11-301"><a href="#cb11-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-302"><a href="#cb11-302" aria-hidden="true" tabindex="-1"></a>Ontologies are powerful tools for structuring knowledge, enabling data integration, and fostering collaboration across diverse domains. By developing and integrating ontologies in the field of biology, researchers can unlock new insights, accelerate scientific discovery, and address complex challenges in conservation, ecology, and biotechnology. Whether you're creating a simple glossary or a sophisticated knowledge graph, ontologies offer a structured approach to organizing and sharing knowledge, paving the way for transformative advancements in biological research and applications.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+</body></html>
