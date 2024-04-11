@@ -1,10 +1,10 @@
 ---
-title: Google's Business Intelligence Certificate Overview
+title: "Google's Business Intelligence Certificate Overview"
 author: Brett Johnson
 date: 2023-09-05
-categories: [Business Intelligence, Google, Professional Development]
+categories: [Business Intelligence]
 draft: false
-description: 'Business Intelligence Methods for Scientific Data Mobilization'
+description: "Business intelligence for science in the public interest. A review of Google's Business Intelligence Certificate."
 image: 'images/DALL·E 2023-09-26 09.25.50 - Business Intelligence digital art, split lighting, in the style of the matrix.png'
 archives:
  - 2023/09
@@ -214,3 +214,9 @@ Many problems in environmental science are 'wicked problems' that don't have a c
 4.  **Operational Efficiency**: When the main goal is to improve the efficiency of an existing process or system.
 
 5.  **Risk Mitigation**: When it's critical to make decisions that minimize risk and error.
+
+# Conlusion
+
+In this blog post, we've covered a lot of ground. We've discussed the importance of data literacy and the role of data in environmental science. We've also explored the key concepts of data management, including data governance, data quality, and data storage. Finally, we've looked at the different types of databases and the importance of structured and design thinking in solving complex problems.
+
+Data is a critical resource in environmental science, and it's essential that we manage it effectively. By understanding the key concepts of data management and applying structured and design thinking, we can make better use of data and drive positive change in the world.
