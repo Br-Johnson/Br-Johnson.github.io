@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2023-06-20">
 <meta name="description" content="How to use the DataCite REST API to understand how GBIF counts citations">
 
-<title>Brett Johnson - How Does the Global Biodiversity Information System Count Citations from the International Year of the Salmon?</title>
+<title>How Does the Global Biodiversity Information System Count Citations from the International Year of the Salmon? – Brett Johnson</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -36,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -61,6 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -91,17 +92,23 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-f3c2ea88cadbcfb37ba28ffa2c97cfc1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -110,6 +117,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -125,8 +133,11 @@ gtag('js', new Date());
 gtag('config', 'G-VBNXHNYDDE', { 'anonymize_ip': true});
 </script>
 <script src="../../site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+
 <script src="../../site_libs/d3-4.5.0/d3.min.js"></script>
+
 <script src="../../site_libs/forceNetwork-binding-0.4/forceNetwork.js"></script>
+
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -135,38 +146,38 @@ gtag('config', 'G-VBNXHNYDDE', { 'anonymize_ip': true});
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Brett Johnson</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Br-Johnson" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Br-Johnson"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/_BrettJohnson" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/_BrettJohnson"> <i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -220,6 +231,7 @@ gtag('config', 'G-VBNXHNYDDE', { 'anonymize_ip': true});
 
 
 
+
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>If you publish your data to the <a href="https://www.gbif.org/">Global Biodiversity Information Facility (GBIF)</a>, you may notice that your dataset is being cited by papers that seemingly have nothing to do with the context of your original project that produced the dataset. For example, check out the <a href="https://www.gbif.org/resource/search?contentType=literature&amp;gbifDatasetKey=d80c46be-b600-44d5-9758-ef5159d40002">citations of this zooplankton dataset</a>.</p>
@@ -229,8 +241,8 @@ gtag('config', 'G-VBNXHNYDDE', { 'anonymize_ip': true});
 <p>If you look in the references section of the Garcia-Rosello et al.&nbsp;(2023) paper you will see two links to GBIF Occurrence Downloads. If you click on the DOI for the second GBIF Occurrence Download dataset <span class="citation" data-cites="gbif.orguser2022">(<a href="#ref-gbif.orguser2022" role="doc-biblioref">GBIF.Org User 2022</a>)</span>, you will reach a landing page for an Occurrence Download on GBIF from a specific query made by a user. You can even see the specific query filters that were used to generate the dataset.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://www.gbif.org/occurrence/download/0008235-220831081235567"><img src="images/Screenshot 2023-06-28 at 8.00.15 AM.png" class="img-fluid figure-img"></a></p>
-<figcaption class="figure-caption">The query filters generated by a GBIF user to return an integrated dataset</figcaption>
+<p><a href="https://www.gbif.org/occurrence/download/0008235-220831081235567"><img src="images/Screenshot 2023-06-28 at 8.00.15 AM.png" class="img-fluid figure-img" alt="The query filters generated by a GBIF user to return an integrated dataset"></a></p>
+<figcaption>The query filters generated by a GBIF user to return an integrated dataset</figcaption>
 </figure>
 </div>
 <p>A total of 18,426 datasets that meet the query filter. The filter included: has CC BY-NC 4.0 licence, Basis of record must be either Human observation, Observation or Preserved Specimen, Has coordinate is true, … Scientific name includes Animalia). As it turns out, this is a very broad filter basically asking for all the animal occurrences on GBIF datasets that have the right license and metadata and the IYS dataset about zooplankton met all those criteria. If you wanted to see all the datasets included in the new dataset you can download a list of the involved datasets using the “Download as TSV” link from the <a href="https://doi.org/10.15468/dl.udrufp">GBIF Occurrence Dataset landing page</a> for this big dataset and search for International Year of the Salmon to see which datasets are included.<br>
@@ -244,7 +256,7 @@ So the dataset that resulted from this specific query includes data from 18,426 
 <h3 class="anchored" data-anchor-id="international-year-of-the-salmon-datasets">International Year of the Salmon Datasets</h3>
 <p>For a more interesting example, let’s look at how all the International Year of the Salmon datasets have been cited thus far. To do that we’ll take a similar approach but instead of searching for a specific DOI we’ll query for International Year of the Salmon in all the datacite DOIs, and extract each datasets <code>relatedIdentifiers</code>. We’ll then search for those <code>relatedIdentifiers</code> to retrieve their titles. Finally, I’ll join all that data together and present a network map of how each dataset connected by citations.</p>
 <div class="cell" data-fig.margin="true" data-hash="2023-06-20-How-does-gbif-count-citations_cache/html/unnamed-chunk-1_2a08871d1ae85f987250f819584cf7a6">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rdatacite)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -380,7 +392,7 @@ So the dataset that resulted from this specific query includes data from 18,426 
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-gbif.orguser2022" class="csl-entry" role="listitem">
 GBIF.Org User. 2022. <span>“Occurrence Download.”</span> The Global Biodiversity Information Facility. <a href="https://doi.org/10.15468/DL.CQPA99">https://doi.org/10.15468/DL.CQPA99</a>.
 </div>
@@ -420,18 +432,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -463,7 +464,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -515,10 +536,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -528,8 +566,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -541,7 +588,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -585,6 +754,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -610,6 +780,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -711,123 +907,123 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>For a more interesting example, let's look at how all the International Year of the Salmon datasets have been cited thus far. To do that we'll take a similar approach but instead of searching for a specific DOI we'll query for International Year of the Salmon in all the datacite DOIs, and extract each datasets <span class="in">`relatedIdentifiers`</span>. We'll then search for those <span class="in">`relatedIdentifiers`</span> to retrieve their titles. Finally, I'll join all that data together and present a network map of how each dataset is connected by citations.</span>
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning = FALSE, message=FALSE, fig.margin=TRUE, cache=TRUE}</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rdatacite)</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(networkD3)</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="in">library(rdatacite)</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="in">library(networkD3)</span></span>
 <span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co"># download the DOI metadata for the new overarching dataset</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>gbif_doi <span class="ot">&lt;-</span> <span class="fu">dc_dois</span>(<span class="at">ids =</span> <span class="st">"10.15468/dl.cqpa99"</span>)</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="in"># download the DOI metadata for the new overarching dataset</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="in">gbif_doi &lt;- dc_dois(ids = "10.15468/dl.cqpa99")</span></span>
 <span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>datasets_used <span class="ot">&lt;-</span> gbif_doi[[<span class="st">"data"</span>]][[<span class="st">"attributes"</span>]][[<span class="st">"relatedIdentifiers"</span>]][[<span class="dv">1</span>]][<span class="st">"relatedIdentifier"</span>]</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="in">datasets_used &lt;- gbif_doi[["data"]][["attributes"]][["relatedIdentifiers"]][[1]]["relatedIdentifier"]</span></span>
 <span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the data from 'International Year of the Salmon' titles</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>iys_dois <span class="ot">&lt;-</span> <span class="fu">dc_dois</span>(<span class="at">query =</span> <span class="st">"titles.title:International Year of the Salmon"</span>, <span class="at">limit =</span> <span class="dv">1000</span>)</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="in"># Get the data from 'International Year of the Salmon' titles</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="in">iys_dois &lt;- dc_dois(query = "titles.title:International Year of the Salmon", limit = 1000)</span></span>
 <span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tibble with the title, citation count, and DOI for each record, then filter by citation count greater than 0</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>iys_citations <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">lapply</span>(iys_dois<span class="sc">$</span>data<span class="sc">$</span>attributes<span class="sc">$</span>titles, <span class="st">"[["</span>, <span class="st">"title"</span>),</span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>  <span class="at">citations =</span> iys_dois[[<span class="st">"data"</span>]][[<span class="st">"attributes"</span>]][[<span class="st">"citationCount"</span>]],</span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>  <span class="at">doi =</span> iys_dois[[<span class="st">"data"</span>]][[<span class="st">"attributes"</span>]][[<span class="st">"doi"</span>]]</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(citations <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="in"># Create a tibble with the title, citation count, and DOI for each record, then filter by citation count greater than 0</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="in">iys_citations &lt;- tibble(</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="in">  title = lapply(iys_dois$data$attributes$titles, "[[", "title"),</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="in">  citations = iys_dois[["data"]][["attributes"]][["citationCount"]],</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="in">  doi = iys_dois[["data"]][["attributes"]][["doi"]]</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="in">) |&gt; filter(citations &gt; 0)</span></span>
 <span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Reduce the title to the substring from the 4th to the 80th character</span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>iys_citations<span class="sc">$</span>title <span class="ot">&lt;-</span> <span class="fu">substr</span>(iys_citations<span class="sc">$</span>title, <span class="dv">4</span>, <span class="dv">80</span>)</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="in"># Reduce the title to the substring from the 4th to the 80th character</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="in">iys_citations$title &lt;- substr(iys_citations$title, 4, 80)</span></span>
 <span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a list to store citation details of each DOI</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>cites_iys_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="in"># Initialize a list to store citation details of each DOI</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="in">cites_iys_list &lt;- list()</span></span>
 <span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch citation details of each DOI and store it in the list</span></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> iys_citations<span class="sc">$</span>doi) {</span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">dc_events</span>(<span class="at">obj_id =</span> <span class="fu">paste0</span>(<span class="st">"https://doi.org/"</span>, i))</span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>  cites_iys_list[[i]] <span class="ot">&lt;-</span> x</span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="in"># Fetch citation details of each DOI and store it in the list</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="in">for (i in iys_citations$doi) {</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="in">  x &lt;- dc_events(obj_id = paste0("https://doi.org/", i))</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="in">  cites_iys_list[[i]] &lt;- x</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
 <span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize lists to store objId and subjId</span></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>obj_ids <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>subj_ids <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="in"># Initialize lists to store objId and subjId</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="in">obj_ids &lt;- list()</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="in">subj_ids &lt;- list()</span></span>
 <span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over the list to retrieve objId and subjId</span></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(cites_iys_list)) {</span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> cites_iys_list[[i]]<span class="sc">$</span>data<span class="sc">$</span>attributes</span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>  obj_ids[[i]] <span class="ot">&lt;-</span> data<span class="sc">$</span>objId</span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>  subj_ids[[i]] <span class="ot">&lt;-</span> data<span class="sc">$</span>subjId</span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="in"># Loop over the list to retrieve objId and subjId</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="in">for(i in 1:length(cites_iys_list)) {</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="in">  data &lt;- cites_iys_list[[i]]$data$attributes</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="in">  obj_ids[[i]] &lt;- data$objId</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="in">  subj_ids[[i]] &lt;- data$subjId</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
 <span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Flatten the lists and remove the prefix 'https://doi.org/'</span></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>obj_ids <span class="ot">&lt;-</span> <span class="fu">substring</span>(<span class="fu">unlist</span>(obj_ids), <span class="dv">17</span>)</span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>subj_ids <span class="ot">&lt;-</span> <span class="fu">substring</span>(<span class="fu">unlist</span>(subj_ids), <span class="dv">17</span>)</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="in"># Flatten the lists and remove the prefix 'https://doi.org/'</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="in">obj_ids &lt;- substring(unlist(obj_ids), 17)</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="in">subj_ids &lt;- substring(unlist(subj_ids), 17)</span></span>
 <span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="co"># Get titles for objId and subjId</span></span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>obj_titles <span class="ot">&lt;-</span> rdatacite<span class="sc">::</span><span class="fu">dc_dois</span>(<span class="at">ids =</span> obj_ids, <span class="at">limit =</span> <span class="dv">1000</span>)</span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>subj_titles <span class="ot">&lt;-</span> rdatacite<span class="sc">::</span><span class="fu">dc_dois</span>(<span class="at">ids =</span> subj_ids, <span class="at">limit =</span> <span class="dv">1000</span>)</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="in"># Get titles for objId and subjId</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="in">obj_titles &lt;- rdatacite::dc_dois(ids = obj_ids, limit = 1000)</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="in">subj_titles &lt;- rdatacite::dc_dois(ids = subj_ids, limit = 1000)</span></span>
 <span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tibble of position, obj_doi, and its corresponding title</span></span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>obj_dois <span class="ot">&lt;-</span> obj_titles[[<span class="st">"data"</span>]][[<span class="st">"attributes"</span>]][[<span class="st">"doi"</span>]]</span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>title_list <span class="ot">&lt;-</span> obj_titles[[<span class="st">"data"</span>]][[<span class="st">"attributes"</span>]][[<span class="st">"titles"</span>]]</span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>title_vector <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">map</span>(title_list, <span class="cf">function</span>(x) x[[<span class="st">'title'</span>]][<span class="dv">1</span>]))</span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>seq <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(obj_dois))</span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>objects <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">position =</span> seq, obj_dois, title_vector)</span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="in"># Create a tibble of position, obj_doi, and its corresponding title</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="in">obj_dois &lt;- obj_titles[["data"]][["attributes"]][["doi"]]</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="in">title_list &lt;- obj_titles[["data"]][["attributes"]][["titles"]]</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="in">title_vector &lt;- unlist(map(title_list, function(x) x[['title']][1]))</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="in">seq &lt;- as.character(1:length(obj_dois))</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="in">objects &lt;- tibble(position = seq, obj_dois, title_vector)</span></span>
 <span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tibble of position, subj_doi, and its corresponding title</span></span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>subj_dois <span class="ot">&lt;-</span> subj_titles[[<span class="st">"data"</span>]][[<span class="st">"attributes"</span>]][[<span class="st">"doi"</span>]]</span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>subjtitle_list <span class="ot">&lt;-</span> subj_titles[[<span class="st">"data"</span>]][[<span class="st">"attributes"</span>]][[<span class="st">"titles"</span>]]</span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>subjtitle_vector <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">map</span>(subjtitle_list, <span class="cf">function</span>(x) x[[<span class="st">'title'</span>]][<span class="dv">1</span>]))</span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>seq2 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(subj_dois))</span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>subjects <span class="ot">&lt;-</span> <span class="fu">tibble</span>(seq2, subj_dois, subjtitle_vector) <span class="sc">|&gt;</span> </span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(subjtitle_vector <span class="sc">!=</span> <span class="st">"Zooplankton Bongo Net Data from the 2019 and 2020 Gulf of Alaska International Year of the Salmon Expeditions"</span>)</span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="in"># Create a tibble of position, subj_doi, and its corresponding title</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="in">subj_dois &lt;- subj_titles[["data"]][["attributes"]][["doi"]]</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="in">subjtitle_list &lt;- subj_titles[["data"]][["attributes"]][["titles"]]</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="in">subjtitle_vector &lt;- unlist(map(subjtitle_list, function(x) x[['title']][1]))</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="in">seq2 &lt;- as.character(1:length(subj_dois))</span></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="in">subjects &lt;- tibble(seq2, subj_dois, subjtitle_vector) |&gt; </span></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="in">  filter(subjtitle_vector != "Zooplankton Bongo Net Data from the 2019 and 2020 Gulf of Alaska International Year of the Salmon Expeditions")</span></span>
 <span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="co"># Get related identifiers and filter by obj_dois, join with subjects, and filter by relationType</span></span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>subj_related_ids <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(subj_titles[[<span class="st">"data"</span>]][[<span class="st">"attributes"</span>]][[<span class="st">"relatedIdentifiers"</span>]], <span class="at">.id =</span> <span class="st">"position"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(objects, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">'relatedIdentifier'</span> <span class="ot">=</span> <span class="st">'obj_dois'</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(subjects, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">'position'</span> <span class="ot">=</span> <span class="st">'seq2'</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(relationType <span class="sc">!=</span> <span class="st">"IsPreviousVersionOf"</span>)</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="in"># Get related identifiers and filter by obj_dois, join with subjects, and filter by relationType</span></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a><span class="in">subj_related_ids &lt;- bind_rows(subj_titles[["data"]][["attributes"]][["relatedIdentifiers"]], .id = "position") |&gt; </span></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="in">  semi_join(objects, by = c('relatedIdentifier' = 'obj_dois')) |&gt; </span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a><span class="in">  left_join(subjects, by = c('position' = 'seq2')) |&gt; </span></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a><span class="in">  filter(relationType != "IsPreviousVersionOf")</span></span>
 <span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a><span class="co"># Join objects and subj_related_ids by 'obj_dois' = 'relatedIdentifier'</span></span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>relationships <span class="ot">&lt;-</span> <span class="fu">full_join</span>(objects, subj_related_ids, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">'obj_dois'</span> <span class="ot">=</span> <span class="st">'relatedIdentifier'</span>))</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a><span class="in"># Join objects and subj_related_ids by 'obj_dois' = 'relatedIdentifier'</span></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a><span class="in">relationships &lt;- full_join(objects, subj_related_ids, by = c('obj_dois' = 'relatedIdentifier'))</span></span>
 <span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data for network plot</span></span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(networkD3)</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a><span class="in"># Prepare data for network plot</span></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="in">library(networkD3)</span></span>
 <span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>objects<span class="sc">$</span>type.label <span class="ot">&lt;-</span> <span class="st">"IYS Dataset"</span></span>
-<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>subjects<span class="sc">$</span>type.label <span class="ot">&lt;-</span> <span class="st">"Referencing Dataset"</span></span>
-<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>ids <span class="ot">&lt;-</span> <span class="fu">c</span>(objects<span class="sc">$</span>obj_dois,subjects<span class="sc">$</span>subj_dois)</span>
-<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(objects<span class="sc">$</span>title_vector, subjects<span class="sc">$</span>subjtitle_vector)</span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>type.label <span class="ot">&lt;-</span> <span class="fu">c</span>(objects<span class="sc">$</span>type.label, subjects<span class="sc">$</span>type.label)</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="in">objects$type.label &lt;- "IYS Dataset"</span></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a><span class="in">subjects$type.label &lt;- "Referencing Dataset"</span></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="in">ids &lt;- c(objects$obj_dois,subjects$subj_dois)</span></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="in">names &lt;- c(objects$title_vector, subjects$subjtitle_vector)</span></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="in">type.label &lt;- c(objects$type.label, subjects$type.label)</span></span>
 <span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="co"># Create edges for network plot</span></span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>edges <span class="ot">&lt;-</span><span class="fu">tibble</span>(<span class="at">from =</span> relationships<span class="sc">$</span>obj_dois, <span class="at">to =</span> relationships<span class="sc">$</span>subj_dois)</span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>links.d3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">from=</span><span class="fu">as.numeric</span>(<span class="fu">factor</span>(edges<span class="sc">$</span>from))<span class="sc">-</span><span class="dv">1</span>, </span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>                       <span class="at">to=</span><span class="fu">as.numeric</span>(<span class="fu">factor</span>(edges<span class="sc">$</span>to))<span class="sc">-</span><span class="dv">1</span> ) </span>
-<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>size <span class="ot">&lt;-</span> links.d3 <span class="sc">|&gt;</span> </span>
-<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(from) <span class="sc">|&gt;</span> </span>
-<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">weight =</span> <span class="fu">n</span>())</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="in"># Create edges for network plot</span></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a><span class="in">edges &lt;-tibble(from = relationships$obj_dois, to = relationships$subj_dois)</span></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a><span class="in">links.d3 &lt;- data.frame(from=as.numeric(factor(edges$from))-1, </span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="in">                       to=as.numeric(factor(edges$to))-1 ) </span></span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a><span class="in">size &lt;- links.d3 |&gt; </span></span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a><span class="in">   group_by(from) |&gt; </span></span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a><span class="in">  summarize(weight = n())</span></span>
 <span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>nodes <span class="ot">&lt;-</span> <span class="fu">tibble</span>(ids, names, type.label) <span class="sc">|&gt;</span> </span>
-<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">names =</span> <span class="fu">case_when</span>(</span>
-<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>    names <span class="sc">==</span> <span class="st">"Occurrence Download"</span> <span class="sc">~</span> <span class="fu">paste0</span>(names, <span class="st">" "</span>, ids),</span>
-<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> names</span>
-<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a><span class="in">nodes &lt;- tibble(ids, names, type.label) |&gt; </span></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(names = case_when(</span></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a><span class="in">    names == "Occurrence Download" ~ paste0(names, " ", ids),</span></span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a><span class="in">    TRUE ~ names</span></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a><span class="in">    ),</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
 <span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>length <span class="ot">&lt;-</span> <span class="fu">nrow</span>(nodes)</span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a><span class="in">length &lt;- nrow(nodes)</span></span>
 <span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>missing_length <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(length) <span class="sc">-</span> <span class="fu">nrow</span>(size)</span>
-<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>missing_size <span class="ot">&lt;-</span> <span class="fu">rep.int</span>(<span class="dv">0</span>, missing_length)</span>
-<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>size <span class="ot">&lt;-</span> <span class="fu">c</span>(size<span class="sc">$</span>weight, missing_size)</span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a><span class="in">missing_length &lt;- as.integer(length) - nrow(size)</span></span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a><span class="in">missing_size &lt;- rep.int(0, missing_length)</span></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a><span class="in">size &lt;- c(size$weight, missing_size)</span></span>
 <span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>nodes<span class="sc">$</span>size <span class="ot">&lt;-</span> size</span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a><span class="in">nodes$size &lt;- size</span></span>
 <span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>nodes.d3 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">idn=</span><span class="fu">factor</span>(nodes<span class="sc">$</span>names, <span class="at">levels=</span>nodes<span class="sc">$</span>names), nodes) </span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a><span class="in">nodes.d3 &lt;- cbind(idn=factor(nodes$names, levels=nodes$names), nodes) </span></span>
 <span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a><span class="co"># Create and render the network plot</span></span>
-<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(networkD3)</span>
-<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> <span class="fu">forceNetwork</span>(<span class="at">Links =</span> links.d3, <span class="at">Nodes =</span> nodes.d3, <span class="at">Source=</span><span class="st">"from"</span>, <span class="at">Target=</span><span class="st">"to"</span>,</span>
-<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>               <span class="at">NodeID =</span> <span class="st">"idn"</span>, <span class="at">Group =</span> <span class="st">"type.label"</span>,<span class="at">linkWidth =</span> <span class="dv">1</span>,</span>
-<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>               <span class="at">linkColour =</span> <span class="st">"#afafaf"</span>, <span class="at">fontSize=</span><span class="dv">12</span>, <span class="at">zoom=</span>T, <span class="at">legend=</span>T, </span>
-<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>               <span class="at">Nodesize=</span><span class="st">"size"</span>, <span class="at">opacity =</span> <span class="fl">0.8</span>, <span class="at">charge=</span><span class="sc">-</span><span class="dv">300</span>,</span>
-<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>               <span class="at">width =</span> <span class="dv">600</span>, <span class="at">height =</span> <span class="dv">400</span>)</span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a><span class="in"># Create and render the network plot</span></span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a><span class="in">library(networkD3)</span></span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a><span class="in">plot &lt;- forceNetwork(Links = links.d3, Nodes = nodes.d3, Source="from", Target="to",</span></span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a><span class="in">               NodeID = "idn", Group = "type.label",linkWidth = 1,</span></span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a><span class="in">               linkColour = "#afafaf", fontSize=12, zoom=T, legend=T, </span></span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a><span class="in">               Nodesize="size", opacity = 0.8, charge=-300,</span></span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a><span class="in">               width = 600, height = 400)</span></span>
 <span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>plot</span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a><span class="in">plot</span></span>
 <span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a></span>
@@ -835,9 +1031,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>One limitation to Datacite's REST API, however, is that it only indexes DOIs minted by Datacite and not by other services such as CrossRef which mints DOIs mainly for journal articles.</span>
 <span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>Thankfully, DataCite also offers a <span class="co">[</span><span class="ot">GraphQL API</span><span class="co">](https://support.datacite.org/docs/datacite-graphql-api-guide)</span> which indexes not only DataCite and Crossref, but also <span class="co">[</span><span class="ot">ORCID</span><span class="co">](https://orcid.org/)</span>, and <span class="co">[</span><span class="ot">ROR</span><span class="co">](https://ror.org/)</span>! So, stay tuned for a future blog post demonstrating the use of this amazing service.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>Thankfully, DataCite also offers a <span class="co">[</span><span class="ot">GraphQL API</span><span class="co">](https://support.datacite.org/docs/datacite-graphql-api-guide)</span> which indexes not only DataCite and Crossref, but also <span class="co">[</span><span class="ot">ORCID</span><span class="co">](https://orcid.org/)</span>, and <span class="co">[</span><span class="ot">ROR</span><span class="co">](https://ror.org/)</span>! So, stay tuned for a future blog post demonstrating the use of this amazing service.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+
 
 
 

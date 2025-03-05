@@ -1,5 +1,5 @@
 ---
-title: "Google's Business Intelligence Certificate Overview"
+title: "Business Intelligence in Science"
 author: Brett Johnson
 date: 2023-09-05
 categories: [Business Intelligence]

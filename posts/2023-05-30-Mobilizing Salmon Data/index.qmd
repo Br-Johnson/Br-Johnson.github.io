@@ -57,7 +57,7 @@ library(tidyverse)
 library(plotly)
 
 # Fetch top ten providers of datasets with the word salmon somewhere in the DOI metadata
-tt_salmon_datasets <- dc_dois(query = "salmon")
+tt_salmon_datasets <- dc_dois(query = "salmon", limit = 999)
 
 tt_providers <- tt_salmon_datasets[["meta"]][["providers"]]
 
@@ -95,6 +95,75 @@ ggplot(years_published, ggplot2::aes(x = id, y = count))+
                    coord_flip() +
                    theme_minimal() +
                    ggtitle("Growth of salmon datasets published with a DOI")
+```
+
+```{r}
+
+library(tidyverse)
+library(plotly)
+
+# Extract and flatten all subjects from non-empty data frames
+keywords_list <- tt_salmon_datasets$data$attributes$subjects %>%
+  keep(~ nrow(.x) > 0 && "subject" %in% colnames(.x)) %>%  # Keep only data frames with a "subject" column
+  map_dfr(~ select(.x, subject)) %>%  # Extract "subject" column and combine into a single tibble
+  count(subject, sort = TRUE)  # Count occurrences
+
+# Rename "subject" column to "keyword"
+colnames(keywords_list) <- c("keyword", "count")
+
+#Filter down to the top 30 most common keywords
+top_keywords <- keywords_list %>% 
+  slice_max(count, n = 30)  # Keep only the 30 most frequent keywords
+
+# Check if keywords exist before plotting
+if (nrow(keywords_list) > 0) {
+  ggplotly(
+    ggplot(keywords_list %>% slice_max(count, n = 15), aes(x = reorder(keyword, count), y = count)) +
+      geom_bar(stat = "identity", fill = "steelblue") +
+      coord_flip() +
+      labs(x = "Keyword", y = "Count") +
+      theme_minimal() +
+      ggtitle("Top Keywords in Salmon Datasets")
+  )
+} else {
+  print("No keywords found in the dataset metadata.")
+}
+
+
+
+
+```
+
+```{r}
+library(igraph)
+library(ggraph)
+
+# Extract only keywords that are in the top 30
+filtered_edges <- tt_salmon_datasets$data$attributes$subjects %>%
+  keep(~ nrow(.x) > 0 && "subject" %in% colnames(.x)) %>%
+  map_dfr(~ {
+    subjects <- .x$subject
+    if (length(subjects) > 1) {
+      expand.grid(from = subjects, to = subjects, stringsAsFactors = FALSE)
+    } else {
+      NULL
+    }
+  }) %>%
+  filter(from %in% top_keywords$keyword & to %in% top_keywords$keyword) %>%  # Filter to top 30 keywords
+  filter(from != to) %>%
+  count(from, to)
+
+# Create graph object
+graph <- graph_from_data_frame(filtered_edges, directed = FALSE)
+
+# Plot network graph
+ggraph(graph, layout = "fr") +  
+  geom_edge_link(aes(edge_alpha = n), show.legend = FALSE) +
+  geom_node_point(size = 5, color = "steelblue") +
+  geom_node_text(aes(label = name), repel = TRUE) +
+  theme_void() +
+  ggtitle("Keyword Relationships in Salmon Datasets (Top 30 Keywords)")
+
 ```
 
 # Conclusion
